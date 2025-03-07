@@ -54,6 +54,28 @@
         .slideshow img:hover {
             transform: scale(1.2); /* Zoom effect */
         }
+	    /* Arrow Buttons */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            z-index: 10;
+            border-radius: 5px;
+        }
+
+        .arrow.left {
+            left: 20px;
+        }
+
+        .arrow.right {
+            right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -71,48 +93,72 @@
 	<a href="page6.html"><img src="DSC_0037.JPG" alt="Image 6"/></a>
     </div>
 
+	<!-- Arrow Buttons -->
+    <button class="arrow left" id="prev">&lt;</button>
+    <button class="arrow right" id="next">&gt;</button>
+
     <footer>
         <p>&copy; 2025 GreenFarewell</p>
     </footer>
 
+  
+
     <script>
-const images = document.querySelectorAll('.slideshow img');
-const links = document.querySelectorAll('.slideshow a');
-let currentIndex = 0;
-let interval;
+        const images = document.querySelectorAll('.slideshow img');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let currentIndex = 0;
 
-// Function to show the next image
-function showNextImage() {
-    // Remove active class from the current image
-    images[currentIndex].classList.remove('active');
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
 
-    // Move to the next image (loop back to the start)
-    currentIndex = (currentIndex + 1) % images.length;
+        // Previous button click
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
 
-    // Add active class to the next image
-    images[currentIndex].classList.add('active');
-}
+        // Next button click
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
 
-// Function to start the slideshow
-function startSlideshow() {
-    interval = setInterval(showNextImage, 5000); // 5 seconds
-}
+        // Auto-slide every 5 seconds
+        let interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }, 5000);
 
-// Function to stop the slideshow
-function stopSlideshow() {
-    clearInterval(interval);
-}
+        // Swipe functionality for touch devices
+        let startX = 0;
+        let endX = 0;
 
-// Add event listeners to pause slideshow when the user interacts
-links.forEach((link, index) => {
-    link.addEventListener('click', () => {
-        stopSlideshow(); // Stop slideshow
-        currentIndex = index; // Set the clicked image as the active one
-    });
-});
+        document.getElementById('slideshow').addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
 
-// Start the slideshow on page load
-startSlideshow();
+        document.getElementById('slideshow').addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+
+            if (startX > endX + 50) {
+                // Swipe left (next image)
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            } else if (startX < endX - 50) {
+                // Swipe right (previous image)
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
+        });
     </script>
+</body>
 </body>
 </html>
