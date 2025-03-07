@@ -76,23 +76,43 @@
     </footer>
 
     <script>
-        // JavaScript for Slideshow Logic
-        const images = document.querySelectorAll('.slideshow img');
-        let currentIndex = 0;
+const images = document.querySelectorAll('.slideshow img');
+const links = document.querySelectorAll('.slideshow a');
+let currentIndex = 0;
+let interval;
 
-        function showNextImage() {
-            // Hide the current image
-            images[currentIndex].classList.remove('active');
+// Function to show the next image
+function showNextImage() {
+    // Remove active class from the current image
+    images[currentIndex].classList.remove('active');
 
-            // Move to the next image (loop back to the start)
-            currentIndex = (currentIndex + 1) % images.length;
+    // Move to the next image (loop back to the start)
+    currentIndex = (currentIndex + 1) % images.length;
 
-            // Show the next image
-            images[currentIndex].classList.add('active');
-        }
+    // Add active class to the next image
+    images[currentIndex].classList.add('active');
+}
 
-        // Auto-slide every 5 seconds
-        setInterval(showNextImage, 5000);
+// Function to start the slideshow
+function startSlideshow() {
+    interval = setInterval(showNextImage, 5000); // 5 seconds
+}
+
+// Function to stop the slideshow
+function stopSlideshow() {
+    clearInterval(interval);
+}
+
+// Add event listeners to pause slideshow when the user interacts
+links.forEach((link, index) => {
+    link.addEventListener('click', () => {
+        stopSlideshow(); // Stop slideshow
+        currentIndex = index; // Set the clicked image as the active one
+    });
+});
+
+// Start the slideshow on page load
+startSlideshow();
     </script>
 </body>
 </html>
