@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenFarewell</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f5f0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #228B22; /* Green color */
+            color: white;
+            padding: 5px;
+        }
+
+        footer {
+            background-color: #228B22; /* Green color */
+            color: white;
+            padding: 1px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Slideshow Container */
+        .slideshow {
+            width: 100vw;
+            height: 80vh; /* Adjust height as needed */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 1s ease-in-out, transform 0.3s; /* Smooth transitions */
+        }
+
+        .slideshow img.active {
+            opacity: 1; /* Display active image */
+        }
+
+        .slideshow img:hover {
+            transform: scale(1.2); /* Zoom effect */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to GreenFarewell</h1>
+    </header>
+
+    <div class="slideshow" id="slideshow">
+        <!-- Images for the slideshow -->
+        <a href="page1.html"><img src="DSC_0037.JPG" alt="Image 1" class="active"></a>
+        <a href="page2.html"><img src="DSC_0011.JPG" alt="Image 2"></a>
+        <a href="page3.html"><img src="DSC_0003.JPG" alt="Image 3"></a>
+        <a href="page4.html"><img src="DSC_0002.JPG" alt="Image 4"></a>
+	<a href="page5.html"><img src="DSC_0044.JPG" alt="Image 5"></a>
+	<a href="page6.html"><img src="DSC_0037.JPG" alt="Image 6"></a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GreenFarewell</p>
+    </footer>
+
+    <script>
+        // JavaScript for Slideshow Logic
+        const images = document.querySelectorAll('.slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            // Hide the current image
+            images[currentIndex].classList.remove('active');
+
+            // Move to the next image (loop back to the start)
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Show the next image
+            images[currentIndex].classList.add('active');
+        }
+
+        // Auto-slide every 5 seconds
+        setInterval(showNextImage, 5000);
+    </script>
+</body>
+</html>
