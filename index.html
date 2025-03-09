@@ -123,6 +123,60 @@
             opacity: 1;
             transform: translateY(0);
         }
+	    .container {
+            width: 90%;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Highlights Grid */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .highlight {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .highlight:hover {
+            transform: scale(1.05);
+        }
+
+        .highlight img, .highlight video {
+            width: 100%;
+            border-bottom: 5px solid #4CAF50;
+        }
+
+        .highlight .description {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .highlight .description p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+	    /* Media Query for Responsiveness */
+        @media (max-width: 768px) {
+            .highlight {
+                width: 90%;
+            }
+        }
 	    /* About Us Section */
         .about {
             margin: 40px auto;
@@ -171,8 +225,8 @@
         <div class="product">
             <img src="DSC_0037.JPG" alt="Image 1">
             <div class="description">
-                <h3>Sapling Name 1</h3>
-                <p>Planted by: </p>
+                <h3>Sapling Name : Rose</h3>
+                <p>Planted by: Mr. Aaryan</p>
                 <p>For more information about the sapling <a href="page1.html" target="_blank">click here</a>.</p>
             </div>
         </div>
@@ -180,8 +234,8 @@
         <div class="product">
             <img src="DSC_0011.JPG" alt="Image 2">
             <div class="description">
-                <h3>Sapling Name 2</h3>
-                <p>Planted by: </p>
+                <h3>Sapling Name : Yellow Marigold</h3>
+                <p>Planted by: Ms. Divya</p>
                 <p>For more information about the sapling <a href="page2.html" target="_blank">click here</a>.</p>
             </div>
         </div>
@@ -189,8 +243,8 @@
         <div class="product">
             <img src="DSC_0003.JPG" alt="Image 3">
             <div class="description">
-                <h3>Sapling Name 3</h3>
-                <p>Planted by: </p>
+                <h3>Sapling Name : Papaya</h3>
+                <p>Planted by: Ms. Vaishnavi and Ms. Nitya</p>
                 <p>For more information about the sapling <a href="page3.html" target="_blank">click here</a>.</p>
             </div>
         </div>
@@ -198,8 +252,8 @@
         <div class="product">
             <img src="DSC_0002.JPG" alt="Image 3">
             <div class="description">
-                <h3>Sapling Name 4</h3>
-                <p>Planted by: </p>
+                <h3>Sapling Name : Orange Marigold</h3>
+                <p>Planted by: Ms. Manisha ma'am</p>
                 <p>For more information about the sapling <a href="page4.html" target="_blank">click here</a>.</p>
             </div>
         </div>
@@ -207,8 +261,8 @@
         <div class="product">
             <img src="DSC_0044.JPG" alt="Image 3">
             <div class="description">
-                <h3>Sapling Name 5</h3>
-                <p>Planted by: </p>
+                <h3>Sapling Name : Yellow Marigold</h3>
+                <p>Planted by: Ms. Azima ma'am and Ms. Priyanka ma'am</p>
                 <p>For more information about the sapling <a href="page5.html" target="_blank">click here</a>.</p>
             </div>
         </div>
@@ -216,9 +270,54 @@
         <div class="product">
             <img src="IMG_1140.JPG" alt="Image 3">
             <div class="description">
-                <h3>Sapling Name 6</h3>
-                <p>Planted by: </p>
+                <h3>Sapling Name : Mango</h3>
+                <p>Planted by: Mr. Sugat</p>
                 <p>For more information about the sapling <a href="page6.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    	 <!-- Sapling 7 -->
+        <div class="product">
+            <img src="IMG_1140.JPG" alt="Image 3">
+            <div class="description">
+                <h3>Sapling Name : Pepal</h3>
+                <p>Planted by: Ms. Vaidehi ma'am</p>
+                <p>For more information about the sapling <a href="page6.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+    </div>
+	<div class="container">
+        <h2>Key Moments</h2>
+        <div class="grid">
+            <!-- Highlight 1: Image -->
+            <div class="highlight">
+                <img src="image1.jpg" alt="Event Highlight 1">
+                <div class="description">
+                    <p>Planting the first sapling as part of our initiative.</p>
+                </div>
+            </div>
+
+            <!-- Highlight 2: Video -->
+            <div class="highlight">
+                <video src="video1.mp4" controls></video>
+                <div class="description">
+                    <p>A glimpse of the cultural program held during the event.</p>
+                </div>
+            </div>
+
+            <!-- Highlight 3: Image -->
+            <div class="highlight">
+                <img src="image2.jpg" alt="Event Highlight 2">
+                <div class="description">
+                    <p>Group photo with all the participants and teachers.</p>
+                </div>
+            </div>
+
+            <!-- Highlight 4: Video -->
+            <div class="highlight">
+                <video src="video2.mp4" controls></video>
+                <div class="description">
+                    <p>Closing ceremony and vote of thanks.</p>
+                </div>
             </div>
         </div>
     </div>
