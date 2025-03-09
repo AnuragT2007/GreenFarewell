@@ -3,72 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farewell Memory - Image Description</title>
+    <title>Rose Information</title>
     <style>
+        /* General Styles */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f5f0;
-            color: #333;
-            text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+	    overflow-x: hidden;
+        }
+	    .back-button {
+            text-align: left;
+            margin: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Green button */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
         }
 
         header {
-            background-color: #228B22; /* Green color */
+            background-color: #FF007F; /* Rose pink theme */
             color: white;
+            text-align: center;
             padding: 2px;
-	 }
-
-        footer {
-            background-color: #228B22; /* Green color */
-            color: white;
-            padding: 1px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+	    animation: fadeIn 1.5s ease-out;
         }
 
-        .image-container {
+        .container {
+            max-width: 900px;
             margin: 20px auto;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
+            padding: 20px;
+            background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+	    animation: slideIn 1.5s ease-in-out;
         }
 
-        .image-container img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
+        h2 {
+            color: #FF007F;
         }
 
-        .description {
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+	.sapling-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .sapling-image img {
+            width: 40%;
+            height: 20%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 1px;
+            background-color: #FF007F;
+            color: white;
             margin-top: 20px;
-            font-size: 18px;
-            line-height: 1.6;
+	    animation: fadeIn 1.5s ease-out;
+        }
+
+	/* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Farewell Memory</h1>
+        <h1>All About the Rose</h1>
     </header>
 
-    <div class="image-container">
-        <img src="DSC_0037.JPG" alt="Farewell Memory">
+    <div class="container">
+	<!-- Sapling Image -->
+        <div class="sapling-image">
+            <img src="DSC_0156.jpg" alt="Rose Sapling">
+        </div>
+	     <!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
+        <!-- About the Rose -->
+        <section>
+            <section>
+            <h2>About the Sapling</h2>
+            <p>The rose sapling is a symbol of love, beauty, and care. It was planted as part of our initiative to create a greener environment and a brighter future.</p>
+            <p><strong>Scientific Name:</strong> <strong>Genus:</strong> <em>Rosa</em></p>
+            <p><strong>Planted By:</strong> Mr. Aaryan Mandar Agavekar</p>
+            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
+        </section>
+        </section>
 
-    <div class="description">
-        <p><strong>Description:</strong> This image captures the moment when our batch, along with our teachers, planted saplings as part of our eco-friendly farewell initiative. It symbolizes growth, unity, and the bond we share as we venture into the next chapters of our lives.</p>
-        <p><strong>Story Behind the Image:</strong> On our last day of college, we decided to create something lasting—both for ourselves and the environment. With every sapling planted, we hoped to leave behind a legacy that would grow with time. This was not just a farewell; it was our promise to nurture the Earth and cherish our memories forever.</p>
+        <!-- Varieties -->
+        <section>
+            <h2>Varieties</h2>
+            <ul>
+                <li><strong>Colors:</strong> Red, pink, yellow, white, orange, purple, and more.</li>
+                <li><strong>Types:</strong>
+                    <ul>
+                        <li>Hybrid Tea Roses</li>
+                        <li>Floribunda Roses</li>
+                        <li>Climbing Roses</li>
+                        <li>Shrub Roses</li>
+                        <li>Miniature Roses</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Symbolism -->
+        <section>
+            <h2>Symbolism</h2>
+            <ul>
+                <li><strong>Red Rose:</strong> Love and passion</li>
+                <li><strong>Yellow Rose:</strong> Friendship and joy</li>
+                <li><strong>White Rose:</strong> Purity and peace</li>
+                <li><strong>Pink Rose:</strong> Gratitude and admiration</li>
+                <li><strong>Orange Rose:</strong> Enthusiasm and desire</li>
+            </ul>
+        </section>
+
+        <!-- Benefits and Uses -->
+        <section>
+            <h2>Benefits & Uses</h2>
+            <ul>
+                <li><strong>Aesthetic:</strong> Used in landscaping, gardens, and decoration.</li>
+                <li><strong>Culinary:</strong> Rose petals are used to make rose water, jams, and syrups. Rosehips are used in teas and preserves.</li>
+                <li><strong>Medicinal:</strong> Known for antioxidant properties and used in aromatherapy and skincare.</li>
+                <li><strong>Perfume Industry:</strong> Prized for its unique fragrance.</li>
+                <li><strong>Cultural Ceremonies:</strong> Plays an important role in weddings, festivals, and rituals.</li>
+            </ul>
+        </section>
+
+        <!-- Growing Conditions -->
+        <section>
+            <h2>Growing Conditions</h2>
+            <ul>
+                <li><strong>Climate:</strong> Prefers temperate climates.</li>
+                <li><strong>Soil:</strong> Well-drained, loamy soil with a slightly acidic pH (6.0-6.5).</li>
+                <li><strong>Sunlight:</strong> Requires 6-8 hours of direct sunlight daily.</li>
+                <li><strong>Watering:</strong> Needs regular watering, especially during dry spells.</li>
+                <li><strong>Care:</strong> Prune annually, fertilize regularly, and monitor for pests like aphids and diseases like black spot.</li>
+            </ul>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section>
+            <h2>Interesting Facts</h2>
+            <ul>
+                <li>The rose is the national flower of the United States, the United Kingdom (England), and Bulgaria.</li>
+                <li>Fossil evidence suggests that roses date back over 35 million years.</li>
+                <li>The world’s oldest living rose is over 1,000 years old and grows on the wall of Hildesheim Cathedral in Germany.</li>
+                <li>Roses have been cultivated since ancient times in regions like China, Mesopotamia, and Egypt.</li>
+            </ul>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 GreenFarewell</p>
+        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
 </body>
 </html>
