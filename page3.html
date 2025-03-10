@@ -3,72 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farewell Memory - Image Description</title>
+    <title>Papaya Information</title>
     <style>
+        /* General Styles */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f5f0;
-            color: #333;
-            text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+		overflow-x: hidden;
         }
 
+	.back-button {
+            text-align: left;
+            margin: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Green button */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+
+	    
         header {
-            background-color: #228B22; /* Green color */
+            background-color: #FFA500; /* Papaya-themed color */
             color: white;
+            text-align: center;
             padding: 2px;
-	 }
-
-        footer {
-            background-color: #228B22; /* Green color */
-            color: white;
-            padding: 1px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+		animation: fadeIn 1.5s ease-out;
         }
 
-        .image-container {
+        .container {
+            max-width: 900px;
             margin: 20px auto;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
+            padding: 20px;
+            background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+		animation: fadeIn 1.5s ease-out;
         }
 
-        .image-container img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
+        h2 {
+            color: #FFA500;
         }
 
-        .description {
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+
+        .papaya-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+		animation: fadeIn 1.5s ease-out;
+        }
+
+        .papaya-image img {
+	    width: 40%;
+            height: 20%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #FFA500;
+            color: white;
             margin-top: 20px;
-            font-size: 18px;
-            line-height: 1.6;
+		animation: fadeIn 1.5s ease-out;
         }
+	
+	/* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }    
+	    
     </style>
 </head>
 <body>
     <header>
-        <h1>Farewell Memory</h1>
+        <h1>All About Papaya</h1>
     </header>
 
-    <div class="image-container">
-        <img src="DSC_0003.JPG" alt="Farewell Memory">
-    </div>
+    <div class="container">
+        <!-- Papaya Image -->
+        <div class="papaya-image">
+		<img src="IMG_1189.JPG" alt="Image 3">
+        </div>
 
-    <div class="description">
-        <p><strong>Description:</strong> This image captures the moment when our batch, along with our teachers, planted saplings as part of our eco-friendly farewell initiative. It symbolizes growth, unity, and the bond we share as we venture into the next chapters of our lives.</p>
-        <p><strong>Story Behind the Image:</strong> On our last day of college, we decided to create something lasting—both for ourselves and the environment. With every sapling planted, we hoped to leave behind a legacy that would grow with time. This was not just a farewell; it was our promise to nurture the Earth and cherish our memories forever.</p>
+	<!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
+    </div>
+	    
+        <!-- About Papaya -->
+        <section>
+            <h2>About Papaya</h2>
+            <p>The papaya (*Carica papaya*) is a tropical fruit tree known for its sweet taste, vibrant orange flesh, and numerous health benefits. It is native to Central and South America and is often called the "fruit of angels."</p>
+		<p><strong>Planted By:</strong> Ms. Vaishnavi and Ms. Nitya</p>
+            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
+        </section>
+
+        <!-- Scientific Name -->
+        <section>
+            <h2>Scientific Name</h2>
+            <p><strong>Species:</strong> *Carica papaya*</p>
+            <p><strong>Family:</strong> Caricaceae</p>
+        </section>
+
+        <!-- Varieties -->
+        <section>
+            <h2>Varieties</h2>
+            <ul>
+                <li><strong>Hawaiian Papaya:</strong> Smaller, sweeter, with orange-red flesh.</li>
+                <li><strong>Mexican Papaya:</strong> Larger, with yellow or orange flesh, used for cooking.</li>
+                <li><strong>Mountain Papaya (*Vasconcellea pubescens*):</strong> Grown in cooler climates, used in juices and jams.</li>
+            </ul>
+        </section>
+
+        <!-- Nutritional Value -->
+        <section>
+            <h2>Nutritional Value (Per 100g)</h2>
+            <ul>
+                <li><strong>Calories:</strong> 43 kcal</li>
+                <li><strong>Carbohydrates:</strong> 11 g</li>
+                <li><strong>Dietary Fiber:</strong> 1.7 g</li>
+                <li><strong>Vitamin C:</strong> 60% of the daily recommended intake</li>
+                <li><strong>Vitamin A:</strong> 20% of the daily recommended intake</li>
+                <li><strong>Folate:</strong> 10% of the daily recommended intake</li>
+                <li>Rich in antioxidants like beta-carotene and lycopene.</li>
+            </ul>
+        </section>
+
+        <!-- Health Benefits -->
+        <section>
+            <h2>Health Benefits</h2>
+            <ul>
+                <li><strong>Digestive Aid:</strong> Contains papain enzyme for better digestion.</li>
+                <li><strong>Rich in Antioxidants:</strong> Protects cells and boosts immunity.</li>
+                <li><strong>Heart Health:</strong> Promotes cardiovascular health.</li>
+                <li><strong>Improves Skin Health:</strong> Reduces acne and promotes glowing skin.</li>
+                <li><strong>Anti-inflammatory:</strong> Reduces inflammation and aids muscle recovery.</li>
+            </ul>
+        </section>
+
+        <!-- Uses -->
+        <section>
+            <h2>Uses</h2>
+            <ul>
+                <li><strong>Culinary:</strong> Fresh, in smoothies, curries, and desserts. Seeds are used as a spice.</li>
+                <li><strong>Medicinal:</strong> Used for treating digestive issues and wounds.</li>
+                <li><strong>Cosmetic:</strong> Common in face masks, scrubs, and soaps.</li>
+                <li><strong>Industrial:</strong> Papain is used in tenderizing meat and clarifying beer.</li>
+            </ul>
+        </section>
+
+        <!-- Growing Conditions -->
+        <section>
+            <h2>Growing Conditions</h2>
+            <ul>
+                <li><strong>Climate:</strong> Thrives in tropical and subtropical climates.</li>
+                <li><strong>Soil:</strong> Well-drained soil with a pH of 6.0–6.5.</li>
+                <li><strong>Sunlight:</strong> Requires full sun for optimal growth.</li>
+                <li><strong>Watering:</strong> Regular watering but avoid waterlogging.</li>
+                <li><strong>Care Tips:</strong> Sensitive to cold and needs spacing for air circulation.</li>
+            </ul>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section>
+            <h2>Interesting Facts</h2>
+            <ul>
+                <li>Papaya is botanically a berry.</li>
+                <li>It can produce fruit all year round in suitable climates.</li>
+                <li>Green papaya is rich in latex and used for natural remedies.</li>
+                <li>Christopher Columbus called it the “fruit of angels.”</li>
+            </ul>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 GreenFarewell</p>
+        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
 </body>
 </html>
