@@ -3,72 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farewell Memory - Image Description</title>
+    <title>Marigold Information</title>
     <style>
+        /* General Styles */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f5f0;
-            color: #333;
-            text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+	    overflow-x: hidden;
         }
 
         header {
-            background-color: #228B22; /* Green color */
+            background-color: #FFA500; /* Orange theme for marigold */
             color: white;
-            padding: 2px;
-	 }
-
-        footer {
-            background-color: #228B22; /* Green color */
-            color: white;
-            padding: 1px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            text-align: center;
+            padding: 20px;
+	    animation: fadeIn 1.5s ease-out;
         }
 
-        .image-container {
+        .container {
+            max-width: 900px;
             margin: 20px auto;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
+            padding: 20px;
+            background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+	    animation: slideIn 1.5s ease-in-out;
+        }
+	
+	.back-button {
+            text-align: left;
+            margin: 20px;
         }
 
-        .image-container img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Green button */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
 
-        .description {
+        .back-button a:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+
+       	    
+        h1, h2 {
+            color: #FFA500;
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+
+        .marigold-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+	   animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .marigold-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #FFA500;
+            color: white;
             margin-top: 20px;
-            font-size: 18px;
-            line-height: 1.6;
+		animation: fadeIn 1.5s ease-out;
+        }
+
+	    /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Farewell Memory</h1>
+        <h1>All About the Marigold</h1>
     </header>
 
-    <div class="image-container">
-        <img src="DSC_0011.JPG" alt="Farewell Memory">
+    <div class="container">
+        <!-- Marigold Image -->
+        <div class="marigold-image">
+            <img src="DSC_0157.JPG" alt="Marigold Flower">
+        </div>
+
+	    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
 
-    <div class="description">
-        <p><strong>Description:</strong> This image captures the moment when our batch, along with our teachers, planted saplings as part of our eco-friendly farewell initiative. It symbolizes growth, unity, and the bond we share as we venture into the next chapters of our lives.</p>
-        <p><strong>Story Behind the Image:</strong> On our last day of college, we decided to create something lasting—both for ourselves and the environment. With every sapling planted, we hoped to leave behind a legacy that would grow with time. This was not just a farewell; it was our promise to nurture the Earth and cherish our memories forever.</p>
+        <!-- About the Marigold -->
+        <section>
+            <h2>About the Marigold</h2>
+            <p>The marigold is a vibrant flowering plant native to the Americas, now cultivated worldwide. Its bright hues of yellow, orange, and red make it a favorite for gardens and cultural ceremonies.</p>
+		  <p><strong>Planted By:</strong> Ms. Divya Jadhav</p>
+            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
+        </section>
+
+        <!-- Scientific Name -->
+        <section>
+	  
+            <h2>Scientific Name</h2>
+            <p><strong>Genus:</strong> <em>Tagetes</em></p>
+            <p><strong>Family:</strong> Asteraceae</p>
+        </section>
+
+        <!-- Varieties -->
+        <section>
+            <h2>Varieties</h2>
+            <ul>
+                <li><strong>African Marigold (*Tagetes erecta*):</strong> Tall plants with large, globe-shaped flowers.</li>
+                <li><strong>French Marigold (*Tagetes patula*):</strong> Compact flowers in red, orange, and yellow hues.</li>
+                <li><strong>Signet Marigold (*Tagetes tenuifolia*):</strong> Delicate flowers with a citrusy fragrance.</li>
+                <li><strong>Pot Marigold (*Calendula officinalis*):</strong> Known for medicinal and culinary uses.</li>
+            </ul>
+        </section>
+
+        <!-- Symbolism -->
+        <section>
+            <h2>Symbolism</h2>
+            <p>Marigolds represent happiness, optimism, and good luck. They hold cultural significance in festivals like Mexico's Day of the Dead and India's religious ceremonies.</p>
+        </section>
+
+        <!-- Benefits and Uses -->
+        <section>
+            <h2>Benefits and Uses</h2>
+            <ul>
+                <li><strong>Gardening:</strong> Easy to grow and repels pests like aphids and nematodes.</li>
+                <li><strong>Culinary:</strong> Edible petals are used as garnishes, and extracts serve as natural food coloring.</li>
+                <li><strong>Medicinal:</strong> Anti-inflammatory and antiseptic properties used in traditional medicine.</li>
+                <li><strong>Decorative:</strong> Widely used in garlands, decorations, and festivals.</li>
+            </ul>
+        </section>
+
+        <!-- Growing Conditions -->
+        <section>
+            <h2>Growing Conditions</h2>
+            <ul>
+                <li><strong>Climate:</strong> Thrives in warm, sunny climates.</li>
+                <li><strong>Soil:</strong> Well-drained, fertile soil with a pH of 6.0-7.0.</li>
+                <li><strong>Sunlight:</strong> Requires full sun for optimal growth.</li>
+                <li><strong>Watering:</strong> Needs regular watering but avoid overwatering.</li>
+                <li><strong>Care:</strong> Deadhead spent flowers to promote continuous blooming.</li>
+            </ul>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section>
+            <h2>Interesting Facts</h2>
+            <ul>
+                <li>Known as the "Herb of the Sun" for its vibrant colors and positive energy.</li>
+                <li>Annual plants that complete their life cycle in one growing season.</li>
+                <li>Used in skincare products for soothing properties.</li>
+                <li>Strong scent deters pests, making it a natural insect repellent.</li>
+            </ul>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 GreenFarewell</p>
+        <p>>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
 </body>
 </html>
