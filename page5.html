@@ -3,72 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farewell Memory - Image Description</title>
+    <title>Rose Information</title>
     <style>
+        /* General Styles */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f5f0;
-            color: #333;
-            text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+	    overflow-x: hidden;
+        }
+	    .back-button {
+            text-align: left;
+            margin: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Green button */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
         }
 
         header {
-            background-color: #228B22; /* Green color */
+            background-color: #FFD700; /* Golden Yellow theme */
             color: white;
+            text-align: center;
             padding: 2px;
-	 }
-
-        footer {
-            background-color: #228B22; /* Green color */
-            color: white;
-            padding: 1px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+	    animation: fadeIn 1.5s ease-out;
         }
 
-        .image-container {
+        .container {
+            max-width: 900px;
             margin: 20px auto;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
+            padding: 20px;
+            background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+	    animation: slideIn 1.5s ease-in-out;
         }
 
-        .image-container img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
+        h2 {
+            color: #FF007F;
         }
 
-        .description {
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+	.sapling-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .sapling-image img {
+            width: 40%;
+            height: 20%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 1px;
+            background-color: #FFD700; /* Golden Yellow theme */
+            color: white;
             margin-top: 20px;
-            font-size: 18px;
-            line-height: 1.6;
+	    animation: fadeIn 1.5s ease-out;
+        }
+
+	/* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Farewell Memory</h1>
+        <h1>All About Yellow Marigold</h1>
     </header>
 
-    <div class="image-container">
-        <img src="DSC_0044.JPG" alt="Farewell Memory">
+    <div class="container">
+	<!-- Sapling Image -->
+        <div class="sapling-image">
+            <img src="DSC_0065.JPG" alt="Image 3">
+        </div>
+	     <!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
+        <!-- About the Rose -->
+        <section>
+            <section>
+            <h2>About Yellow Marigold</h2>
+            <p>The Yellow Marigold is a bright and cheerful flower, known for its warm, golden hue. Belonging to the genus <em>Tagetes</em>, it is highly valued for its aesthetic appeal, cultural significance, and ease of growth.</p>
+           <h2>Scientific Name</h2>
+            <p><strong>Genus:</strong> <em>Tagetes</em></p>
+            <p><strong>Family:</strong> Asteraceae</p>
+            <p><strong>Planted By:</strong> Ms. Azima ma'am and Ms. Priyanka ma'am</p>
+            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
+        </section>
+        </section>
 
-    <div class="description">
-        <p><strong>Description:</strong> This image captures the moment when our batch, along with our teachers, planted saplings as part of our eco-friendly farewell initiative. It symbolizes growth, unity, and the bond we share as we venture into the next chapters of our lives.</p>
-        <p><strong>Story Behind the Image:</strong> On our last day of college, we decided to create something lasting—both for ourselves and the environment. With every sapling planted, we hoped to leave behind a legacy that would grow with time. This was not just a farewell; it was our promise to nurture the Earth and cherish our memories forever.</p>
+        <!-- Characteristics -->
+        <section>
+            <h2>Characteristics</h2>
+            <ul>
+                <li><strong>Color:</strong> Vibrant yellow petals.</li>
+                <li><strong>Size:</strong> Available in small and large varieties.</li>
+                <li><strong>Fragrance:</strong> Earthy, slightly sharp scent that repels pests.</li>
+            </ul>
+        </section>
+
+        <!-- Varieties -->
+        <section>
+            <h2>Varieties of Yellow Marigold</h2>
+            <ul>
+                <li><strong>African Marigold (*Tagetes erecta*):</strong> Large, ball-like yellow blooms.</li>
+                <li><strong>French Marigold (*Tagetes patula*):</strong> Compact plants with smaller yellow flowers.</li>
+                <li><strong>Signet Marigold (*Tagetes tenuifolia*):</strong> Delicate flowers with citrus-scented petals.</li>
+            </ul>
+        </section>
+
+        <!-- Symbolism -->
+        <section>
+            <h2>Symbolism</h2>
+            <p>Yellow Marigolds symbolize happiness, positivity, and new beginnings. They hold immense spiritual significance in Indian festivals and rituals, as well as during Día de los Muertos in Mexico.</p>
+        </section>
+
+        <!-- Uses -->
+        <section>
+            <h2>Uses</h2>
+            <ul>
+                <li><strong>Decorative:</strong> Widely used in garlands, floral decorations, and festivals.</li>
+                <li><strong>Gardening:</strong> Acts as a pest repellent in vegetable gardens.</li>
+                <li><strong>Edible:</strong> Certain varieties' petals are used in garnishes and salads.</li>
+                <li><strong>Medicinal:</strong> Extracts are used for anti-inflammatory and antibacterial purposes.</li>
+            </ul>
+        </section>
+
+        <!-- Growing Conditions -->
+        <section>
+            <h2>Growing Conditions</h2>
+            <ul>
+                <li><strong>Climate:</strong> Thrives in warm, sunny climates.</li>
+                <li><strong>Soil:</strong> Well-drained, fertile soil with a pH between 6.0 and 7.0.</li>
+                <li><strong>Sunlight:</strong> Requires full sunlight for healthy growth.</li>
+                <li><strong>Watering:</strong> Moderate watering; avoid waterlogging.</li>
+                <li><strong>Care Tips:</strong> Deadhead flowers to encourage new blooms.</li>
+            </ul>
+        </section>
+
+        <!-- Health and Environmental Benefits -->
+        <section>
+            <h2>Health and Environmental Benefits</h2>
+            <ul>
+                <li>Improves air quality by adding oxygen to the environment.</li>
+                <li>Repels harmful insects like nematodes and aphids.</li>
+                <li>Soothes skin irritations and promotes healing due to its antioxidant properties.</li>
+            </ul>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section>
+            <h2>Interesting Facts</h2>
+            <ul>
+                <li>Known as the "flower of the sun" for its radiant appearance.</li>
+                <li>Blooms throughout the year in suitable climates.</li>
+                <li>Used as offerings in temples and shrines.</li>
+                <li>Widely cultivated due to its versatility and ease of growth.</li>
+            </ul>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 GreenFarewell</p>
+        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
 </body>
 </html>
