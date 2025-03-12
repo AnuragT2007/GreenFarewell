@@ -24,6 +24,29 @@
 	    z-index: 10;
         }
 
+	        .dark-mode {
+            background-color: #222;
+            color: #ddd;
+        }
+
+        .light-dark-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #FFD700;
+            border: none;
+            color: black;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-dark-toggle:hover {
+            background-color: #FFA500;
+        }
+
         footer {
             background-color: #228B22; /* Green color */
             color: white;
@@ -204,11 +227,71 @@
             color: #555;
             line-height: 1.6;
         }
+
+	        /* Feedback Form */
+        form {
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        form button {
+            background-color: #228B22;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #196F19;
+        }
+
+	        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
     </style>
 </head>
 <body>
     <header>
         <h1>Welcome to GreenFarewell</h1>
+<nav>
+	<a href="#gallery">Saplings planted by Us</a>
+        <a href="#keymoments">Key Moments</a>
+        <a href="#feedback">Feedback</a>
+	<a href="#aboutus">About Us</a>
+        </nav>
+        <button id="light-dark-toggle" class="light-dark-toggle">Toggle Light/Dark Mode</button>
     </header>
 
     <div class="slideshow" id="slideshow">
@@ -227,6 +310,7 @@
     <button class="arrow left" id="prev">&lt;</button>
     <button class="arrow right" id="next">&gt;</button>
 
+<section id="gallery">
 		<!-- Product Gallery Section -->
     <h2>Saplings Planted by us</h2>
     <div class="gallery">
@@ -294,7 +378,8 @@
             </div>
         </div>
     </div>
-	
+</section>
+<section id="keymoments">	
 	<div class="container">
         <h2>Key Moments</h2>
         <div class="grid">
@@ -398,6 +483,8 @@
 		
         </div>
     </div>
+</section>
+<section id="aboutus">
  <!-- About Us Section -->
   <div class="about">
     <h2>About Us</h2>
@@ -405,6 +492,17 @@
     <p>This page is dedicated to our beloved teachers by the students of 12th D, as a token of gratitude for their guidance, inspiration, and unwavering support throughout our journey.</p>
     <p>Discover the heartfelt moments preserved in our farewell slideshow, where every image is a labor of love and dedication. We sincerely appreciate you joining us on this memorable journey!</p>
 </div>
+</section>
+
+
+    <!-- Feedback Section -->
+    <section id="feedback">
+        <h2>We Value Your Feedback</h2>
+        <form action="/submit-feedback" method="post">
+            <textarea placeholder="Share your thoughts..."></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 
     <footer>
         &copy; 2025 GreenFarewell || All Rights Reserved
@@ -466,6 +564,12 @@
                 currentIndex = (currentIndex - 1 + images.length) % images.length;
                 showImage(currentIndex);
             }
+        });
+
+	// Light/Dark Mode Toggle
+        const toggleBtn = document.getElementById('light-dark-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
         });
     </script>
 </body>
