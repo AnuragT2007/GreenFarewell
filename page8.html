@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peepal Tree Information</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f9f4;
+            line-height: 1.6;
+	    overflow-x: hidden;
+        }
+	    .back-button {
+            text-align: left;
+            margin: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Green button */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+
+        header {
+            background-color: #228B22; /* Forest Green theme */
+            color: white;
+            text-align: center;
+            padding: 2px;
+	    animation: fadeIn 1.5s ease-out;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	    animation: slideIn 1.5s ease-in-out;
+        }
+
+        h2 {
+            color: #228B22; /* Forest Green theme */
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+	.sapling-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .sapling-image img {
+            width: 40%;
+            height: 20%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 1px;
+            background-color: #228B22; /* Forest Green theme */
+            color: white;
+            margin-top: 20px;
+	    animation: fadeIn 1.5s ease-out;
+        }
+
+	/* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <h1>All About the Peepal Tree</h1>
+   </header>
+
+    <div class="container">
+	<!-- Sapling Image -->
+        <div class="sapling-image">
+           <img src="DSC_0110.JPG" alt="Pepal image">
+        </div>
+	     <!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
+    </div>
+        <!-- About the Rose -->
+        <section>
+            <section>
+            <h2>About the Peepal Tree</h2>
+            <p>The Peepal Tree (*Ficus religiosa*), also known as the sacred fig or Bodhi tree, is revered for its cultural, spiritual, and ecological significance. Native to South Asia, it is a symbol of longevity and wisdom.</p>
+            <p><strong>Planted By:</strong> Ms. Vaidehi ma'am, Mr. Satish sir and Ms. Palve ma'am</p>
+            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
+	</section>
+		<!-- Scientific Name -->
+        <section>
+		    <h2>Scientific Name</h2>
+            <p><strong>Species:</strong> *Ficus religiosa*</p>
+            <p><strong>Family:</strong> Moraceae</p>
+                  </section>
+<!-- Physical Characteristics -->
+        <section>
+            <h2>Physical Characteristics</h2>
+            <ul>
+                <li><strong>Size:</strong> Can grow up to 30 meters (98 feet) tall.</li>
+                <li><strong>Leaves:</strong> Heart-shaped with an elongated tip.</li>
+                <li><strong>Fruits:</strong> Small, round, and purple when ripe, providing food for birds and animals.</li>
+            </ul>
+        </section>
+
+        <!-- Ecological Importance -->
+        <section>
+            <h2>Ecological Importance</h2>
+            <ul>
+                <li>Acts as a natural air purifier by releasing oxygen.</li>
+                <li>Provides habitat and food for numerous birds and small animals.</li>
+                <li>Thrives in various climatic conditions and prevents soil erosion.</li>
+            </ul>
+        </section>
+
+        <!-- Health Benefits -->
+        <section>
+            <h2>Health Benefits</h2>
+            <ul>
+                <li><strong>Medicinal Uses:</strong> Treats skin disorders, respiratory issues, and digestive problems in Ayurveda.</li>
+                <li><strong>Stress Relief:</strong> Spending time under the tree promotes mental clarity.</li>
+                <li><strong>Oxygen Production:</strong> Produces oxygen even at night.</li>
+            </ul>
+        </section>
+
+        <!-- Cultural and Religious Significance -->
+        <section>
+            <h2>Cultural and Religious Significance</h2>
+            <ul>
+                <li><strong>Hinduism:</strong> Associated with Lord Vishnu and Shiva, worshipped during rituals.</li>
+                <li><strong>Buddhism:</strong> Siddhartha Gautama attained enlightenment under the Bodhi tree, a type of Peepal tree.</li>
+                <li><strong>Jainism:</strong> Revered in Jain scriptures and practices.</li>
+                <li><strong>Symbolism:</strong> Represents longevity, wisdom, and life's interconnectedness.</li>
+            </ul>
+        </section>
+
+        <!-- Uses -->
+        <section>
+            <h2>Uses</h2>
+            <ul>
+                <li><strong>Environmental:</strong> Prevents soil erosion and provides shade.</li>
+                <li><strong>Medicinal:</strong> Bark powder and leaf decoctions treat wounds and diabetes.</li>
+                <li><strong>Landscaping:</strong> Planted in roadsides and courtyards for shade.</li>
+            </ul>
+        </section>
+
+        <!-- Growing Conditions -->
+        <section>
+            <h2>Growing Conditions</h2>
+            <ul>
+                <li><strong>Climate:</strong> Thrives in tropical and subtropical climates.</li>
+                <li><strong>Soil:</strong> Adapts well to various soil types, including sandy and loamy soil.</li>
+                <li><strong>Watering:</strong> Requires regular watering during early stages but becomes drought-tolerant when mature.</li>
+                <li><strong>Sunlight:</strong> Needs full sunlight for optimal growth.</li>
+            </ul>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section>
+            <h2>Interesting Facts</h2>
+            <ul>
+                <li>The Peepal tree is often considered immortal due to its long lifespan.</li>
+                <li>It is one of the first trees mentioned in Indian scriptures, like the Vedas.</li>
+                <li>Leaves are used in traditional art and crafts.</li>
+                <li>Its calming energy makes it a popular spot for meditation and reflection.</li>
+            </ul>
+        </section>
+           </div>
+
+    <footer>
+        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
