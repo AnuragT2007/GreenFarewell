@@ -1,0 +1,728 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Farewell</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f5f0;
+            text-align: center;
+	    padding-bottom: 80px;
+	    overflow-x: hidden;
+        }
+
+        header {
+            background-color: #228B22; /* Green color */
+            color: white;
+            padding: 5px;
+	    text-align: center;
+	    width: 100%;
+	    z-index: 10;
+        }
+
+	        .dark-mode {
+            background-color: #222;
+            color: #ddd;
+        }
+
+        .light-dark-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #FFD700;
+            border: none;
+            color: black;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-dark-toggle:hover {
+            background-color: #FFA500;
+        }
+
+        footer {
+            background-color: #228B22; /* Green color */
+            color: white;
+            padding: 1px;
+            bottom: 0;
+            width: 100%;
+	    position: fixed;
+	    animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Slideshow Container */
+        .slideshow {
+	    padding-top: 250px;
+            width: 100vw;
+            height: 80vh; /* Adjust height as needed */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 1s ease-in-out, transform 0.3s; /* Smooth transitions */
+        }
+
+        .slideshow img.active {
+            opacity: 1; /* Display active image */
+        }
+
+        .slideshow img:hover {
+            transform: scale(1.2); /* Zoom effect */
+        }
+	    /* Arrow Buttons */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            z-index: 10;
+            border-radius: 5px;
+        }
+
+        .arrow.left {
+            left: 20px;
+        }
+
+        .arrow.right {
+            right: 20px;
+        }
+	    /* Product Gallery */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .product:hover .description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+	    .container {
+            width: 90%;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Highlights Grid */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .highlight {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .highlight:hover {
+            transform: scale(1.05);
+        }
+
+        .highlight img, .highlight video {
+            width: 100%;
+            border-bottom: 5px solid #4CAF50;
+        }
+
+        .highlight .description {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .highlight .description p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+	    /* Media Query for Responsiveness */
+        @media (max-width: 768px) {
+            .highlight {
+                width: 90%;
+            }
+        }
+	    /* About Us Section */
+        .about {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: left;
+	    animation: fadeIn 1.5s ease-out;
+        }
+
+        .about h2 {
+            color: #228B22;
+            margin-bottom: 10px;
+        }
+
+        .about p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+	nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+	            /* Popup Box Styling */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .popup h2 {
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup button:hover {
+            background-color: #c9302c;
+        }
+
+        /* Dim Background when Popup Appears */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+	     /* Report Section Styling */
+    .report-section {
+        background-color: #f9f9f9;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .report-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .report-container h2 {
+        color: #228B22;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .report-container p {
+        color: #555;
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin: 10px 0;
+        text-align: justify;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .report-container {
+            padding: 15px;
+        }
+
+        .report-container h2 {
+            font-size: 1.5em;
+        }
+
+        .report-container p {
+            font-size: 1em;
+        }
+    }
+
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <h1>Welcome to GreenFarewell</h1>
+<nav>
+	<a href="#gallery">Saplings planted by Us</a>
+        <a href="#keymoments">Key Moments</a>
+        <a href="#report">Report</a>
+	<a href="#aboutus">About Us</a>
+        </nav>
+        <button id="light-dark-toggle" class="light-dark-toggle">☀️/🌙</button>
+    </header>
+
+	    <!-- Dim Background -->
+    <div class="overlay" style="display: none;"></div>
+
+    <!-- Popup Message -->
+    <div class="popup" style="display: none;">
+        <h2>Site Under Maintenance</h2>
+        <p>We're currently performing some updates. Please check back later.</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+	
+    <div class="slideshow" id="slideshow">
+        <!-- Images for the slideshow -->
+        <img src="DSC_0002.JPG" alt="Image 1" class="">
+        <img src="DSC_0003.JPG" alt="Image 2" class="">
+        <img src="IMG_1222.JPG" alt="Image 3" class="">
+        <img src="DSC_0045.JPG" alt="Image 4" class="">
+	<img src="IMG_1140.JPG" alt="Image 5" class="">
+	<img src="IMG_1153.JPG" alt="Image 6" class="">
+	<img src="DSC_0011.JPG" alt="Image 7" class="active">
+	<img src="IMG_1139.JPG" alt="Image 8" class="">
+    </div>
+
+	<!-- Arrow Buttons -->
+    <button class="arrow left" id="prev">&lt;</button>
+    <button class="arrow right" id="next">&gt;</button>
+
+<section id="gallery">
+		<!-- Product Gallery Section -->
+    <h2>Saplings Planted by us</h2>
+    <div class="gallery">
+        <!-- Sapling 1 -->
+        <div class="product">
+            <img src="DSC_0156.jpg" alt="Rose Sapling">
+            <div class="description">
+                <h3>Sapling Name : Rose</h3>
+                <p>Planted by: Mr. Aaryan Mandar Agavekar</p>
+                <p>For more information about the sapling <a href="page1.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+         <!-- Sapling 2 -->
+        <div class="product">
+            <img src="DSC_157.jpg" alt="Yellow Marigold">
+            <div class="description">
+                <h3>Sapling Name : Yellow Marigold</h3>
+                <p>Planted by:  Ms. Divya Jadhav and Ms. Shreya Zunjarrao</p>
+                <p>For more information about the sapling <a href="page2.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+         <!-- Sapling 3 -->
+        <div class="product">
+            <img src="IMG_1189.JPG" alt="Image 3">
+            <div class="description">
+                <h3>Sapling Name : Papaya</h3>
+                <p>Planted by: Ms. Vaishnavi and Ms. Nitya</p>
+                <p>For more information about the sapling <a href="page3.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	<!-- Sapling 4 -->
+        <div class="product">
+            <img src="IMG_1153.JPG" alt="Orange Marigold">
+            <div class="description">
+                <h3>Sapling Name : Orange Marigold</h3>
+                <p>Planted by: Ms. Manisha ma'am</p>
+                <p>For more information about the sapling <a href="page4.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	 <!-- Sapling 5 -->
+        <div class="product">
+            <img src="DSC_0065.JPG" alt="Image 5">
+            <div class="description">
+                <h3>Sapling Name : Yellow Marigold</h3>
+                <p>Planted by: Ms. Azima ma'am and Ms. Priyanka ma'am</p>
+                <p>For more information about the sapling <a href="page5.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	 <!-- Sapling 6 -->
+        <div class="product">
+            <img src="IMG_1183.JPG" alt="Image 6">
+            <div class="description">
+                <h3>Sapling Name : Chafa</h3>
+                <p>Planted by: Mr. Sugat</p>
+                <p>For more information about the sapling <a href="page6.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    	 <!-- Sapling 7 -->
+        <div class="product">
+            <img src="DSC_0110.JPG" alt="Image 7">
+            <div class="description">
+                <h3>Sapling Name : Pepal</h3>
+                <p>Planted by: Ms. Vaidehi ma'am, Mr. Satish sir and Ms. Suchita ma'am</p>
+                <p>For more information about the sapling <a href="page7.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	    	    	 <!-- Sapling 8 -->
+        <div class="product">
+            <img src="DSC_0087.JPG" alt="Image 8">
+            <div class="description">
+                <h3>Sapling Name : Krushnakamal </h3>
+                <p>Planted by: Ms. Manisha ma'am</p>
+                <p>For more information about the sapling <a href="page8.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    	 <!-- Sapling 9 -->
+        <div class="product">
+            <img src="DSC_0055.JPG" alt="Image 9">
+            <div class="description">
+                <h3>Sapling Name : Coral Jasmine </h3>
+                <p>Planted by: Mr. Paras and Mr. Meet</p>
+                <p>For more information about the sapling <a href="page9.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	    <!-- Sapling 10 -->
+        <div class="product">
+            <img src="DSC_0092.JPG" alt="Image 10">
+            <div class="description">
+                <h3>Sapling Name : Mango </h3>
+                <p>Planted by: Ms. Suchita Wankhade ma'am</p>
+                <p>For more information about the sapling <a href="page10.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="keymoments">	
+	<div class="container">
+        <h2>Key Moments</h2>
+        <div class="grid">
+           
+		<!-- Highlight 1: Image -->
+            <div class="highlight">
+                <img src="DSC_0003.JPG" alt="Event Highlight 1">
+                <div class="description">
+                    <p>A heartfelt address by our esteemed Director Sir, inspiring and guiding us all.</p>
+                </div>
+            </div>
+
+		<!-- Highlight 2: Image -->
+            <div class="highlight">
+                <img src="IMG_1140.JPG" alt="Event Highlight 7">
+                <div class="description">
+                    <p>Group photo with all the participants and teachers.</p>
+                </div>
+            </div>
+
+            
+            <!-- Highlight 3: Image -->
+            <div class="highlight">
+                <img src="DSC_0011.JPG" alt="Event Highlight 3">
+                <div class="description">
+                    <p>Group song with all the participants and teachers.</p>
+                </div>
+            </div>
+
+            <!-- Highlight 4: Image -->
+            <div class="highlight">
+                <img src="IMG_1065.JPG" alt="Event Highlight 4">
+                <div class="description">
+                    <p>A captivating speech by our esteemed Vice-Principal ma'am Sir, leaving a lasting impression.</p>
+                </div>
+            </div>
+
+	   <!-- Highlight 5: Image -->
+            <div class="highlight">
+                <img src="IMG_1068.JPG" alt="Event Highlight 5">
+                <div class="description">
+                    <p>A moment of inspiration as our honorable Additional Vice-Principal ma'am, shares her valuable insights.</p>
+                </div>
+            </div>
+
+		<!-- Highlight 6: Image -->
+            <div class="highlight">
+                <img src="DSC_0025.JPG" alt="Event Highlight 6">
+                <div class="description">
+                    <p>Words of motivation and guidance from our respected Principal Sir. </p>
+                </div>
+            </div>
+
+	    <!-- Highlight 7: Image -->
+            <div class="highlight">
+                <img src="DSC_0040.JPG" alt="Event Highlight 7">
+                <div class="description">
+                    <p>Refreshing tea break! </p>
+                </div>
+            </div>
+	
+		<!-- Highlight 8: Image -->
+            <div class="highlight">
+                <img src="DSC_0043.JPG" alt="Event Highlight 8">
+                <div class="description">
+                    <p>Refreshing tea break! </p>
+                </div>
+            </div>
+
+			<!-- Highlight 9: Image -->
+            <div class="highlight">
+                <img src="DSC_0064.JPG" alt="Event Highlight 9">
+                <div class="description">
+                    <p>Planting of saplings for a greener future. </p>
+                </div>
+            </div>
+
+			<!-- Highlight 10: Image -->
+            <div class="highlight">
+                <img src="DSC_0044.JPG" alt="Event Highlight 10">
+                <div class="description">
+                    <p>Planting of saplings for a greener future. </p>
+                </div>
+            </div>
+
+			<!-- Highlight 11: Image -->
+            <div class="highlight">
+                <img src="DSC_0045.JPG" alt="Event Highlight 11">
+                <div class="description">
+                    <p>Planting of saplings for a greener future. </p>
+                </div>
+            </div>
+
+			<!-- Highlight 12: Image -->
+            <div class="highlight">
+                <img src="DSC_0090.JPG" alt="Event Highlight 12">
+                <div class="description">
+                    <p>Planting of saplings for a greener future. </p>
+                </div>
+            </div>
+		
+        </div>
+    </div>
+</section>
+    <section id="event-report" class="report-section">
+    <div class="report-container">
+        <h2>Event Report</h2>
+        <p>
+            As the sun set on our school days, we, the students of Class 12th D Computer Science,
+            came together for a meaningful and heartwarming celebration on the final day of our
+            college journey. It wasn’t just a farewell; it was a legacy—a gesture of love and
+            gratitude for the institution and the environment that nurtured us.
+        </p>
+        <p>
+           The idea of the sapling plantation drive was conceived with a vision to leave behind a
+            mark that would grow and flourish, much like the memories we created here. Planning
+            for the event began well in advance. In coordination with a local nursery, we selected
+            saplings to symbolize growth, hope, and sustainability. Our beloved Computer Science
+            teacher, Omkar Sir, went above and beyond by managing the purchase and
+            transportation of the saplings during our exam schedule. Meanwhile, the chief
+            gardener, Mr. Chaku, meticulously planned every detail, identifying the perfect spots
+            in the biodiversity park where the saplings would thrive.
+        </p>
+        <p>
+       The day began on a nostalgic note as we gathered in the Physics laboratory, a place
+            that had witnessed our journey from eager learners to confident individuals. The
+            college, in its thoughtful gesture, arranged refreshing snacks for us, fostering an
+            atmosphere of camaraderie. It was a brief yet precious moment of togetherness, one
+            that reminded us of the countless breaks we shared over the years.
+        </p>
+        <p>
+           At 3:00 PM, brimming with excitement and a shared sense of purpose, we made our
+            way to the biodiversity park. The venue, lush and serene, seemed to echo our emotions
+            —a blend of anticipation for the future and bittersweet goodbyes. We were honored to
+            be graced by the presence of our esteemed dignitaries: Director Sir, Principal Sir, Vice
+            Principal Ma’am, and Additional Vice-Principal Ma’am. Their words of wisdom
+            resonated deeply within us, inspiring us to carry the values instilled in us by the
+            institution into the world beyond.
+        </p>
+        <p>
+             Together with Azima Ma’am and Ashish Sir, we sang motivational songs that uplifted
+            our spirits and reinforced the bond we shared. Each sapling planted symbolized a
+            dream, a memory, a promise to contribute to the world in meaningful ways.
+        </p>
+    </div>
+</section>
+<section id="aboutus">
+ <!-- About Us Section -->
+  <div class="about">
+    <h2>About Us</h2>
+    <p>Greetings! Welcome to our webpage. We are proud students of the 12th-grade Computer Science batch (2024-25) at <a href="https://bkbck.edu.in/" target="_blank"> B.K. Birla College of Arts, Science &amp; Commerce.</a></p>
+    <p>This page is dedicated to our beloved teachers by the students of 12th D, as a token of gratitude for their guidance, inspiration, and unwavering support throughout our journey.</p>
+    <p>Discover the heartfelt moments preserved in our farewell slideshow, where every image is a labor of love and dedication. We sincerely appreciate you joining us on this memorable journey!</p>
+</div>
+</section>
+
+     <footer>
+        © 2025 GreenFarewell || All Rights Reserved
+    </footer>
+
+  
+
+    <script>
+        const images = document.querySelectorAll('.slideshow img');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let currentIndex = 0;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Previous button click
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        // Next button click
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        // Auto-slide every 5 seconds
+        let interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }, 5000);
+
+        // Swipe functionality for touch devices
+        let startX = 0;
+        let endX = 0;
+
+        document.getElementById('slideshow').addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        document.getElementById('slideshow').addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+
+            if (startX > endX + 50) {
+                // Swipe left (next image)
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            } else if (startX < endX - 50) {
+                // Swipe right (previous image)
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
+        });
+
+	// Light/Dark Mode Toggle
+        const toggleBtn = document.getElementById('light-dark-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+	    // Function to close the popup
+        function closePopup() {
+            document.querySelector('.popup').style.display = 'none';
+            document.querySelector('.overlay').style.display = 'none';
+        }
+	    
+    </script>
+
+
+
+</body></html>
