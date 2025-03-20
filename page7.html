@@ -3,233 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mango Information</title>
+    <title>Peepal Tree: Sacred Fig</title>
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #fff7e6;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-	    overflow-x: hidden;
-        }
-	    .back-button {
-            text-align: left;
-            margin: 20px;
-        }
-
-        .back-button a {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50; /* Green button */
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .back-button a:hover {
-            background-color: #45a049; /* Slightly darker green on hover */
         }
 
         header {
-            background-color: #FFA500; /* Mango-theme */
+            background-color: #228B22;
             color: white;
+            padding: 15px 10px;
             text-align: center;
-            padding: 2px;
-	    animation: fadeIn 1.5s ease-out;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    animation: slideIn 1.5s ease-in-out;
+        header h1 {
+            margin: 0;
+            font-size: 2em;
         }
 
-        h2 {
-            color: #FF007F;
+        header nav {
+            margin-top: 10px;
         }
 
-        p {
-            margin: 10px 0;
-            color: #555;
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
+        header nav a:hover {
+            color: #FFD700;
         }
 
-        ul li {
-            margin: 5px 0;
-        }
-	.sapling-image {
+        /* Hero Section */
+        #hero {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Banyan_tree.jpg/1024px-Banyan_tree.jpg') no-repeat center center/cover;
+            height: 60vh;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            animation: zoomIn 1.5s ease-in-out;
-        }
-
-        .sapling-image img {
-            width: 40%;
-            height: 20%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer {
+            align-items: center;
             text-align: center;
-            padding: 1px;
-            background-color: #FFA500; /* Mango-theme */
             color: white;
-            margin-top: 20px;
-	    animation: fadeIn 1.5s ease-out;
+            position: relative;
         }
 
-	/* Animations */
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: #228B22;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>All About Mango</h1>
+        <h1>The Peepal Tree</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#significance">Significance</a>
+            <a href="#ecological-benefits">Ecological Benefits</a>
+            <a href="#facts">Facts</a>
+        </nav>
     </header>
 
-    <div class="container">
-	<!-- Sapling Image -->
-        <div class="sapling-image">
-             <img src="IMG_1183.JPG" alt="Image 3">
+    <section id="hero">
+        <div class="hero-content">
+            <h2>The Sacred Fig</h2>
+            <p>Discover the beauty, significance, and ecological benefits of the Peepal Tree, also known as the Bodhi Tree.</p>
         </div>
-	     <!-- Back to Main Page Button -->
-    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
-        <!-- About the Rose -->
-        <section>
-            <section>
-            <h2>About Mango</h2>
-            <p>The mango (*Mangifera indica*), also known as the "King of Fruits," is a tropical fruit cherished for its sweet taste, juicy texture, and vibrant aroma.</p>
-            <h2>Scientific Name</h2>
-            <p><strong>Species:</strong> *Mangifera indica*</p>
-            <p><strong>Family:</strong> Anacardiaceae</p>
-            <p><strong>Planted By:</strong> Mr. Sugat</p>
-            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-        </section>
-        </section>
+    </section>
 
-        <!-- Varieties -->
-        <section>
-            <h2>Varieties</h2>
-            <ul>
-                <li><strong>Alphonso:</strong> Sweet and aromatic, popular in India.</li>
-                <li><strong>Dasheri:</strong> Fiberless and widely consumed.</li>
-                <li><strong>Tommy Atkins:</strong> Known for long shelf life.</li>
-                <li><strong>Keitt:</strong> Mild-flavored and large in size.</li>
-                <li><strong>Haden:</strong> Juicy with fibrous pulp.</li>
-            </ul>
-        </section>
+    <section id="about" class="info-section">
+        <h2>About the Peepal Tree</h2>
+        <p>The Peepal Tree, scientifically known as <b>Ficus religiosa</b>, is native to the Indian subcontinent and holds immense cultural, ecological, and spiritual significance. Renowned for its longevity, the Peepal tree can live for over 1,000 years.</p>
+        <ul>
+            <li><b>Scientific Name:</b> Ficus religiosa</li>
+            <li><b>Family:</b> Moraceae</li>
+            <li><b>Common Names:</b> Sacred Fig, Ashvattha Tree, Bodhi Tree</li>
+            <li><b>Size:</b> Can grow up to 30 meters tall.</li>
+        </ul>
+    </section>
 
-        <!-- Nutritional Value -->
-        <section>
-            <h2>Nutritional Value (Per 100g)</h2>
-            <ul>
-                <li><strong>Calories:</strong> 60 kcal</li>
-                <li><strong>Carbohydrates:</strong> 15 g</li>
-                <li><strong>Sugars:</strong> 14 g</li>
-                <li><strong>Dietary Fiber:</strong> 1.6 g</li>
-                <li><strong>Vitamin C:</strong> 44% of the daily recommended intake</li>
-                <li><strong>Vitamin A:</strong> 21% of the daily recommended intake</li>
-                <li><strong>Potassium:</strong> 168 mg</li>
-            </ul>
-        </section>
+    <section id="significance" class="info-section">
+        <h2>Cultural and Religious Significance</h2>
+        <p>The Peepal tree is deeply revered in Hinduism, Buddhism, Jainism, and Sikhism:</p>
+        <ul>
+            <li>In Hinduism, the tree represents Lord Vishnu and symbolizes life and fertility.</li>
+            <li>It is believed that Gautama Buddha attained enlightenment under this tree, making it sacred in Buddhism.</li>
+            <li>Jains regard it as a symbol of meditation and spirituality.</li>
+            <li>It is often referred to as the "Tree of Life" in Indian mythology.</li>
+        </ul>
+    </section>
 
-        <!-- Health Benefits -->
-        <section>
-            <h2>Health Benefits</h2>
-            <ul>
-                <li>Rich in antioxidants like beta-carotene and mangiferin.</li>
-                <li>Boosts immunity with high vitamin C content.</li>
-                <li>Aids digestion with amylase enzymes.</li>
-                <li>Improves skin health by reducing blemishes.</li>
-                <li>Promotes heart health with potassium content.</li>
-            </ul>
-        </section>
+    <section id="ecological-benefits" class="info-section">
+        <h2>Ecological and Medicinal Benefits</h2>
+        <ul>
+            <li>Releases oxygen day and night, making it vital for air purification.</li>
+            <li>Acts as a natural habitat for birds, insects, and animals.</li>
+            <li>Used in Ayurvedic remedies to treat ailments like asthma, diabetes, and skin disorders.</li>
+        </ul>
+    </section>
 
-        <!-- Culinary Uses -->
-        <section>
-            <h2>Culinary Uses</h2>
-            <ul>
-                <li>Eaten fresh or blended into juices, smoothies, and desserts.</li>
-                <li>Used in traditional dishes like pickles, chutneys, and aamras.</li>
-                <li>Raw mango is used in savory dishes like salads and curries.</li>
-            </ul>
-        </section>
-
-        <!-- Cultural and Symbolic Importance -->
-        <section>
-            <h2>Cultural and Symbolic Importance</h2>
-            <ul>
-                <li>Mango leaves are used in Hindu rituals and decorations.</li>
-                <li>The mango is the national fruit of India.</li>
-                <li>Historically exchanged as a token of friendship and goodwill.</li>
-            </ul>
-        </section>
-
-        <!-- Growing Conditions -->
-        <section>
-            <h2>Growing Conditions</h2>
-            <ul>
-                <li><strong>Climate:</strong> Thrives in tropical and subtropical climates.</li>
-                <li><strong>Soil:</strong> Well-drained, loamy soil with a pH range of 5.5–7.5.</li>
-                <li><strong>Sunlight:</strong> Requires full sun for optimal growth.</li>
-                <li><strong>Watering:</strong> Needs regular watering but avoid waterlogging.</li>
-                <li><strong>Care Tips:</strong> Prune trees to maintain shape and remove dead branches.</li>
-            </ul>
-        </section>
-
-        <!-- Interesting Facts -->
-        <section>
-            <h2>Interesting Facts</h2>
-            <ul>
-                <li>Mangoes have been cultivated for over 4,000 years.</li>
-                <li>India is the largest producer of mangoes globally.</li>
-                <li>A single mango tree can live for more than 100 years.</li>
-                <li>Mangoes are part of the cashew family (*Anacardiaceae*).</li>
-            </ul>
-        </section>
-    </div>
+    <section id="facts" class="info-section">
+        <h2>Interesting Facts</h2>
+        <ul>
+            <li>Some Peepal trees are over 2,000 years old.</li>
+            <li>It is mentioned in the Bhagavad Gita as the "Ashvattha tree."</li>
+            <li>The Peepal tree is often planted near temples and sacred sites in India.</li>
+        </ul>
+    </section>
 
     <footer>
         <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
