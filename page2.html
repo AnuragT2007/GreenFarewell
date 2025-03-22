@@ -7,32 +7,101 @@
     <style>
         /* General Styles */
         body {
+             margin: 0;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-	    overflow-x: hidden;
         }
 
         header {
             background-color: #FFA500; /* Orange theme for marigold */
             color: white;
+            padding: 15px 10px;
             text-align: center;
-            padding: 20px;
-	    animation: fadeIn 1.5s ease-out;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    animation: slideIn 1.5s ease-in-out;
+       header h1 {
+            margin: 0;
+            font-size: 2em;
         }
-	
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Tagetes_erecta_30012013.jpg/640px-Tagetes_erecta_30012013.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
 	.back-button {
             text-align: left;
             margin: 20px;
@@ -52,113 +121,60 @@
         .back-button a:hover {
             background-color: #45a049; /* Slightly darker green on hover */
         }
-
-       	    
-        h2 {
-            color: #FFA500;
-        }
-
-        p {
-            margin: 10px 0;
-            color: #555;
-        }
-
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        ul li {
-            margin: 5px 0;
-        }
-
-        .marigold-image {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-	   animation: zoomIn 1.5s ease-in-out;
-        }
-
-        .marigold-image img {
-            width: 40%;
-            height: 20%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
+	    
         footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #FFA500;
-            color: white;
-            margin-top: 20px;
-		animation: fadeIn 1.5s ease-out;
+	    text-align: center;
+             color: white;
+           text-align: center;
+           padding: 10px 0;
+           margin-top: 20px;
         }
 
-	    /* Animations */
+	 /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <header>
+	<header>
         <h1>All About the Marigold</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#varieties">Varieties</a>
+            <a href="#Symbolism">Symbolism</a>
+            <a href="#Benefits">Benefits & Uses</a>
+	    <a href="#facts">Interesting Facts</a>	
+        </nav>
     </header>
-
-    <div class="container">
-        <!-- Marigold Image -->
-        <div class="marigold-image">
-            <img src="DSC_157.jpg" alt="Marigold Flower">
+    
+<section id="hero">
+        <div class="hero-content">
+            <h2>The Marigold</h2>
+            <p>Discover the beauty, significance, and ecological benefits of the Marigold.</p>
         </div>
-
-	    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
-
-        <!-- About the Marigold -->
-        <section>
+</section>
+	
+	<!-- About the Marigold -->
+        <section id="about" class="info-section">
             <h2>About the Marigold</h2>
             <p>The marigold is a vibrant flowering plant native to the Americas, now cultivated worldwide. Its bright hues of yellow, orange, and red make it a favorite for gardens and cultural ceremonies.</p>
-		  <p><strong>Planted By:</strong> Ms. Divya Jadhav and Ms. Shreya Zunjarrao</p>
+	    <p><strong>Planted By:</strong> Ms. Divya Jadhav and Ms. Shreya Zunjarrao</p>
             <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-        </section>
-
-        <!-- Scientific Name -->
-        <section>
-	  
             <h2>Scientific Name</h2>
             <p><strong>Genus:</strong> <em>Tagetes</em></p>
             <p><strong>Family:</strong> Asteraceae</p>
         </section>
 
         <!-- Varieties -->
-        <section>
+        <section id="varieties" class="info-section">
             <h2>Varieties</h2>
             <ul>
                 <li><strong>African Marigold (*Tagetes erecta*):</strong> Tall plants with large, globe-shaped flowers.</li>
@@ -169,13 +185,13 @@
         </section>
 
         <!-- Symbolism -->
-        <section>
+        <section id="Symbolism" class="info-section">
             <h2>Symbolism</h2>
             <p>Marigolds represent happiness, optimism, and good luck. They hold cultural significance in festivals like Mexico's Day of the Dead and India's religious ceremonies.</p>
         </section>
 
         <!-- Benefits and Uses -->
-        <section>
+        <section id="Benefits" class="info-section">
             <h2>Benefits and Uses</h2>
             <ul>
                 <li><strong>Gardening:</strong> Easy to grow and repels pests like aphids and nematodes.</li>
@@ -186,7 +202,7 @@
         </section>
 
         <!-- Growing Conditions -->
-        <section>
+        <section id="facts" class="info-section">
             <h2>Growing Conditions</h2>
             <ul>
                 <li><strong>Climate:</strong> Thrives in warm, sunny climates.</li>
@@ -198,7 +214,7 @@
         </section>
 
         <!-- Interesting Facts -->
-        <section>
+        <section id="facts" class="info-section">
             <h2>Interesting Facts</h2>
             <ul>
                 <li>Known as the "Herb of the Sun" for its vibrant colors and positive energy.</li>
@@ -207,6 +223,9 @@
                 <li>Strong scent deters pests, making it a natural insect repellent.</li>
             </ul>
         </section>
+	<!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
 
     <footer>
