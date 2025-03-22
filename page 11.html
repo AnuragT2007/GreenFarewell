@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marigold Information</title>
+    <style>
+        /* General Styles */
+        body {
+             margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #228B22;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+       header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Neem_Tree_%28Azadirachta_indica%29_1.jpg/640px-Neem_Tree_%28Azadirachta_indica%29_1.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
+	.back-button {
+            text-align: left;
+            margin: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Green button */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+	    
+        footer {
+          background-color: #228B22;
+	        text-align: center;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+          margin-top: 20px;
+        }
+
+	 /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+	<header>
+       <header>
+        <h1>The Neem Tree</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#significance">Significance</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#facts">Facts</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h2>The Village Pharmacy</h2>
+            <p>Discover the incredible properties and significance of the Neem tree, also known as *Azadirachta indica*.</p>
+        </div>
+    </section>
+
+    <section id="about" class="info-section">
+        <h2>About the Neem Tree</h2>
+        <p>The Neem tree, scientifically known as <b>Azadirachta indica</b>, is native to the Indian subcontinent and Southeast Asia. It is a fast-growing and drought-resistant tree, often referred to as the "Village Pharmacy" for its extensive medicinal benefits.</p>
+        <ul>
+            <li><b>Scientific Name:</b> Azadirachta indica</li>
+            <li><b>Family:</b> Meliaceae</li>
+            <li><b>Common Names:</b> Neem, Margosa, Indian Lilac</li>
+            <li><b>Size:</b> Can grow up to 15–30 meters tall with a wide crown.</li>
+        </ul>
+    </section>
+
+    <section id="significance" class="info-section">
+        <h2>Cultural and Religious Significance</h2>
+        <p>The Neem tree holds a sacred place in Indian culture:</p>
+        <ul>
+            <li>Associated with Goddess Durga in Hinduism and used in religious rituals.</li>
+            <li>Neem leaves are hung at doorways during festivals to ward off evil spirits.</li>
+            <li>Traditional practices include using neem twigs as natural toothbrushes.</li>
+        </ul>
+    </section>
+
+    <section id="benefits" class="info-section">
+        <h2>Ecological and Medicinal Benefits</h2>
+        <p>The Neem tree offers immense ecological and medicinal value:</p>
+        <ul>
+            <li><b>Air Purification:</b> Improves air quality by releasing oxygen.</li>
+            <li><b>Skin Care:</b> Neem is widely used to treat acne, eczema, and other skin conditions.</li>
+            <li><b>Dental Care:</b> Neem twigs are used as natural toothbrushes for healthy gums.</li>
+            <li><b>Pest Repellent:</b> Neem oil is a natural insecticide and pesticide in organic farming.</li>
+        </ul>
+    </section>
+
+    <section id="facts" class="info-section">
+        <h2>Interesting Facts</h2>
+        <ul>
+            <li>Neem is called the "Village Pharmacy" due to its numerous health benefits.</li>
+            <li>It is highly resilient and can survive in arid conditions.</li>
+            <li>Neem oil is used in traditional medicine, cosmetics, and agriculture.</li>
+        </ul>
+    </section>
+	<!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
