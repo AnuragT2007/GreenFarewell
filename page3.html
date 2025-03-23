@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papaya Information</title>
     <style>
-        /* General Styles */
+     /* General Styles */
         body {
+             margin: 0;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-		overflow-x: hidden;
         }
-
 	.back-button {
             text-align: left;
             margin: 20px;
@@ -39,137 +37,157 @@
         header {
             background-color: #FFA500; /* Papaya-themed color */
             color: white;
+            padding: 15px 10px;
             text-align: center;
-            padding: 2px;
-		animation: fadeIn 1.5s ease-out;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		animation: fadeIn 1.5s ease-out;
+       header h1 {
+            margin: 0;
+            font-size: 2em;
         }
 
-        h2 {
-            color: #FFA500;
+        header nav {
+            margin-top: 10px;
         }
 
-        p {
-            margin: 10px 0;
-            color: #555;
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
+        header nav a:hover {
+            color: #FFD700;
         }
 
-        ul li {
-            margin: 5px 0;
-        }
-
-        .papaya-image {
+        /* Hero Section */
+        #hero {
+            background: url('https://wallpapercave.com/wp/wp3124775.jpg') no-repeat center center/cover;
+            height: 60vh;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-		animation: fadeIn 1.5s ease-out;
-        }
-
-        .papaya-image img {
-	    width: 40%;
-            height: 20%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
+            align-items: center;
             text-align: center;
-            padding: 10px;
-            background-color: #FFA500;
             color: white;
-            margin-top: 20px;
-		animation: fadeIn 1.5s ease-out;
+            position: relative;
         }
-	
-	/* Animations */
+
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+	footer {
+	   background-color: #FFA500; /* Papaya-themed color */
+	   text-align: center;
+           color: white;
+           text-align: center;
+           padding: 10px 0;
+           margin-top: 20px;
+        }
+
+	 /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }    
-	    
     </style>
 </head>
 <body>
-    <header>
+	<header>
         <h1>All About Papaya</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#varieties">Varieties</a>
+            <a href="#value">Nutritional Value</a>
+            <a href="#benefits">Health Benefits</a>
+	    <a href="#uses">Uses</a>	
+	    <a href="#growing">Growing Conditions</a>	
+	    <a href="#facts">Interesting Facts</a>	
+        </nav>
     </header>
 
-    <div class="container">
-        <!-- Papaya Image -->
-        <div class="papaya-image">
-		<img src="IMG_1189.JPG" alt="Image 3">
+	<section id="hero">
+        <div class="hero-content">
+            <h2>The Papaya</h2>
+            <p>Discover the beauty, significance, and ecological benefits of the Papaya.</p>
         </div>
-
-	<!-- Back to Main Page Button -->
-    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
-	    
+</section>
+	
         <!-- About Papaya -->
-        <section>
+       <section id="about" class="info-section">
             <h2>About Papaya</h2>
             <p>The papaya (*Carica papaya*) is a tropical fruit tree known for its sweet taste, vibrant orange flesh, and numerous health benefits. It is native to Central and South America and is often called the "fruit of angels."</p>
-		<p><strong>Planted By:</strong> Ms. Vaishnavi and Ms. Nitya</p>
+	    <p><strong>Planted By:</strong> Ms. Vaishnavi and Ms. Nitya</p>
             <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-        </section>
-
-        <!-- Scientific Name -->
-        <section>
             <h2>Scientific Name</h2>
-            <p><strong>Species:</strong> *Carica papaya*</p>
+            <p><strong>Species:</strong> Carica papaya</p>
             <p><strong>Family:</strong> Caricaceae</p>
         </section>
 
         <!-- Varieties -->
-        <section>
+        <section id="varieties" class="info-section">
             <h2>Varieties</h2>
             <ul>
                 <li><strong>Hawaiian Papaya:</strong> Smaller, sweeter, with orange-red flesh.</li>
                 <li><strong>Mexican Papaya:</strong> Larger, with yellow or orange flesh, used for cooking.</li>
-                <li><strong>Mountain Papaya (*Vasconcellea pubescens*):</strong> Grown in cooler climates, used in juices and jams.</li>
+                <li><strong>Mountain Papaya <b>(Vasconcellea pubescens)</b>:</strong> Grown in cooler climates, used in juices and jams.</li>
             </ul>
         </section>
 
         <!-- Nutritional Value -->
-        <section>
+        <section id="value" class="info-section">
             <h2>Nutritional Value (Per 100g)</h2>
             <ul>
                 <li><strong>Calories:</strong> 43 kcal</li>
@@ -183,7 +201,7 @@
         </section>
 
         <!-- Health Benefits -->
-        <section>
+        <section id="benefits" class="info-section">
             <h2>Health Benefits</h2>
             <ul>
                 <li><strong>Digestive Aid:</strong> Contains papain enzyme for better digestion.</li>
@@ -195,7 +213,7 @@
         </section>
 
         <!-- Uses -->
-        <section>
+        <section id="uses" class="info-section">
             <h2>Uses</h2>
             <ul>
                 <li><strong>Culinary:</strong> Fresh, in smoothies, curries, and desserts. Seeds are used as a spice.</li>
@@ -206,7 +224,7 @@
         </section>
 
         <!-- Growing Conditions -->
-        <section>
+        <section id="growing" class="info-section">
             <h2>Growing Conditions</h2>
             <ul>
                 <li><strong>Climate:</strong> Thrives in tropical and subtropical climates.</li>
@@ -218,7 +236,7 @@
         </section>
 
         <!-- Interesting Facts -->
-        <section>
+        <section id="facts" class="info-section">
             <h2>Interesting Facts</h2>
             <ul>
                 <li>Papaya is botanically a berry.</li>
@@ -227,8 +245,11 @@
                 <li>Christopher Columbus called it the “fruit of angels.”</li>
             </ul>
         </section>
+	<!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
-
+    
     <footer>
         <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
