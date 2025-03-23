@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orange Marigold Information</title>
     <style>
-        /* General Styles */
+     /* General Styles */
         body {
+             margin: 0;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-	    overflow-x: hidden;
         }
-	    .back-button {
+	.back-button {
             text-align: left;
             margin: 20px;
         }
@@ -33,140 +32,165 @@
         .back-button a:hover {
             background-color: #45a049; /* Slightly darker green on hover */
         }
-
         header {
-            background-color: #FF8C00; /* Rose pink theme */
-            color: white;
-            text-align: center;
-            padding: 2px;
-	    animation: fadeIn 1.5s ease-out;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    animation: slideIn 1.5s ease-in-out;
-        }
-
-        h2 {
-            color: #FF8C00;
-        }
-
-        p {
-            margin: 10px 0;
-            color: #555;
-        }
-
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        ul li {
-            margin: 5px 0;
-        }
-	.sapling-image {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            animation: zoomIn 1.5s ease-in-out;
-        }
-
-        .sapling-image img {
-            width: 40%;
-            height: 20%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 1px;
             background-color: #FF8C00;
             color: white;
-            margin-top: 20px;
-	    animation: fadeIn 1.5s ease-out;
+            padding: 15px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-	/* Animations */
+       header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://wallpapercave.com/wp/wp3139353.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+	footer {
+	   background-color: #FF8C00;
+	   text-align: center;
+           color: white;
+           text-align: center;
+           padding: 10px 0;
+           margin-top: 20px;
+        }
+
+	 /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <header>
+	<header>
         <h1>All About the Orange Marigold</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#varieties">Varieties</a>
+            <a href="#Symbolism">Symbolism</a>
+	    <a href="#uses">Uses</a>
+            <a href="#Benefits">Health and Environmental Benefits</a>
+	    <a href="#growing">Growing Conditions</a>	
+	    <a href="#facts">Interesting Facts</a>	
+        </nav>
     </header>
 
-    <div class="container">
-	<!-- Sapling Image -->
-        <div class="sapling-image">
-           <img src="IMG_1153.JPG" alt="Orange Marigold">
+	<section id="hero">
+        <div class="hero-content">
+            <h2>The Marigold</h2>
+            <p>Discover the beauty, significance, and ecological benefits of the Orange Marigold.</p>
         </div>
-	     <!-- Back to Main Page Button -->
-    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
-        <!-- About the Rose -->
-        <section>
-            <section>
+</section>
+	
+            <section id="about" class="info-section">
             <h2>About Orange Marigold</h2>
             <p>The orange marigold is a vibrant variety of the marigold flower, known for its fiery hue that symbolizes positivity, warmth, and celebration. Popular in gardens, cultural ceremonies, and festivals, it brings life and color to any setting.</p>
-            <h2>Scientific Name</h2>
-            <p><strong>Genus:</strong> <em>Tagetes</em></p>
-            <p><strong>Family:</strong> Asteraceae</p>
             <p><strong>Planted By:</strong> Ms. Manisha Ma'am</p>
             <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-        </section>
+	<h2>Scientific Name</h2>
+            <p><strong>Genus:</strong> <em>Tagetes</em></p>
+            <p><strong>Family:</strong> Asteraceae</p>
+
         </section>
 
-        <!-- Varieties -->
-        <section>
+	    <!-- Varieties -->
+        <section id="varieties" class="info-section">
             <h2>Varieties of Orange Marigold</h2>
             <ul>
-                <li><strong>African Marigold (*Tagetes erecta*):</strong> Large, round flowers perfect for flower beds and borders.</li>
-                <li><strong>French Marigold (*Tagetes patula*):</strong> Compact plants with smaller orange blooms, great for companion planting.</li>
-                <li><strong>Signet Marigold (*Tagetes tenuifolia*):</strong> Delicate, citrus-scented flowers, ideal for ornamental purposes.</li>
+                <li><strong>African Marigold <emp>(Tagetes erecta)</emp>:</strong> Large, round flowers perfect for flower beds and borders.</li>
+                <li><strong>French Marigold <emp>(Tagetes patula)</emp>:</strong> Compact plants with smaller orange blooms, great for companion planting.</li>
+                <li><strong>Signet Marigold <emp>(Tagetes tenuifolia)</emp>:</strong> Delicate, citrus-scented flowers, ideal for ornamental purposes.</li>
             </ul>
         </section>
 
         <!-- Symbolism -->
-        <section>
+        <section id="Symbolism" class="info-section">
             <h2>Symbolism</h2>
             <p>Orange marigolds represent happiness, energy, and positivity. They are culturally significant, especially in Indian festivals like Diwali and weddings, and in Mexican Día de los Muertos celebrations.</p>
         </section>
 
         <!-- Uses -->
-        <section>
+        <section id="uses" class="info-section">
             <h2>Uses</h2>
             <ul>
                 <li><strong>Decorative:</strong> Widely used in garlands, rangoli, and floral arrangements.</li>
@@ -177,7 +201,7 @@
         </section>
 
         <!-- Growing Conditions -->
-        <section>
+        <section id="growing" class="info-section">
             <h2>Growing Conditions</h2>
             <ul>
                 <li><strong>Climate:</strong> Thrives in warm, sunny climates.</li>
@@ -189,7 +213,7 @@
         </section>
 
         <!-- Health and Environmental Benefits -->
-        <section>
+        <section id="Benefits" class="info-section">
             <h2>Health and Environmental Benefits</h2>
             <ul>
                 <li>Improves air quality and adds oxygen to the environment.</li>
@@ -199,7 +223,7 @@
         </section>
 
         <!-- Interesting Facts -->
-        <section>
+        <section id="facts" class="info-section">
             <h2>Interesting Facts</h2>
             <ul>
                 <li>Known as the "flower of the sun" due to its radiant orange color.</li>
@@ -208,7 +232,12 @@
                 <li>Petals are sometimes used in herbal teas and as edible decorations.</li>
             </ul>
         </section>
+
+	     <!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
+
 	
     <footer>
         <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
