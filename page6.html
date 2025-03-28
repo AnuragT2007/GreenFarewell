@@ -34,54 +34,118 @@
             background-color: #45a049; /* Slightly darker green on hover */
         }
 
+	    	        .dark-mode {
+            background-color: #222;
+            color: #ddd;
+        }
+
+        .light-dark-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #FFD700;
+            border: none;
+            color: black;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-dark-toggle:hover {
+            background-color: #FFA500;
+        }
+
+
         header {
             background-color: #FF7F50;
             color: white;
+            padding: 15px 10px;
             text-align: center;
-            padding: 2px;
-	    animation: fadeIn 1.5s ease-out;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    animation: slideIn 1.5s ease-in-out;
+       header h1 {
+            margin: 0;
+            font-size: 2em;
         }
 
-        h2 {
-            color: #FF7F50;
+        header nav {
+            margin-top: 10px;
         }
 
-        p {
-            margin: 10px 0;
-            color: #555;
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
+        header nav a:hover {
+            color: #FFD700;
         }
 
-        ul li {
-            margin: 5px 0;
-        }
-	.sapling-image {
+        /* Hero Section */
+        #hero {
+            background: url('https://t3.ftcdn.net/jpg/00/66/88/94/240_F_66889428_53zRzV7Zq9IBWKshQeNlcLLI0tl6XMaT.jpg') no-repeat center center/cover;
+            height: 60vh;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            animation: zoomIn 1.5s ease-in-out;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
         }
 
-        .sapling-image img {
-            width: 40%;
-            height: 20%;
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
         footer {
             text-align: center;
             padding: 1px;
@@ -91,61 +155,48 @@
 	    animation: fadeIn 1.5s ease-out;
         }
 
-	/* Animations */
+/* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-   <header>
+   <header id="header">
         <h1>All About the Chafa Flower Plant</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#Characteristics">Physical Characteristics</a>
+            <a href="#Significance">Cultural and Spiritual Significance</a>
+            <a href="#Conditions">Growing Conditions</a>
+            <a href="#Propagation">Propagation</a>		
+            <a href="#tips">Care Tips</a>
+	    <a href="#Uses">Uses</a>
+            <a href="#facts">Interesting Facts</a>	
+        </nav>  
+	<button id="light-dark-toggle" class="light-dark-toggle">☀️/🌙 Mode</button>
    </header>
 
-    <div class="container">
-	<!-- Sapling Image -->
-        <div class="sapling-image">
-           <img src="IMG_1183.JPG" alt="Chafa Flower Plant">
+   	   <section id="hero">
+        <div class="hero-content">
+            <h2>The Temple Tree (Chafa plant)</h2>
+            <p>Discover the alluring beauty of the Chafa plant, celebrated for its fragrant blooms and timeless charm.</p>
         </div>
-	     <!-- Back to Main Page Button -->
-    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
+</section>
+	
         <!-- About the Chafa Flower Plant -->
-        <section>
-            <section>
+        <section id="about" class="info-section">
             <h2>About Chafa Flower Plant</h2>
             <p>The Chafa flower plant (*Plumeria*), also known as Frangipani or Temple Tree, is a beautiful tropical plant cherished for its fragrant flowers, cultural significance, and aesthetic appeal. It is widely grown in gardens, temples, and courtyards.</p>
             <p><strong>Planted By:</strong> Mr. Sugat</p>
             <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-	</section>
-		<!-- Scientific Classification -->
-        <section>
             <h2>Scientific Classification</h2>
             <p><strong>Botanical Name:</strong> *Plumeria*</p>
             <p><strong>Family:</strong> Apocynaceae</p>
@@ -153,7 +204,7 @@
         </section>
 
         <!-- Physical Characteristics -->
-        <section>
+        <section id="Characteristics" class="info-section">
             <h2>Physical Characteristics</h2>
             <ul>
                 <li><strong>Size:</strong> Small tree or shrub that grows up to 25 feet.</li>
@@ -164,7 +215,7 @@
         </section>
 
         <!-- Cultural and Spiritual Significance -->
-        <section>
+        <section id="Significance" class="info-section">
             <h2>Cultural and Spiritual Significance</h2>
             <ul>
                 <li>Used in Hindu and Buddhist ceremonies as a symbol of immortality and devotion.</li>
@@ -173,7 +224,7 @@
         </section>
 
         <!-- Growing Conditions -->
-        <section>
+        <section id="Conditions" class="info-section">
             <h2>Growing Conditions</h2>
             <ul>
                 <li><strong>Climate:</strong> Thrives in warm, tropical, and subtropical climates.</li>
@@ -185,7 +236,7 @@
         </section>
 
         <!-- Propagation -->
-        <section>
+        <section id="Propagation" class="info-section">
             <h2>Propagation</h2>
             <ul>
                 <li><strong>From Cuttings:</strong> Allow cuttings to dry for a few days before planting.</li>
@@ -194,7 +245,7 @@
         </section>
 
         <!-- Care Tips -->
-        <section>
+        <section id="Tips" class="info-section">
             <h2>Care Tips</h2>
             <ul>
                 <li>Prune dead or damaged branches to maintain shape.</li>
@@ -204,7 +255,7 @@
         </section>
 
         <!-- Uses -->
-        <section>
+        <section id="Uses" class="info-section">
             <h2>Uses</h2>
             <ul>
                 <li><strong>Ornamental:</strong> Commonly grown in gardens, courtyards, and for decorative purposes.</li>
@@ -215,7 +266,7 @@
         </section>
 
         <!-- Interesting Facts -->
-        <section>
+        <section id="Facts" class="info-section">
             <h2>Interesting Facts</h2>
             <ul>
                 <li>The name "Frangipani" originates from a 16th-century Italian marquis who created a perfume resembling its fragrance.</li>
@@ -223,10 +274,35 @@
                 <li>The flowers are symbolic of life and death in various cultures.</li>
             </ul>
         </section>
+  <!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
-          
+	
     <footer>
         <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
+	<script>
+		 // JavaScript to automatically hide header on scroll down and show on scroll up
+    const header = document.getElementById("header");
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY) {
+        // Scrolling down
+        header.style.transform = "translateY(-100%)";
+      } else {
+        // Scrolling up
+        header.style.transform = "translateY(0)";
+      }
+      lastScrollY = window.scrollY;
+    });
+
+			// Light/Dark Mode Toggle
+        const toggleBtn = document.getElementById('light-dark-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+	</script>
 </body>
 </html>
