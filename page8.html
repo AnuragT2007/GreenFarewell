@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f7f7f7;
             line-height: 1.6;
 	    overflow-x: hidden;
         }
@@ -34,90 +34,136 @@
             background-color: #45a049; /* Slightly darker green on hover */
         }
 
+	    	        .dark-mode {
+            background-color: #222;
+            color: #ddd;
+        }
+
+        .light-dark-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #FFD700;
+            border: none;
+            color: black;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-dark-toggle:hover {
+            background-color: #FFA500;
+        }
+
+
         header {
-            background-color: #4CAF50; /* Green theme */
+            background-color:  #4CAF50; /* Green theme */
             color: white;
+            padding: 15px 10px;
             text-align: center;
-            padding: 2px;
-	    animation: fadeIn 1.5s ease-out;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    animation: slideIn 1.5s ease-in-out;
+       header h1 {
+            margin: 0;
+            font-size: 2em;
         }
 
-        h2 {
-            color: #4CAF50;
+        header nav {
+            margin-top: 10px;
         }
 
-        p {
-            margin: 10px 0;
-            color: #555;
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
+        header nav a:hover {
+            color: #FFD700;
         }
 
-        ul li {
-            margin: 5px 0;
-        }
-	.sapling-image {
+        /* Hero Section */
+        #hero {
+            background: url('https://t3.ftcdn.net/jpg/00/66/88/94/240_F_66889428_53zRzV7Zq9IBWKshQeNlcLLI0tl6XMaT.jpg') no-repeat center center/cover;
+            height: 60vh;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            animation: zoomIn 1.5s ease-in-out;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
         }
 
-        .sapling-image img {
-            width: 40%;
-            height: 20%;
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        #hero .hero-content h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
         footer {
             text-align: center;
             padding: 1px;
-            background-color: #4CAF50;
+            background-color:  #4CAF50; /* Green theme */
             color: white;
             margin-top: 20px;
 	    animation: fadeIn 1.5s ease-out;
         }
 
-	/* Animations */
+/* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -125,27 +171,24 @@
 <body>
    <header>
         <h1>Krushnakamal (Passion Flower)</h1>
+	<nav>
+            <a href="#about">About</a>
+            <a href="#Characteristics">Physical Characteristics</a>
+            <a href="#Significance">Cultural and Spiritual Significance</a>
+            <a href="#Medicinal">Medicinal Uses</a>
+            <a href="#Conditions">Growing Conditions</a>
+	    <a href="#Uses">Uses</a>
+            <a href="#facts">Interesting Facts</a>	
+        </nav>  
+	<button id="light-dark-toggle" class="light-dark-toggle">☀️/🌙 Mode</button>
    </header>
 
-    <div class="container">
-	<!-- Sapling Image -->
-        <div class="sapling-image">
-            <img src="DSC_0087.JPG" alt="Krushnakamal (Passion Flower)">
-        </div>
-	     <!-- Back to Main Page Button -->
-    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
-        <!-- About the Rose -->
-        <section>
-            <section>
+
+        <section  id="about" class="info-section">
             <h2>About Krushnakamal</h2>
             <p>The Krushnakamal, also known as the Passion Flower, is a beautiful and symbolic flowering plant. Its intricate structure and vibrant colors make it a favorite in gardens worldwide. Native to South America, it holds cultural and religious significance across various traditions..</p>
             <p><strong>Planted By:</strong> Ms. Manisha ma'am</p>
             <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-	</section>
-		<!-- Scientific Classification -->
-        <section>
             <h2>Scientific Classification</h2>
             <p><strong>Botanical Name:</strong> <em>Passiflora</em></p>
             <p><strong>Family:</strong> Passifloraceae</p>
@@ -154,7 +197,7 @@
         </section>
 
         <!-- Physical Characteristics -->
-        <section>
+        <section id="Characteristics" class="info-section">
             <h2>Physical Characteristics</h2>
             <ul>
                 <li><strong>Plant Type:</strong> Climbing vine that grows up to 10–30 feet.</li>
@@ -165,7 +208,7 @@
         </section>
 
         <!-- Cultural and Religious Significance -->
-        <section>
+        <section id="Significance" class="info-section">
             <h2>Cultural and Religious Significance</h2>
             <ul>
                 <li><strong>Hindu Mythology:</strong> Symbolizes characters from the <em>Mahabharata</em>, including the Kauravas, Pandavas, Draupadi, and Lord Krishna's Sudarshan Chakra.</li>
@@ -174,7 +217,7 @@
         </section>
 
         <!-- Medicinal Uses -->
-        <section>
+        <section id="Medicinal" class="info-section">
             <h2>Medicinal Uses</h2>
             <ul>
                 <li><strong>Traditional Remedies:</strong> Treats anxiety, insomnia, and hysteria.</li>
@@ -184,7 +227,7 @@
         </section>
 
         <!-- Growing Conditions -->
-        <section>
+        <section id="Conditions" class="info-section">
             <h2>Growing Conditions</h2>
             <ul>
                 <li><strong>Climate:</strong> Thrives in tropical and subtropical climates.</li>
@@ -196,7 +239,7 @@
         </section>
 
         <!-- Uses -->
-        <section>
+        <section id="Uses" class="info-section">
             <h2>Uses</h2>
             <ul>
                 <li><strong>Ornamental:</strong> Grown in gardens for its striking appearance.</li>
@@ -207,7 +250,7 @@
         </section>
 
         <!-- Interesting Facts -->
-        <section>
+        <section id="Facts" class="info-section">
             <h2>Interesting Facts</h2>
             <ul>
                 <li>The name "Passion Flower" is derived from its association with the Passion of Christ.</li>
@@ -216,10 +259,35 @@
                 <li>The plant is fast-growing and ideal for landscaping.</li>
             </ul>
         </section>
+     <!-- Back to Main Page Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Main Page</a>
     </div>
-	
+
     <footer>
         <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
     </footer>
+	<script>
+		 // JavaScript to automatically hide header on scroll down and show on scroll up
+    const header = document.getElementById("header");
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY) {
+        // Scrolling down
+        header.style.transform = "translateY(-100%)";
+      } else {
+        // Scrolling up
+        header.style.transform = "translateY(0)";
+      }
+      lastScrollY = window.scrollY;
+    });
+
+			// Light/Dark Mode Toggle
+        const toggleBtn = document.getElementById('light-dark-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+	</script>
 </body>
 </html>
