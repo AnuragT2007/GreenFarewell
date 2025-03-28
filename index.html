@@ -16,12 +16,16 @@
         }
 
         header {
+            position: fixed;
+      	    top: 0;
+      	    left: 0;
+      	    width: 100%;
             background-color: #228B22; /* Green color */
             color: white;
-            padding: 5px;
-	    text-align: center;
-	    width: 100%;
-	    z-index: 10;
+            text-align: center;
+      	    padding: 15px 10px;
+     	   transition: transform 0.3s ease;
+	   z-index: 1000;
         }
 
 	        .dark-mode {
@@ -335,7 +339,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>Welcome to GreenFarewell</h1>
 <nav>
 	<a href="#gallery">Saplings planted by Us</a>
@@ -726,7 +730,20 @@
             document.querySelector('.popup').style.display = 'none';
             document.querySelector('.overlay').style.display = 'none';
         }
-	    
+	    // JavaScript to automatically hide header on scroll down and show on scroll up
+    const header = document.getElementById("header");
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY) {
+        // Scrolling down
+        header.style.transform = "translateY(-100%)";
+      } else {
+        // Scrolling up
+        header.style.transform = "translateY(0)";
+      }
+      lastScrollY = window.scrollY;
+    });
     </script>
 </body>
 </body>
