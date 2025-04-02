@@ -939,13 +939,132 @@
       let sentiment = analyzeSentiment(input);
       let botReply = "I'm not sure I understand, could you please clarify?";
       
-      if (input.includes("hello") || input.includes("hi")) {
+      if (input.includes("hello") || input.includes("hii")) {
         botReply = "Hi there! I'm Ms. Green, your eco-friendly assistant.";
         conversationContext.greeted = true;
       }
       else if (input.includes("sapling") || input.includes("plant")) {
         botReply = "Our saplings are symbols of hope! Let me show you the Saplings section.";
         document.getElementById("saplings_section").scrollIntoView({ behavior: "smooth" });
+      }
+      else if (input.includes("rose sapling") || input.includes("rose plant") || input.includes("rose")) {
+        botReply = "Allow me to guide you to the webpage dedicated to rose plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the rose saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page1.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
+      }
+      else if (input.includes("yellow marigold sapling") || input.includes("yellow marigold plant") || input.includes("yellow marigold")) {
+        botReply = "Allow me to guide you to the webpage dedicated to marigold plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the yellow marigold saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page2.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
+      }
+      else if (input.includes("papaya sapling") || input.includes("papaya plant") || input.includes("papaya")) {
+        botReply = "Allow me to guide you to the webpage dedicated to papaya plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the papaya saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page3.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
+      }
+      else if (input.includes("orange marigold sapling") || input.includes("orange marigold plant") || input.includes("orange marigold")) {
+        botReply = "Allow me to guide you to the webpage dedicated to orange marigold plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the orange marigold saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page1.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
+      }
+     else if (input.includes("azima") || input.includes("english") || input.includes("marigold")) {
+        botReply = "Ms. Azima, our esteemed English teacher, has been a guiding light whose vision and inspirational conduct have profoundly transformed our personalities, shaping us into kind and responsible individuals.Allow me to guide you to the webpage dedicated to yellow marigold plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the orange marigold saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page5.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
+      }
+      else if (input.includes("pepal sapling") || input.includes("pepal plant") || input.includes("pepal")) {
+        botReply = "Allow me to guide you to the webpage dedicated to pepal plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the orange marigold saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page7.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
+      }
+      else if (input.includes("Krushnakamal sapling") || input.includes("Krushnakamal plant") || input.includes("Krushnakamal")) {
+        botReply = "Allow me to guide you to the webpage dedicated to Krushnakamal plant saplings.";
+        appendMessage("bot", botReply);
+
+        // Add a rich media block with a button to redirect to the orange marigold saplings webpage
+        const richMediaHTML = `
+          <div class="rich-media" style="margin:10px 0; border:1px solid #ccc; padding:5px; border-radius:8px;">
+            <div style="text-align:center; margin-top:5px;">
+              <button onclick="window.location.href='page8.html'"
+                      style="padding:8px 12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Visit Rose Saplings Page
+              </button>
+            </div>
+          </div>`;
+        appendMessage("bot", richMediaHTML, true);
+        return;
       }
       else if (input.includes("moment") || input.includes("key")) {
         botReply = "Our Key Moments capture special memories from our farewell. Scrolling to the 'Key Moments' section.";
@@ -984,9 +1103,6 @@
       }
      else if (input.includes("omkar") || input.includes("hande")) {
         botReply = "Shri Omkar Hande Sir played a pivotal role in supporting the event behind the scenes, graciously ensuring the saplings were brought while we were occupied with our examinations.";
-      }
-     else if (input.includes("azima") || input.includes("english")) {
-        botReply = "Ms. Azima, our esteemed English teacher, has been a guiding light whose vision and inspirational conduct have profoundly transformed our personalities, shaping us into kind and responsible individuals.";
       }
      else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
         botReply = "Ms. Manisha Dond Ma'am, our esteemed Vice Principal, played a crucial role in advancing our idea to the higher authorities. It was through her unwavering support and dedication that we were able to transform this event into a grand success.";
