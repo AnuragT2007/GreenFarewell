@@ -7,7 +7,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #89f7fe, #66a6ff);
+            background:  #f0f5f0;
             margin: 0;
             text-align: center;
 	    padding-bottom: 80px;
@@ -380,7 +380,8 @@
             color: #FFD700;
         }
 
-	            /* Popup Box Styling */
+	     
+	    /* Popup Box Styling */
         .popup {
             position: fixed;
             top: 50%;
@@ -432,6 +433,7 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
+	    
 	    /* Animation */
         @keyframes fadeIn {
             from {
@@ -1035,10 +1037,15 @@
         botReply = "For any support or issues, please check out our 'Contact Support' section.";
         document.getElementById("contact_support_section").scrollIntoView({ behavior: "smooth" });
       } 
+      else if (input.includes("anurag") || input.includes("owner") || input.includes("boss") || input.includes("creator")) {
+        botReply = "I am proud to have been envisioned and brought to life by the distinguished Mr. Anurag Thakur, under whose ownership I continue to thrive.";
+      } 
       else if (input.includes("time")) {
         botReply = "The current date and time is: " + new Date().toLocaleString();
       }
-      
+     else if (input.includes("siddhesh") || input.includes("camera") || input.includes("photographer") || input.includes("aaryaman") || input.includes("cameraman")) {
+        botReply = "The skilled photographers for this event were Siddhesh Khare and Aaryaman Shetty.";
+      }
       // If negative sentiment is detected, add a reassuring note.
       if (sentiment === "negative") {
         botReply += " I sense you might be feeling a bit down. I'm here if you'd like to talk.";
