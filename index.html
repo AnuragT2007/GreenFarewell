@@ -379,61 +379,7 @@
         nav a:hover {
             color: #FFD700;
         }
-
-	     
-	    /* Popup Box Styling */
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 400px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            text-align: center;
-            padding: 20px;
-            z-index: 1000;
-        }
-
-        .popup h2 {
-            color: #d9534f;
-            margin-bottom: 10px;
-        }
-
-        .popup p {
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        .popup button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: white;
-            background-color: #d9534f;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .popup button:hover {
-            background-color: #c9302c;
-        }
-
-        /* Dim Background when Popup Appears */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-	    
+  
 	    /* Animation */
         @keyframes fadeIn {
             from {
@@ -461,17 +407,6 @@
         </nav>
         <button id="light-dark-toggle" class="light-dark-toggle">☀️/🌙</button>
     </header>
-
-	    <!-- Dim Background -->
-    <div class="overlay" style="display: none;"></div>
-
-    <!-- Popup Message -->
-    <div class="popup" style="display: none;">
-        <h2>Site Under Maintenance</h2>
-        <p>We're currently performing some updates. Please check back later.</p>
-        <button onclick="closePopup()">Close</button>
-    </div>
-
 	
     <div class="slideshow" id="slideshow">
         <!-- Images for the slideshow -->
@@ -855,11 +790,6 @@
             document.body.classList.toggle('dark-mode');
         });
 
-	    // Function to close the popup
-        function closePopup() {
-            document.querySelector('.popup').style.display = 'none';
-            document.querySelector('.overlay').style.display = 'none';
-        }
 	    // JavaScript to automatically hide header on scroll down and show on scroll up
     const header = document.getElementById("header");
     let lastScrollY = window.scrollY;
@@ -1058,7 +988,10 @@
      else if (input.includes("azima") || input.includes("english")) {
         botReply = "Ms. Azima, our esteemed English teacher, has been a guiding light whose vision and inspirational conduct have profoundly transformed our personalities, shaping us into kind and responsible individuals.";
       }
-	// If negative sentiment is detected, add a reassuring note.
+     else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
+        botReply = "Ms. Manisha Dond Ma'am, our esteemed Vice Principal, played a crucial role in advancing our idea to the higher authorities. It was through her unwavering support and dedication that we were able to transform this event into a grand success.";
+      }
+	    // If negative sentiment is detected, add a reassuring note.
       if (sentiment === "negative") {
         botReply += " I sense you might be feeling a bit down. I'm here if you'd like to talk.";
       }
