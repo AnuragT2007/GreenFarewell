@@ -605,58 +605,6 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-.message-wall {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.message-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: calc(33.333% - 10px);
-  text-align: center;
-  font-size: 0.9rem;
-  color: #333;
-}
-
-#message-form {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#message-form textarea {
-  resize: none;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: inherit;
-}
-
-#message-form button {
-  padding: 0.8rem 1.5rem;
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-#message-form button:hover {
-  transform: scale(1.05);
-}
-
   </style>
 </head>
 <body>
@@ -1035,17 +983,6 @@
 </div>
 </section>
 
-<section id="farewell-messages">
-  <div class="content">
-    <h2 class="section-title">Farewell Messages</h2>
-    <div id="message-wall" class="message-wall"></div>
-    <form id="message-form" onsubmit="addMessage(event)">
-      <textarea name="message" placeholder="Write your heartfelt message here..." required></textarea>
-      <button type="submit">Post Message</button>
-    </form>
-  </div>
-</section>
-
    <!-- Feedback Section -->
 <section id="feedback_section">
   <div class="form">
@@ -1115,26 +1052,6 @@ window.addEventListener('load', updateProgressBar);
         header.classList.remove("scrolled");
       }
     });
-
-const messageWall = document.getElementById('message-wall');
-
-function addMessage(event) {
-  event.preventDefault();
-  const messageInput = event.target.message;
-  const messageText = messageInput.value;
-
-  // Create a new message card
-  const messageCard = document.createElement('div');
-  messageCard.className = 'message-card';
-  messageCard.innerText = messageText;
-
-  // Add the message card to the wall
-  messageWall.appendChild(messageCard);
-
-  // Reset the form
-  event.target.reset();
-}
-
 
     // Countdown Timer Implementation
     // Set to farewell event date: May 15, 2025 18:00:00
@@ -1563,6 +1480,9 @@ function addMessage(event) {
     // Send an advanced welcome message when the chatbot loads.
     appendMessage("bot", "Welcome to GreenFarewell Chat! I’m Ms. Green, your eco-friendly guide, ready to assist you with seamless voice support, sentiment-aware interactions, and responses tailored just for you. Dive into our website, explore its treasures, and let’s make your experience as vibrant as the greenery we stand for! 🌿", false);
   });
+
   </script>
+
+
 </body>
 </html>
