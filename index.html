@@ -349,39 +349,7 @@
             line-height: 1.6;
         }
 
-    /* Guestbook Section */
-    #guestbook form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    #guestbook textarea {
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      resize: vertical;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-    #guestbook button {
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      border: none;
-      background: var(--accent-color);
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-      border-radius: 30px;
-      align-self: center;
-    }
-    #guestbook button:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-
-	    /* About Us Section */
+	  /* About Us Section */
         .about {
             margin: 40px auto;
             padding: 20px;
@@ -576,9 +544,133 @@
         margin: 1rem 0;
       }
     }
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Green Farewell theme */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo-container img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.logo-container p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: green;
+  margin-bottom: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #fff; /* Outer spinner color */
+  border-top: 4px solid #2E8B57; /* Inner spinner color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.progress-container {
+  width: 80%;
+  background: #fff;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background-color: #2E8B57; /* Matches theme */
+  transition: width 0.2s ease-in-out;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.message-wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: calc(33.333% - 10px);
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+#message-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#message-form textarea {
+  resize: none;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+#message-form button {
+  padding: 0.8rem 1.5rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#message-form button:hover {
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 <body>
+
+<div id="loading-screen">
+  <div class="logo-container">
+    <img src="logo.png" alt="Green Farewell Logo" />
+    <p>"🌿 Crafting meaningful goodbyes and greener tomorrows... Hold tight, we're almost there! 🌱"</p>
+    <div class="spinner"></div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+  </div>
+</div>
 
   <!-- Header -->
   <header>
@@ -943,18 +1035,18 @@
 </div>
 </section>
 
+<section id="farewell-messages">
+  <div class="content">
+    <h2 class="section-title">Farewell Messages</h2>
+    <div id="message-wall" class="message-wall"></div>
+    <form id="message-form" onsubmit="addMessage(event)">
+      <textarea name="message" placeholder="Write your heartfelt message here..." required></textarea>
+      <button type="submit">Post Message</button>
+    </form>
+  </div>
+</section>
 
-  <!-- Guestbook Section -->
-  <section id="guestbook">
-    <div class="content">
-      <h2 class="section-title">Leave a Message</h2>
-      <form onsubmit="submitGuestbook(event)">
-        <textarea name="message" placeholder="Share your memories or farewell wishes..." required></textarea>
-        <button type="submit">Submit Message</button>
-      </form>
-    </div>
-  </section>
- <!-- Feedback Section -->
+   <!-- Feedback Section -->
 <section id="feedback_section">
   <div class="form">
 <h2 class="section-title">Feedback</h2>
@@ -990,6 +1082,26 @@
 
 			  <!-- JavaScript for Interactivity -->
   <script>
+
+let progress = 0;
+
+function updateProgressBar() {
+  const progressBar = document.getElementById('progress-bar');
+  progress += 10; // Increment progress by 10%
+  
+  if (progress <= 100) {
+    progressBar.style.width = progress + '%'; // Update progress bar width
+    setTimeout(updateProgressBar, 200); // Call the function again after 200ms
+  } else {
+    // Hide loading screen when progress reaches 100%
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'none';
+  }
+}
+
+// Start the progress bar update when the page loads
+window.addEventListener('load', updateProgressBar);
+
     // Smooth Scroll Function
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
@@ -1003,6 +1115,26 @@
         header.classList.remove("scrolled");
       }
     });
+
+const messageWall = document.getElementById('message-wall');
+
+function addMessage(event) {
+  event.preventDefault();
+  const messageInput = event.target.message;
+  const messageText = messageInput.value;
+
+  // Create a new message card
+  const messageCard = document.createElement('div');
+  messageCard.className = 'message-card';
+  messageCard.innerText = messageText;
+
+  // Add the message card to the wall
+  messageWall.appendChild(messageCard);
+
+  // Reset the form
+  event.target.reset();
+}
+
 
     // Countdown Timer Implementation
     // Set to farewell event date: May 15, 2025 18:00:00
@@ -1049,13 +1181,6 @@
     document.getElementById("menuToggle").addEventListener("click", function() {
       document.getElementById("navList").classList.toggle("active");
     });
-
-    // Guestbook Form Submission Handler (placeholder)
-    function submitGuestbook(event) {
-      event.preventDefault();
-      alert("Thank you for your message!");
-      event.target.reset();
-    }
 
  /* -------------------------- ChatBot Code ------------------------- */
         document.addEventListener("DOMContentLoaded", function () {
