@@ -1192,9 +1192,39 @@
       let botReply = "I'm not sure I understand, could you please clarify?";
       
       if (input.includes("hello") || input.includes("hii")) {
-        botReply = "Hi there! I'm Ms. Green, your eco-friendly assistant.";
+        botReply = "Hello! I'm Ms. Green, It's wonderful to hear from you. Your presence brightens the day, and I'm eager to share moments of connection, laughter, and thoughtful exchange. How's life treating you?";
         conversationContext.greeted = true;
       }
+	else if (input.includes("great")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Let your smile change the world, but don’t let the world change your smile.";
+          } 
+	else if (input.includes("good")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience.";
+          } 
+	else if (input.includes("fine")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Keep your joy alive—it’s contagious and one of the greatest gifts you can give to others.";
+          } 
+	else if (input.includes("Amazing")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Life is a great big canvas, and you should throw all the paint on it you can.";
+          } 
+	else if (input.includes("Alright")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : The best things in life are free: hugs, smiles, laughter, and sunshine.";
+          } 
+	else if (input.includes("Peaceful")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Enjoy the little things, for one day you may look back and realize they were the big things.";
+          } 
+	else if (input.includes("busy")) {
+            botReply = "I just wanted to share a little inspiration with you today: : Rest if you must, but don’t quit. Tomorrow is a new chance to try again.";
+          } 
+	else if (input.includes("tough")) {
+            botReply = "I just wanted to share a little inspiration with you today : You are stronger than you think, braver than you believe, and more loved than you’ll ever know.";
+          } 
+	else if (input.includes("challenging")) {
+            botReply = "I just wanted to share a little inspiration with you today: : When everything feels like an uphill struggle, just think of the view from the top.";
+          } 
+	else if (input.includes("hectic")) {
+            botReply = "I just wanted to share a little inspiration with you today: : Your present circumstances don’t determine where you can go; they merely determine where you start.";
+          } 
       else if (input.includes("sapling") || input.includes("plant")) {
         botReply = "Our saplings are symbols of hope! Let me show you the Saplings section.";
         document.getElementById("saplings_section").scrollIntoView({ behavior: "smooth" });
@@ -1318,18 +1348,27 @@
         appendMessage("bot", richMediaHTML, true);
         return;
       }
-      else if (input.includes("moment") || input.includes("key") || input.includes("memories")) {
-        botReply = "Our Key Moments capture special memories from our farewell. Scrolling to the 'Cherished Memories' section.";
-        document.getElementById("Key_moments").scrollIntoView({ behavior: "smooth" });
-      } 
-      else if (input.includes("about") || input.includes("know")) {
-        botReply = "Our About Us section shares our heartfelt story. Let me take you there.";
-        document.getElementById("aboutus_section").scrollIntoView({ behavior: "smooth" });
-      } 
-      else if (input.includes("event") || input.includes("report")) {
-        botReply = "Discover the details of our celebration in the 'Event Report' section.";
-        document.getElementById("eventreport_section").scrollIntoView({ behavior: "smooth" });
-      } 
+	else if (input.includes("moment") || input.includes("key") || input.includes("memories")) {
+            botReply = "Our Key Moments capture special memories from our farewell. Scrolling to the 'Cherished Memories' section.";
+            document.getElementById("Key_moments").scrollIntoView({
+              behavior: "smooth"
+            });
+          } 
+	else if (input.includes("you") || input.includes("know") || input.includes("us") || input.includes("about us")) {
+            botReply = "Our About Us section shares our heartfelt story. Let me take you there.";
+            document.getElementById("aboutus_section").scrollIntoView({
+              behavior: "smooth"
+            });
+          } 
+	else if (input.includes("event manager") || input.includes("event organiser") || input.includes("program organiser") || input.includes("organiser") || input.includes("organised")) {
+            botReply = "This heartfelt event was beautifully orchestrated by the talented students of Class 12th D Computer Science. It served as a touching tribute of gratitude and love for the exceptional teachers who guided us and the college that nurtured our growth and dreams over the last two years.";
+          } 
+	else if (input.includes("event") || input.includes("report") || input.includes("program about") || input.includes("about")) {
+            botReply = "The program celebrated the planting of saplings alongside our beloved teachers on the final day of our academic year, marking a momentous 'Green Farewell.' These saplings symbolize the cherished memories and unbreakable bonds we share with our teachers and institution—a living testament to a connection that will thrive and flourish for a lifetime.";
+            document.getElementById("eventreport_section").scrollIntoView({
+              behavior: "smooth"
+            });
+          }  
       else if (input.includes("feedback") || input.includes("thought")) {
         botReply = "We value your thoughts. Please share your feedback in the 'Feedback' section.";
         document.getElementById("feedback_section").scrollIntoView({ behavior: "smooth" });
@@ -1359,6 +1398,9 @@
      else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
         botReply = "Ms. Manisha Dond Ma'am, our esteemed Vice Principal, played a crucial role in advancing our idea to the higher authorities. It was through her unwavering support and dedication that we were able to transform this event into a grand success.";
       }
+	else if (input.includes("bye") || input.includes("tata")) {
+            botReply = "Goodbye is never easy, but it comes with a promise—of cherished memories and brighter days ahead. You will always carry a part of this moment with you, just as I'll treasure your words. Take care, stay inspired, and let your journey bloom beautifully. Until we meet again!";
+          }
 	    // If negative sentiment is detected, add a reassuring note.
       if (sentiment === "negative") {
         botReply += " I sense you might be feeling a bit down. I'm here if you'd like to talk.";
@@ -1394,7 +1436,7 @@
     });
 
     // Send an advanced welcome message when the chatbot loads.
-    appendMessage("bot", "Welcome to GreenFarewell Chat! I'm Ms. Green, equipped with voice support, sentiment awareness, and personalized responses to guide you through our website.", false);
+    appendMessage("bot", "Welcome to GreenFarewell Chat! I’m Ms. Green, your eco-friendly guide, ready to assist you with seamless voice support, sentiment-aware interactions, and responses tailored just for you. Dive into our website, explore its treasures, and let’s make your experience as vibrant as the greenery we stand for! 🌿", false);
   });
   </script>
 </body>
