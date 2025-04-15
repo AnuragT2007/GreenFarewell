@@ -1,92 +1,202 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orange Marigold Information</title>
+    <title>Marigold Information</title>
     <style>
-     /* General Styles */
-        body {
-             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-	.back-button {
-            text-align: left;
-            margin: 20px;
-        }
+           /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 70px; /* for fixed header */
+    }
 
-        .back-button a {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50; /* Green button */
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
+    /* Dark Mode Styles */
+    body.dark-mode {
+      color: #ddd;
+      background: #111;
+    }
+    body.dark-mode header {
+      background: rgba(20, 20, 20, 0.95);
+    }
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+    body.dark-mode .hero h1,
+    body.dark-mode .hero p {
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #111;
+    }
 
-        .back-button a:hover {
-            background-color: #45a049; /* Slightly darker green on hover */
-        }
-        header {
-            background-color: #FF8C00;
-            color: white;
-            padding: 15px 10px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Colors & Variables */
+    :root {
+      --accent-color: #2E8B57;  /* SeaGreen */
+      --accent-hover: #247d4b;
+    }
 
-       header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+   header.scrolled {
+      height: 50px; /* Reduced height */
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+	      transition: color 0.3s ease;
+    }
+    /* Hover Effect for Logo */
+    .logo:hover {
+      color: #0077cc;;
+    }
+    .tagline {
+      font-size: 0.8em;
+      font-style: italic;
+      color: #ddd;
+    }
 
-        header nav {
-            margin-top: 10px;
-        }
+    /* Hamburger Menu Toggle Button (Mobile Only) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--accent-color);
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    #darkModeToggle:hover {
+      transform: scale(1.05);
+    }
 
-        header nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.1em;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #FFD700;
-        }
-
-        /* Hero Section */
-        #hero {
+    /* Hero Section */
+    .hero {
+      height: 100vh;
             background: url('https://wallpapercave.com/wp/wp3139353.jpg') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
 
-        #hero .hero-content {
+    }
+    .hero-content {
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
         }
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin-bottom: 2rem;
+    }
+    .hero a {
+            color: yellow;
+            text-decoration: none;
+            font-weight: normal;
+      }
 
-        #hero .hero-content h2 {
-            font-size: 2.5em;
-            margin: 0;
-        }
+    .hero button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      background: var(--accent-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 30px;
+    }
+    .hero button:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
 
-        /* Info Sections */
+    /* Section Titles & Container */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent-color);
+    }
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+       
+ /* Info Sections */
         .info-section {
             padding: 50px 20px;
             text-align: center;
@@ -119,16 +229,65 @@
         .info-section ul li {
             margin: 10px 0;
         }
-	footer {
-	   background-color: #FF8C00;
-	   text-align: center;
-           color: white;
-           text-align: center;
+        /* Footer styles */
+        footer {
+              text-align: center;
+            padding: 10px;
+            transition: background-color 0.5s, color 0.5s;
+            background-color: #f0f0f0;
            padding: 10px 0;
            margin-top: 20px;
         }
+       /* Hyperlink styled as normal text */
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+/* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--accent-hover);
+      transform: scale(1.1);
+    }
 
-	 /* Animation */
+    /* Responsive Navigation for Mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 70px; /* height of header */
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav li {
+        margin: 1rem 0;
+      }
+    }
+	/* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -142,83 +301,85 @@
     </style>
 </head>
 <body>
-	<header>
-        <h1>All About the Orange Marigold</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#varieties">Varieties</a>
-            <a href="#Symbolism">Symbolism</a>
-	    <a href="#uses">Uses</a>
-            <a href="#Benefits">Health and Environmental Benefits</a>
-	    <a href="#growing">Growing Conditions</a>	
-	    <a href="#facts">Interesting Facts</a>	
-        </nav>
-    </header>
-
-	<section id="hero">
+<!-- Header -->
+  <header>
+    <div class="nav-container">
+	<a href="index.html" class="logo">Green Farewell</a>
+      <!-- Hamburger Menu Toggle for Mobile -->
+      <button class="menu-toggle" id="menuToggle">
+        Menu <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="navList">
+            <li><a href="#about">About</a></li>
+            <li><a href="#varieties">Varieties</a></li>
+            <li><a href="#Symbolism">Symbolism</a></li>
+            <li><a href="#Benefits">Benefits & Uses</a></li>
+	    <li><a href="#facts">Interesting Facts</a></li>	
+          <li>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
         <div class="hero-content">
-            <h2>The Marigold</h2>
-            <p>Discover the beauty, significance, and ecological benefits of the Orange Marigold.</p>
+            <h1>The Fiery Blossom of Joy</h1>
+            <p>"Radiating warmth, positivity, and festive charm."</p>
+	<p><strong>Event Name:</strong> <a href="index.html">GreenFarewell 2025</a></p>		
         </div>
 </section>
 	
-            <section id="about" class="info-section">
-            <h2>About Orange Marigold</h2>
-            <p>The orange marigold is a vibrant variety of the marigold flower, known for its fiery hue that symbolizes positivity, warmth, and celebration. Popular in gardens, cultural ceremonies, and festivals, it brings life and color to any setting.</p>
-            <p><strong>Planted By:</strong> Ms. Manisha Ma'am</p>
-            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
-	<h2>Scientific Name</h2>
+	<!-- About the Marigold -->
+        <section id="about" class="info-section">
+            <h2>About the Marigold</h2>
+            <p>The marigold is a vibrant flowering plant native to the Americas, now cultivated worldwide. Its bright hues of yellow, orange, and red make it a favorite for gardens and cultural ceremonies.</p>
+
+            <h2>Scientific Name</h2>
             <p><strong>Genus:</strong> <em>Tagetes</em></p>
             <p><strong>Family:</strong> Asteraceae</p>
-
         </section>
 
-	    <!-- Varieties -->
+        <!-- Varieties -->
         <section id="varieties" class="info-section">
-            <h2>Varieties of Orange Marigold</h2>
+            <h2>Varieties</h2>
             <ul>
-                <li><strong>African Marigold <emp>(Tagetes erecta)</emp>:</strong> Large, round flowers perfect for flower beds and borders.</li>
-                <li><strong>French Marigold <emp>(Tagetes patula)</emp>:</strong> Compact plants with smaller orange blooms, great for companion planting.</li>
-                <li><strong>Signet Marigold <emp>(Tagetes tenuifolia)</emp>:</strong> Delicate, citrus-scented flowers, ideal for ornamental purposes.</li>
+                <li><strong>African Marigold (*Tagetes erecta*):</strong> Tall plants with large, globe-shaped flowers.</li>
+                <li><strong>French Marigold (*Tagetes patula*):</strong> Compact flowers in red, orange, and yellow hues.</li>
+                <li><strong>Signet Marigold (*Tagetes tenuifolia*):</strong> Delicate flowers with a citrusy fragrance.</li>
+                <li><strong>Pot Marigold (*Calendula officinalis*):</strong> Known for medicinal and culinary uses.</li>
             </ul>
         </section>
 
         <!-- Symbolism -->
         <section id="Symbolism" class="info-section">
             <h2>Symbolism</h2>
-            <p>Orange marigolds represent happiness, energy, and positivity. They are culturally significant, especially in Indian festivals like Diwali and weddings, and in Mexican Día de los Muertos celebrations.</p>
+            <p>Marigolds represent happiness, optimism, and good luck. They hold cultural significance in festivals like Mexico's Day of the Dead and India's religious ceremonies.</p>
         </section>
 
-        <!-- Uses -->
-        <section id="uses" class="info-section">
-            <h2>Uses</h2>
+        <!-- Benefits and Uses -->
+        <section id="Benefits" class="info-section">
+            <h2>Benefits and Uses</h2>
             <ul>
-                <li><strong>Decorative:</strong> Widely used in garlands, rangoli, and floral arrangements.</li>
-                <li><strong>Gardening:</strong> Acts as a natural pest repellent and enhances garden aesthetics.</li>
-                <li><strong>Edible:</strong> Petals are used as garnishes or in teas.</li>
-                <li><strong>Medicinal:</strong> Extracts have antioxidant and anti-inflammatory properties.</li>
+                <li><strong>Gardening:</strong> Easy to grow and repels pests like aphids and nematodes.</li>
+                <li><strong>Culinary:</strong> Edible petals are used as garnishes, and extracts serve as natural food coloring.</li>
+                <li><strong>Medicinal:</strong> Anti-inflammatory and antiseptic properties used in traditional medicine.</li>
+                <li><strong>Decorative:</strong> Widely used in garlands, decorations, and festivals.</li>
             </ul>
         </section>
 
         <!-- Growing Conditions -->
-        <section id="growing" class="info-section">
+        <section id="facts" class="info-section">
             <h2>Growing Conditions</h2>
             <ul>
                 <li><strong>Climate:</strong> Thrives in warm, sunny climates.</li>
-                <li><strong>Soil:</strong> Requires well-drained, fertile soil with a pH of 6.0–7.0.</li>
-                <li><strong>Sunlight:</strong> Needs full sun for optimal growth.</li>
-                <li><strong>Watering:</strong> Moderate watering; avoid waterlogging.</li>
-                <li><strong>Care Tips:</strong> Deadhead flowers to encourage continuous blooming.</li>
-            </ul>
-        </section>
-
-        <!-- Health and Environmental Benefits -->
-        <section id="Benefits" class="info-section">
-            <h2>Health and Environmental Benefits</h2>
-            <ul>
-                <li>Improves air quality and adds oxygen to the environment.</li>
-                <li>Repels harmful insects, making it a great companion plant.</li>
-                <li>Used in skincare for its soothing and rejuvenating properties.</li>
+                <li><strong>Soil:</strong> Well-drained, fertile soil with a pH of 6.0-7.0.</li>
+                <li><strong>Sunlight:</strong> Requires full sun for optimal growth.</li>
+                <li><strong>Watering:</strong> Needs regular watering but avoid overwatering.</li>
+                <li><strong>Care:</strong> Deadhead spent flowers to promote continuous blooming.</li>
             </ul>
         </section>
 
@@ -226,21 +387,57 @@
         <section id="facts" class="info-section">
             <h2>Interesting Facts</h2>
             <ul>
-                <li>Known as the "flower of the sun" due to its radiant orange color.</li>
-                <li>Often used in offerings at temples and shrines.</li>
-                <li>Easy to grow and blooms profusely under the right conditions.</li>
-                <li>Petals are sometimes used in herbal teas and as edible decorations.</li>
+                <li>Known as the "Herb of the Sun" for its vibrant colors and positive energy.</li>
+                <li>Annual plants that complete their life cycle in one growing season.</li>
+                <li>Used in skincare products for soothing properties.</li>
+                <li>Strong scent deters pests, making it a natural insect repellent.</li>
             </ul>
         </section>
+<!-- Back-to-Top Button -->
+  <button id="backToTop" onclick="backToTop()">↑</button>
 
-	     <!-- Back to Main Page Button -->
-    <div class="back-button">
-        <a href="index.html">← Back to Main Page</a>
-    </div>
-
-	
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
+       <p>&copy; 2025 <a href="index.html">GreenFarewell</a> | All Rights Reserved</p>
     </footer>
+
+    <script>
+                // Smooth Scroll Function
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    // Add 'scrolled' class to header on scroll
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+// Back-to-Top Button Visibility
+    window.onscroll = function() {
+      const button = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+    </script>
 </body>
 </html>
