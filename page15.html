@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amla Information</title>
+    <style>
+           /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background: #fdfdfd;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 70px; /* for fixed header */
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      color: #ddd;
+      background: #111;
+    }
+    body.dark-mode header {
+      background: rgba(20, 20, 20, 0.95);
+    }
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+    body.dark-mode .hero h1,
+    body.dark-mode .hero p {
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #111;
+    }
+
+    /* Colors & Variables */
+    :root {
+      --accent-color: #2E8B57;  /* SeaGreen */
+      --accent-hover: #247d4b;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+   header.scrolled {
+      height: 50px; /* Reduced height */
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+	      transition: color 0.3s ease;
+    }
+    /* Hover Effect for Logo */
+    .logo:hover {
+      color: #0077cc;;
+    }
+    .tagline {
+      font-size: 0.8em;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    /* Hamburger Menu Toggle Button (Mobile Only) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--accent-color);
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    #darkModeToggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2018/08/amla3.jpg?im=Resize,width=570;') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+
+    }
+    .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin-bottom: 2rem;
+    }
+    .hero a {
+            color: yellow;
+            text-decoration: none;
+            font-weight: normal;
+      }
+
+    .hero button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      background: var(--accent-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 30px;
+    }
+    .hero button:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    /* Section Titles & Container */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent-color);
+    }
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+       
+ /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
+        /* Footer styles */
+        footer {
+              text-align: center;
+            padding: 10px;
+            transition: background-color 0.5s, color 0.5s;
+            background-color: #f0f0f0;
+           padding: 10px 0;
+           margin-top: 20px;
+        }
+       /* Hyperlink styled as normal text */
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+/* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--accent-hover);
+      transform: scale(1.1);
+    }
+
+    /* Responsive Navigation for Mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 70px; /* height of header */
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav li {
+        margin: 1rem 0;
+      }
+    }
+	/* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+  <header>
+    <div class="nav-container">
+	<a href="index.html" class="logo">Green Farewell</a>
+      <!-- Hamburger Menu Toggle for Mobile -->
+      <button class="menu-toggle" id="menuToggle">
+        Menu <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="navList">
+           <li><a href="#about">Description</a></li>
+          <li><a href="#cultural">Significance</a></li>
+	  <li><a href="#value">Nutritional Value</a></li>
+	 <li><a href="#benefits">Health Benefits</a></li>
+	 <li><a href="#uses">Uses</a></li>
+	 <li><a href="#facts">Fun Facts</a></li>
+          <li>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>The Powerhouse of Nutrition</h1>
+            <p>"Packed with vitamin C and ancient wellness benefits."</p>
+            <p><strong>Event Name:</strong> <a href="index.html">GreenFarewell 2025</a></p>	
+        </div>
+    </section>
+   
+        <!-- About the Amla -->
+        <section id="about" class="info-section">
+            <h2>Description</h2>
+            <p>Amla is a small, round fruit with a translucent green color and a sour, tangy taste. It has six vertical stripes and a smooth texture.</p>
+<br>
+	    <p>The tree is medium-sized, growing up to 8 meters tall, with feathery leaves and yellowish-green flowers.</p> 
+<br>           
+	    
+	<ul>
+		<li><strong>Kingdom:</strong>  <em>Plantae</em></li>
+		<li><strong>Family:</strong> Phyllanthaceae</li>
+		<li><strong>Genus:</strong> Phyllanthus</li>
+		<li><strong>Species:</strong> Phyllanthus emblica</li>
+	</ul>	    
+       </section>
+
+        <!-- Cultural and Traditional Significance -->
+        <section id="cultural" class="info-section">
+            <h2>Cultural and Traditional Significance</h2>
+                    <ul>
+                        <li>In Ayurveda, Amla is considered a "Rasayana" (rejuvenator) and is believed to balance the three doshas—Vata, Pitta, and Kapha.</li>
+                        <li>It is often referred to as "Amalaki" in Sanskrit, meaning "nectar of life."</li>
+                    </ul>
+        </section>
+
+        <!-- Nutritional Value -->
+        <section id="value" class="info-section">
+            <h2>Nutritional Value</h2>
+            <ul>
+		<li><strong>Fiber:</strong> High dietary fiber content aids digestion.</li>
+		<li><strong>Minerals:</strong> Includes calcium, iron, and phosphorus.</li>
+		<li><strong>Antioxidants:</strong> Rich in polyphenols, flavonoids, and tannins.</li>
+		<li><strong>Vitamin C:</strong> Contains 20 times more vitamin C than an orange.</li>
+            </ul>
+        </section>
+
+        <!-- Health Benefits -->
+        <section id="benefits" class="info-section">
+            <h2>Health Benefits</h2>
+            <ul>
+                <li><strong>Boosts Immunity:</strong> The high vitamin C content strengthens the immune system and helps fight infections.</li>
+		<li><strong>Improves Digestion:</strong> Amla enhances gut health, alleviates constipation, and supports the digestive process.</li>
+		<li><strong>Promotes Heart Health:</strong> It helps lower cholesterol levels, regulates blood pressure, and improves overall cardiovascular health.</li>
+		<li><strong>Skin and Hair Care:</strong> Amla is widely used in cosmetics for glowing skin and strong, shiny hair.</li>
+		<li><strong>Anti-Aging:</strong> Its antioxidants combat free radicals, slowing down the aging process.</li>
+		<li><strong>Diabetes Management:</strong> Amla helps regulate blood sugar levels and improves insulin sensitivity.</li>
+            </ul>
+        </section>
+
+        <!-- Uses -->
+        <section id="uses" class="info-section">
+            <h2>Uses</h2>
+            <ul>
+                <li><strong>Culinary:</strong> Amla is used to make pickles, jams, juices, and candies. It is also consumed raw or dried.</li>
+		<li><strong>Medicinal:</strong> Amla is a key ingredient in Ayurvedic formulations like Triphala and Chyawanprash.</li>
+		<li><strong>Cosmetics:</strong> Extracts are used in shampoos, conditioners, and skincare products.</li>
+            </ul>
+        </section>
+
+        <!-- Fun Facts -->
+        <section id="facts" class="info-section">
+            <h2>Fun Facts</h2>
+            <ul>
+                <li>Amla contains more Vitamin C than oranges! Even after being dried or cooked, it retains most of its Vitamin C, making it a powerful immunity booster.</li>
+                <li>In Ayurveda, Amla is considered a "Rasayana," meaning it’s believed to promote longevity and rejuvenation. Ancient texts even call it the "fruit of immortality."</li>
+           </ul>
+        </section>
+    
+<!-- Back-to-Top Button -->
+  <button id="backToTop" onclick="backToTop()">↑</button>
+    <!-- Footer -->
+    <footer>
+       <p>&copy; 2025 <a href="index.html">GreenFarewell</a> | All Rights Reserved</p>
+    </footer>
+
+
+			  <!-- JavaScript for Interactivity -->
+  <script>
+    // Smooth Scroll Function
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    // Add 'scrolled' class to header on scroll
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+// Back-to-Top Button Visibility
+    window.onscroll = function() {
+      const button = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+</script>
+</body>
+</html>
