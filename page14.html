@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chikoo Information</title>
+    <style>
+           /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background: #fdfdfd;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 70px; /* for fixed header */
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      color: #ddd;
+      background: #111;
+    }
+    body.dark-mode header {
+      background: rgba(20, 20, 20, 0.95);
+    }
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+    body.dark-mode .hero h1,
+    body.dark-mode .hero p {
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #111;
+    }
+
+    /* Colors & Variables */
+    :root {
+      --accent-color: #2E8B57;  /* SeaGreen */
+      --accent-hover: #247d4b;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+   header.scrolled {
+      height: 50px; /* Reduced height */
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+	      transition: color 0.3s ease;
+    }
+    /* Hover Effect for Logo */
+    .logo:hover {
+      color: #0077cc;;
+    }
+    .tagline {
+      font-size: 0.8em;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    /* Hamburger Menu Toggle Button (Mobile Only) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--accent-color);
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    #darkModeToggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://images.healthshots.com/healthshots/en/uploads/2022/01/06132346/chikoo.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+
+    }
+    .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin-bottom: 2rem;
+    }
+    .hero button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      background: var(--accent-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 30px;
+    }
+    .hero button:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+    .hero a {
+            color: yellow;
+            text-decoration: none;
+            font-weight: normal;
+      }
+
+    /* Section Titles & Container */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent-color);
+    }
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+       
+ /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+        }
+
+        /* Footer styles */
+        footer {
+              text-align: center;
+            padding: 10px;
+            transition: background-color 0.5s, color 0.5s;
+            background-color: #f0f0f0;
+           padding: 10px 0;
+           margin-top: 20px;
+        }
+       /* Hyperlink styled as normal text */
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+/* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--accent-hover);
+      transform: scale(1.1);
+    }
+
+    /* Responsive Navigation for Mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 70px; /* height of header */
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav li {
+        margin: 1rem 0;
+      }
+    }
+	/* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+  <header>
+    <div class="nav-container">
+	<a href="index.html" class="logo">Green Farewell</a>
+      <!-- Hamburger Menu Toggle for Mobile -->
+      <button class="menu-toggle" id="menuToggle">
+        Menu <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="navList">
+           <li><a href="#about">Description</a></li>
+          <li><a href="#origin">Origin and Cultivation</a></li>
+	  <li><a href="#value">Nutritional Value</a></li>
+         <li><a href="#Benefits">Health Benifits</a></li>
+	 <li><a href="#uses">Uses</a></li>
+	 <li><a href="#facts">Fun Facts</a></li>
+          <li>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Nature’s Sweet Delight</h1>
+            <p>"A tropical treasure packed with flavor and nutrition."</p>
+            <p><strong>Event Name:</strong> <a href="index.html">GreenFarewell 2025</a></p>	
+        </div>
+    </section>
+   
+        <!-- About the Chikoo -->
+        <section id="about" class="info-section">
+            <h2>Description</h2>
+            <p>Chikoo is a round or oval-shaped fruit with a rough, brown skin resembling a kiwi. Its flesh is soft, grainy, and sweet, with a flavor reminiscent of brown sugar and pear.</p>
+	    <p>The fruit contains 2-5 shiny black seeds and emits a pleasant malty fragrance when ripe.</p>            
+	    <p><strong>Scientific Name:</strong> <strong>Genus:</strong> <em>Manikara zapota</em></p>
+            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
+       </section>
+
+        <!-- Origin and Cultivation -->
+        <section id="origin" class="info-section">
+            <h2>Origin and Cultivation</h2>
+                    <ul>
+                        <li>Native to Central America, particularly southern Mexico and the Yucatan Peninsula, Chikoo has been cultivated for centuries. It is now widely grown in India, the Philippines, and other tropical regions.</li>
+                        <li>The Chikoo tree is evergreen and can grow up to 30 meters tall. It thrives in warm climates and produces fruit twice a year.</li>
+                    </ul>
+        </section>
+
+        <!-- Nutritional Value -->
+        <section id="value" class="info-section">
+            <h2>Nutritional Value</h2>
+            <ul>
+                <li>Chikoo is rich in dietary fiber, vitamins (C, A, and B-complex), and minerals like iron, copper, and calcium. It also contains antioxidants and natural sugars like fructose and sucrose.</li>
+                <li>A 100-gram serving provides approximately 83 kilocalories, making it a nutrient-dense fruit.</li>
+            </ul>
+        </section>
+
+        <!-- Benefits and Uses -->
+        <section id="Benefits" class="info-section">
+            <h2>Health Benefits</h2>
+            <ul>
+                <li><strong>Digestive Health:</strong> High fiber content aids in digestion and prevents constipation.</li>
+                <li><strong>Energy Boost:</strong> Its natural sugars provide instant energy, making it ideal for athletes and pregnant women.</li>
+                <li><strong>Immunity:</strong> Vitamin C and antioxidants strengthen the immune system.</li>
+                <li><strong>Anti-Inflammatory Properties:</strong> Tannins in Chikoo help reduce inflammation and alleviate conditions like arthritis..</li>
+                <li><strong>Skin and Hair:</strong> Nutrients promote healthy skin and hair growth..</li>
+            </ul>
+        </section>
+
+        <!-- Uses -->
+        <section id="uses" class="info-section">
+            <h2>Uses</h2>
+            <ul>
+                <li>Chikoo can be eaten raw or used in desserts, milkshakes, and smoothies. Its pulp is also used in traditional medicine to treat coughs, colds, and diarrhea.</li>
+                <li>The tree's latex, known as chicle, was historically used to make chewing gum</li>
+            </ul>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section id="facts" class="info-section">
+            <h2>Interesting Facts</h2>
+            <ul>
+                <li>Chikoo is known by various names worldwide, such as Sapodilla, Naseberry, and Chicozapote.</li>
+                <li>The tree's wood has been used in ancient Mayan architecture, showcasing its historical significance.</li>
+           </ul>
+        </section>
+    
+<!-- Back-to-Top Button -->
+  <button id="backToTop" onclick="backToTop()">↑</button>
+    <!-- Footer -->
+    <footer>
+       <p>&copy; 2025 <a href="index.html">GreenFarewell</a> | All Rights Reserved</p>
+    </footer>
+
+
+			  <!-- JavaScript for Interactivity -->
+  <script>
+    // Smooth Scroll Function
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    // Add 'scrolled' class to header on scroll
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+// Back-to-Top Button Visibility
+    window.onscroll = function() {
+      const button = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+</script>
+</body>
+</html>
