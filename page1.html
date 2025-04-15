@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,6 @@
     body {
       font-family: 'Montserrat', sans-serif;
       color: #333;
-      background: #fdfdfd;
       line-height: 1.6;
       transition: background 0.3s, color 0.3s;
       padding-top: 70px; /* for fixed header */
@@ -135,7 +134,7 @@
     /* Hero Section */
     .hero {
       height: 100vh;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Rosa_%27Rosengr%C3%A4fin_Marie_Henriette%27_%28actm%29.jpg/640px-Rosa_%27Rosengr%C3%A4fin_Marie_Henriette%27_%28actm%29.jpg') no-repeat center center/cover;
+      background: url('https://www.pixelstalk.net/wp-content/uploads/images2/Red_Rose-Bouquet-Hd-Images-Wallpaper.jpg') no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -162,6 +161,12 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
       margin-bottom: 2rem;
     }
+    .hero a {
+            color: yellow;
+            text-decoration: none;
+            font-weight: normal;
+      }
+
     .hero button {
       padding: 0.8rem 2rem;
       font-size: 1rem;
@@ -223,12 +228,20 @@
         .info-section ul li {
             margin: 10px 0;
         }
+        /* Footer styles */
         footer {
-           background-color: black;
-           color: white;
-           text-align: center;
+              text-align: center;
+            padding: 10px;
+            transition: background-color 0.5s, color 0.5s;
+            background-color: #f0f0f0;
            padding: 10px 0;
            margin-top: 20px;
+        }
+       /* Hyperlink styled as normal text */
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
         }
 /* Back-to-Top Button */
     #backToTop {
@@ -312,8 +325,10 @@
   <!-- Hero Section -->
   <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>The Rose</h1>
-            <p>Discover the beauty, significance, and ecological benefits of the Rose, also known as the Symbol of Love.</p>
+            <h1>The Eternal Symbol of Love</h1>
+            <p>"A timeless bloom that speaks the language of the heart."</p>
+		<p><strong>Planted By:</strong> Mr. Aaryan Mandar Agavekar</p>
+            <p><strong>Event Name:</strong> <a href="index.html">GreenFarewell 2025</a></p>
         </div>
     </section>
    
@@ -322,8 +337,6 @@
             <h2>About the Sapling</h2>
             <p>The rose sapling is a symbol of love, beauty, and care. It was planted as part of our initiative to create a greener environment and a brighter future.</p>
             <p><strong>Scientific Name:</strong> <strong>Genus:</strong> <em>Rosa</em></p>
-            <p><strong>Planted By:</strong> Mr. Aaryan Mandar Agavekar</p>
-            <p><strong>Event Name:</strong> GreenFarewell 2025</p>
        </section>
 
         <!-- Varieties -->
@@ -392,14 +405,14 @@
     
 <!-- Back-to-Top Button -->
   <button id="backToTop" onclick="backToTop()">↑</button>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 GreenFarewell | All Rights Reserved</p>
+       <p>&copy; 2025 <a href="index.html">GreenFarewell</a> | All Rights Reserved</p>
     </footer>
 
-
-			  <!-- JavaScript for Interactivity -->
-  <script>
-    // Smooth Scroll Function
+    <script>
+                // Smooth Scroll Function
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
@@ -435,6 +448,6 @@
     document.getElementById("menuToggle").addEventListener("click", function() {
       document.getElementById("navList").classList.toggle("active");
     });
-</script>
+    </script>
 </body>
 </html>
