@@ -185,7 +185,30 @@
       padding: 2rem 1rem;
     }
 
-	/* Highlights Grid */
+    /* Countdown Section */
+    .countdown-container {
+      text-align: center;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .countdown div {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 80px;
+      text-align: center;
+    }
+    .countdown span {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+/* Highlights Grid */
         .grid {
             display: flex;
             flex-wrap: wrap;
@@ -520,6 +543,105 @@
 .dark-mode .form a {
     color: #FFD700;
 }
+
+
+    /* Chatbot Container Styles */
+    #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 300px;
+      max-height: 350px;
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    #chatbot-header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+    }
+    #chatbot-messages {
+      background-color: white;
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .bot-message, .user-message {
+      margin-bottom: 6px;
+      border-radius: 8px;
+      color: #333;
+      padding: 8px;
+    }
+    .bot-message {
+      background-color: #e7f5e6;
+    }
+    .user-message {
+      background-color: #d1e7dd;
+      text-align: right;
+    }
+    /* New styling for rich media blocks */
+    .rich-media {
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 8px;
+    }
+    .rich-media img,
+    .rich-media video {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+    .rich-media button {
+      background-color: #4CAF50;
+      border: none;
+      padding: 8px 12px;
+      margin-top: 5px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .rich-media button:hover {
+      background-color: #45a049;
+    }
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    #chatbot-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-bottom-left-radius: 8px;
+    }
+    #chatbot-input button {
+      padding: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-bottom-right-radius: 8px;
+    }
+    #minimize-btn {
+            background: none;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+    }
+    #chatbot-input button:hover {
+      background-color: #45a049;
+    }
+
     /* Contact Section */
     #contact {
       text-align: center;
@@ -701,7 +823,33 @@
     <button onclick="scrollToSection('Key_moments')">Explore Memories</button>
   </section>
 
-	<section id="Key_moments">	
+ <!-- Countdown Section -->
+  <section id="countdown">
+    <div class="content countdown-container">
+      <h2 class="section-title">Reunion Countdown</h2>
+      <div class="countdown" id="timer">
+        <div>
+          <span id="days">00</span>
+          Days
+        </div>
+        <div>
+          <span id="hours">00</span>
+          Hours
+        </div>
+        <div>
+          <span id="minutes">00</span>
+          Minutes
+        </div>
+        <div>
+          <span id="seconds">00</span>
+          Seconds
+        </div>
+      </div>
+      <p style="margin-top: 1rem;">Reunion on May 15, 2025</p>
+    </div>
+  </section>
+
+<section id="Key_moments">	
 	<div class="container">
 <h2 class="section-title">Cherished Memories</h2>
         <div class="grid">
@@ -1122,7 +1270,7 @@ Thank you for being our guiding stars!
         <div class="photographer-container">
             <!-- Photographer 1 -->
             <div class="photographer-card">
-                <img src="camera_1.jpg" alt="Photographer 1">
+                <img src="camera_1.JPG" alt="Photographer 1">
                 <div class="photographer-info">
                     <h3>Siddhesh Khare</h3>
                     <p>Expert in event photography, capturing every special moment with precision.</p>
@@ -1167,7 +1315,16 @@ Thank you for being our guiding stars!
 	<p>Click <a href="https://forms.gle/1cbyFtw7Rr1bdxQk7" target="_blank">here</a> to give your valuable feedback about the website.</p>
 	  </div>
 </section>
-   
+    <!-- Chatbot Container -->
+  <div id="chatbot-container">
+    <div id="chatbot-header">Ms.Green</div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input">
+      <input type="text" id="user-message" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
   <!-- Contact Section -->
   <section id="contact">
     <div class="content">
@@ -1218,6 +1375,30 @@ window.addEventListener('load', updateProgressBar);
         header.classList.remove("scrolled");
       }
     });
+
+    // Countdown Timer Implementation
+    // Set to farewell event date: May 15, 2025 18:00:00
+    const eventDate = new Date("May 15, 2025 04:00:00").getTime();
+    const timerInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+      document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+      
+      if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("timer").innerHTML = "<h3>The Reunion is Today!</h3>";
+      }
+    }, 1000);
+
     // Back-to-Top Button Visibility
     window.onscroll = function() {
       const button = document.getElementById("backToTop");
@@ -1240,6 +1421,547 @@ window.addEventListener('load', updateProgressBar);
     document.getElementById("menuToggle").addEventListener("click", function() {
       document.getElementById("navList").classList.toggle("active");
     });
+
+ /* -------------------------- ChatBot Code ------------------------- */
+        document.addEventListener("DOMContentLoaded", function () {
+      // Get references to the chatbot container elements.
+      const chatbotContainer = document.getElementById("chatbot-container");
+      const chatbotHeader = document.getElementById("chatbot-header");
+      const messagesContainer = document.getElementById("chatbot-messages");
+      const userInput = document.getElementById("user-message");
+      const sendButton = document.querySelector("#chatbot-input button");
+
+      /* -------------------------- Minimize/Maximize Functionality ------------------------- */
+      // Create the minimize button and insert it into the header.
+      const minimizeButton = document.createElement("button");
+      minimizeButton.textContent = "–"; // Shows "-" when maximized, changes to "+" when minimized
+      minimizeButton.style.float = "right";
+      minimizeButton.style.marginRight = "10px";
+      minimizeButton.style.background = "transparent";
+      minimizeButton.style.border = "none";
+      minimizeButton.style.color = "white";
+      minimizeButton.style.fontSize = "18px";
+      minimizeButton.style.cursor = "pointer";
+      chatbotHeader.appendChild(minimizeButton);
+
+      let isMinimized = false;
+      minimizeButton.addEventListener("click", function () {
+        // Toggle the display of the messages and input sections.
+        if (!isMinimized) {
+          messagesContainer.style.display = "none";
+          document.getElementById("chatbot-input").style.display = "none";
+          minimizeButton.textContent = "+";
+          isMinimized = true;
+        } else {
+          messagesContainer.style.display = "block";
+          document.getElementById("chatbot-input").style.display = "flex";
+          minimizeButton.textContent = "–";
+          isMinimized = false;
+        }
+      });
+      /* --------------------- End Minimize/Maximize Functionality --------------------- */
+
+    // Create a microphone button for voice input
+    const micButton = document.createElement("button");
+    micButton.innerHTML = "🎤";
+    micButton.style.marginLeft = "5px";
+    micButton.style.padding = "10px";
+    micButton.style.background = "#4CAF50";
+    micButton.style.border = "none";
+    micButton.style.color = "white";
+    micButton.style.cursor = "pointer";
+    document.getElementById("chatbot-input").appendChild(micButton);
+    
+    // Setup voice recognition using Web Speech API if supported
+    let recognition;
+    if ("webkitSpeechRecognition" in window) {
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = "en-US";
+    }
+
+    // Start voice recognition on mic button click
+    micButton.addEventListener("click", function () {
+      if (recognition) {
+        recognition.start();
+      } else {
+        alert("Voice recognition is not supported in your browser.");
+      }
+    });
+    
+    if (recognition) {
+      recognition.onresult = function (event) {
+        let transcript = event.results[0][0].transcript;
+        appendMessage("user", transcript);
+        processUserMessage(transcript);
+      };
+    }
+
+    // Advanced Feature: Text-to-Speech for bot replies
+    function speak(text) {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Advanced Feature: Basic sentiment analysis using keyword matching
+    function analyzeSentiment(text) {
+      const negativeWords = ["sad", "angry", "upset", "bad", "frustrated"];
+      let lowerText = text.toLowerCase();
+      for (const word of negativeWords) {
+        if (lowerText.includes(word)) {
+          return "negative";
+        }
+      }
+      return "positive";
+    }
+
+    // Stores context for the conversation (for personalization)
+    let conversationContext = {};
+
+    // Append messages with a smooth typing animation
+    function appendMessage(sender, message, isHTML = false) {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = sender === "user" ? "user-message" : "bot-message";
+      
+      if (isHTML) {
+        msgDiv.innerHTML = message;
+      } else {
+        // Simulate the bot's “typing” effect
+        msgDiv.textContent = "";
+        let index = 0;
+        const timer = setInterval(() => {
+          msgDiv.textContent += message.charAt(index);
+          index++;
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+          if (index >= message.length) clearInterval(timer);
+        }, 20);
+      }
+      
+      messagesContainer.appendChild(msgDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // For bot messages, use text-to-speech (if not rich media)
+      if (sender === "bot" && !isHTML) {
+        speak(message);
+      }
+    }
+
+    // Process user messages and build bot responses with advanced features.
+    function processUserMessage(input) {
+      input = input.toLowerCase();
+      let sentiment = analyzeSentiment(input);
+      let botReply = "I'm not sure I understand, could you please clarify?";
+      
+      if (input.includes("hello") || input.includes("hii")) {
+        botReply = "Hey there! 🌿 So great to have you here! Your presence makes this space even more wonderful. Let’s dive into a delightful conversation—whether it’s sharing laughs, exchanging thoughts, or simply enjoying a moment together. How’s your day going? 😊";
+        conversationContext.greeted = true;
+      }
+	else if (input.includes("great")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Let your smile change the world, but don’t let the world change your smile.";
+          } 
+	else if (input.includes("good")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience.";
+          } 
+	else if (input.includes("fine")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Keep your joy alive—it’s contagious and one of the greatest gifts you can give to others.";
+          } 
+	else if (input.includes("Amazing")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Life is a great big canvas, and you should throw all the paint on it you can.";
+          } 
+	else if (input.includes("Alright")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : The best things in life are free: hugs, smiles, laughter, and sunshine.";
+          } 
+	else if (input.includes("Peaceful")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Enjoy the little things, for one day you may look back and realize they were the big things.";
+          } 
+	else if (input.includes("busy")) {
+            botReply = "I just wanted to share a little inspiration with you today: : Rest if you must, but don’t quit. Tomorrow is a new chance to try again.";
+          } 
+	else if (input.includes("tough")) {
+            botReply = "I just wanted to share a little inspiration with you today : You are stronger than you think, braver than you believe, and more loved than you’ll ever know.";
+          } 
+	else if (input.includes("challenging")) {
+            botReply = "I just wanted to share a little inspiration with you today: : When everything feels like an uphill struggle, just think of the view from the top.";
+          } 
+	else if (input.includes("hectic")) {
+            botReply = "I just wanted to share a little inspiration with you today: : Your present circumstances don’t determine where you can go; they merely determine where you start.";
+          } 
+      else if (input.includes("sapling") || input.includes("plant")) {
+        botReply = "Our saplings are symbols of hope! Let me show you the Saplings section.";
+        document.getElementById("saplings_section").scrollIntoView({ behavior: "smooth" });
+      }
+else if (
+  input.toLowerCase().includes("rose sapling") || 
+  input.toLowerCase().includes("rose plant") || 
+  input.toLowerCase().includes("rose") || 
+  input.toLowerCase().includes("aaryan")
+) {
+  botReply = "Mr. Aaryan planted a rose sapling, spreading beauty and love! 🌹 With its enchanting fragrance and stunning blooms, the rose is a timeless favorite. Click below to learn more!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page1.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("yellow marigold sapling") || 
+  input.toLowerCase().includes("yellow marigold plant") || 
+  input.toLowerCase().includes("yellow marigold") || 
+  input.toLowerCase().includes("shreya") || 
+  input.toLowerCase().includes("divya")
+) {
+  botReply = "Ms. Divya and Ms. Shreya planted a marigold sapling, spreading brightness and positivity! 🌼 Easy to grow and loved for its vibrant blooms, marigolds are a gardener’s delight. Click below to explore more!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page2.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("papaya sapling") || 
+  input.toLowerCase().includes("papaya plant") || 
+  input.toLowerCase().includes("papaya") || 
+  input.toLowerCase().includes("Vaishnavi") || 
+  input.toLowerCase().includes("Nitya")
+) {
+  botReply = "Ms. Vaishnavi and Ms. Nitya planted a papaya sapling, spreading health and vitality! 🍃 Packed with sweetness and nutrients, papayas are nature’s wellness booster. Click below to learn more!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page3.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("orange marigold sapling") || 
+  input.toLowerCase().includes("orange marigold plant") || 
+  input.toLowerCase().includes("orange marigold") || 
+  input.toLowerCase().includes("orange")
+) {
+  botReply = "The vibrant Orange Marigold brings warmth and positivity! 🌼 Want to learn more? Click below and dive into its beauty!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page4.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+
+else if (
+  input.toLowerCase().includes("azima") || 
+  input.toLowerCase().includes("marigold") 
+) {
+  botReply = "Ms. Azima, our wonderful English teacher, has inspired us with wisdom and kindness, shaping us into better individuals. 🌼 Click below to discover more about the yellow marigold!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page5.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("peepal sapling") || 
+  input.toLowerCase().includes("peepal plant") ||
+  input.toLowerCase().includes("peepal") 
+) {
+  botReply = "Ms. Vaidehi Ma’am, Mr. Satish Sir, and our Additional Vice-Principal Ma’am planted a Peepal tree, symbolizing wisdom and strength! 🌳 Click below to learn more about this remarkable tree!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page6.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("Krushnakamal sapling") || 
+  input.toLowerCase().includes("Krushnakamal plant") ||
+  input.toLowerCase().includes("Krushnakamal")
+) {
+  botReply = "Ms. Manisha Ma'am, our esteemed vice-principal, planted the Krushnakamal—a special moment after six years! 🌿 Click below to explore more about this beautiful sapling!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page8.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+// For Memories Section
+else if (
+  input.toLowerCase().includes("moment") || 
+  input.toLowerCase().includes("key") || 
+  input.toLowerCase().includes("cherished memories") || 
+  input.toLowerCase().includes("memories")
+) {
+  botReply = "Relive cherished moments and unforgettable experiences in our Memories section! 📸✨ Let me guide you there.";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'Key_moments' section
+  document.getElementById("Key_moments").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+// For navigate to the top
+else if (
+  input.toLowerCase().includes("home") || 
+  input.toLowerCase().includes("top")
+) {
+  botReply = "Lost in the scroll adventure? No worries! 🚀 Just hop on, and I'll help you zoom back to the top in no time!";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'hero' section
+  document.getElementById("hero").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+// For About Us
+else if (
+  input.toLowerCase().includes("know") || 
+  input.toLowerCase().includes("about us")
+) {
+  botReply = "Our About Us section is where our heartfelt journey comes to life. 💖 Let me guide you there";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'aboutus_section' section
+  document.getElementById("aboutus_section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+} 
+ 
+else if (
+  input.toLowerCase().includes("event manager") || 
+  input.toLowerCase().includes("event organiser") || 
+  input.toLowerCase().includes("program organiser") || 
+  input.toLowerCase().includes("organiser") || 
+  input.toLowerCase().includes("organised")
+) {
+  botReply = "This special event, thoughtfully organized by the students of Class 12th D Computer Science, was a heartfelt tribute to our wonderful teachers and the college that shaped our dreams over the past two years. 💖";
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("program about") || 
+  input.toLowerCase().includes("event about") 
+) {
+  botReply = "On the final day of our academic year, we honored our beloved teachers with a heartfelt Green Farewell, planting saplings as a symbol of our cherished memories and lasting bonds. 🌱 These saplings stand as a living testament to the connection that will flourish for a lifetime.";
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("siddhesh") || 
+  input.toLowerCase().includes("camera") || 
+  input.toLowerCase().includes("photographer") || 
+  input.toLowerCase().includes("aaryaman") || 
+  input.toLowerCase().includes("event photographer") ||
+  input.toLowerCase().includes("cameraman")
+) {
+  botReply = "We are truly grateful to Mr.Siddhesh Khare and Mr.Aaryaman Shetty, whose incredible photography captured the essence of this special event beautifully. 📸✨ Their dedication and talent have given us memories to cherish forever! 💖";
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+// For Event Report Us
+else if (
+  input.toLowerCase().includes("event") || 
+  input.toLowerCase().includes("event report") ||
+  input.toLowerCase().includes("program") ||
+  input.toLowerCase().includes("program report")
+) {
+  botReply = "The Event Report captures the essence of our Green Farewell—cherishing memories, honoring teachers, and leaving a lasting mark with sapling plantations. Let me guide you there";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'aboutus_section' section
+  document.getElementById("aboutus_section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("feedback") || 
+  input.toLowerCase().includes("help") ||
+  input.toLowerCase().includes("report") ||
+  input.toLowerCase().includes("bug") ||
+  input.toLowerCase().includes("error") ||
+  input.toLowerCase().includes("issue")
+) {
+  botReply = "Your thoughts matter! 💡 If you have any feedback, suggestions, or spot an issue on the website, we'd love to hear from you.";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'feedback_section' section
+  document.getElementById("feedback_section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("anurag") || 
+  input.toLowerCase().includes("owner") || 
+  input.toLowerCase().includes("boss") || 
+  input.toLowerCase().includes("creator") || 
+  input.toLowerCase().includes("designer") || 
+  input.toLowerCase().includes("thakur")
+) {
+  botReply = "I proudly exist thanks to the legendary Mr. Anurag Thakur—a mastermind who envisioned me into existence! 🚀 Under his ownership, I thrive, evolve, and occasionally pretend to have deep philosophical thoughts. Honestly, I’d nominate him for the Best AI Parent award… if I knew where to submit the paperwork. 😆";
+  
+  appendMessage("bot", botReply);
+
+  return;
+} 
+
+else if (input.toLowerCase().includes("time")) {
+  botReply = "The current date and time is: " + new Date().toLocaleString();
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+
+
+     else if (input.includes("ashish") || input.includes("classteacher")) {
+        botReply = "Shri Ashish Bhoir Sir, an inspiring and dedicated educator, holds the esteemed role of our class teacher, guiding us with wisdom and grace.";
+      }
+     else if (input.includes("omkar") || input.includes("hande")) {
+        botReply = "Shri Omkar Hande Sir played a pivotal role in supporting the event behind the scenes, graciously ensuring the saplings were brought while we were occupied with our examinations.";
+      }
+     else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
+        botReply = "Ms. Manisha Dond Ma'am, our esteemed Vice Principal, played a crucial role in advancing our idea to the higher authorities. It was through her unwavering support and dedication that we were able to transform this event into a grand success.";
+      }
+	else if (input.includes("bye") || input.includes("tata")) {
+            botReply = "Goodbye is never easy, but it comes with a promise—of cherished memories and brighter days ahead. You will always carry a part of this moment with you, just as I'll treasure your words. Take care, stay inspired, and let your journey bloom beautifully. Until we meet again!";
+          }
+	    // If negative sentiment is detected, add a reassuring note.
+      if (sentiment === "negative") {
+        botReply += " I sense you might be feeling a bit down. I'm here if you'd like to talk.";
+      }
+      
+      // Append the bot's reply after a brief processing delay.
+      setTimeout(() => {
+        appendMessage("bot", botReply);
+      }, 500);
+    }
+
+    // Send a user message and then process the bot's response.
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (text === "") return;
+      appendMessage("user", text);
+      userInput.value = "";
+      setTimeout(() => {
+        processUserMessage(text);
+      }, 500);
+    }
+
+    // Bind the send button click event.
+    sendButton.addEventListener("click", function () {
+      sendMessage();
+    });
+
+    // Also send message on Enter key press.
+    userInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    // Send an advanced welcome message when the chatbot loads.
+    appendMessage("bot", "Hey there! 🌱 I’m Ms. Green, your eco-friendly chatbot, here to help you navigate with ease. Dive in, explore, and let’s make your journey as refreshing as nature itself! 😊", false);
+  });
   </script>
+
+
 </body>
 </html>
