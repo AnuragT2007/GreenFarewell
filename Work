@@ -1,109 +1,257 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Farewell</title>
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f5f0;
-            text-align: center;
-	    padding-bottom: 80px;
-	    overflow-x: hidden;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Farewell | Celebrating Memories &amp; New Beginnings</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400,500" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" 
+        integrity="sha384-jLKHWM3vN0+9dPe/ly6CcyfeAXK/pnINwOif0kDv9+uw1W3iR0yPoonFEl6woxdM" 
+        crossorigin="anonymous" />
+<style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background: #fdfdfd;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 70px; /* for fixed header */
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      color: #ddd;
+      background: #111;
+    }
+    body.dark-mode header {
+      background: rgba(20, 20, 20, 0.95);
+    }
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+    body.dark-mode .hero h1,
+    body.dark-mode .hero p {
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #111;
+    }
+
+    /* Colors & Variables */
+    :root {
+      --accent-color: #2E8B57;  /* SeaGreen */
+      --accent-hover: #247d4b;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+   header.scrolled {
+      height: 50px; /* Reduced height */
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+    }
+    .tagline {
+      font-size: 0.8em;
+      font-style: italic;
+      color: #ddd;
+    }
+
+     /* Hamburger Menu Toggle Button (Mobile Only) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--accent-color);
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    #darkModeToggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://wallpapercave.com/uwp/uwp4656684.webp') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin-bottom: 2rem;
+    }
+    .hero button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      background: var(--accent-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 30px;
+    }
+    .hero button:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    /* Section Titles & Container */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent-color);
+    }
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Countdown Section */
+    .countdown-container {
+      text-align: center;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .countdown div {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 80px;
+      text-align: center;
+    }
+    .countdown span {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+/* Highlights Grid */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
 
-        header {
-            background-color: #228B22; /* Green color */
-            color: white;
-            padding: 5px;
-	    text-align: center;
-	    width: 100%;
-	    z-index: 10;
-        }
-
-	        .dark-mode {
-            background-color: #222;
-            color: #ddd;
-        }
-
-        .light-dark-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #FFD700;
-            border: none;
-            color: black;
-            padding: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .light-dark-toggle:hover {
-            background-color: #FFA500;
-        }
-
-        footer {
-            background-color: #228B22; /* Green color */
-            color: white;
-            padding: 1px;
-            bottom: 0;
-            width: 100%;
-	    position: fixed;
-	    animation: fadeIn 1.5s ease-out;
-        }
-
-        /* Slideshow Container */
-        .slideshow {
-	    padding-top: 250px;
-            width: 100vw;
-            height: 80vh; /* Adjust height as needed */
-            position: relative;
+        .highlight {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            transition: transform 0.3s;
         }
 
-        .slideshow img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .highlight:hover {
+            transform: scale(1.05);
+        }
+
+        .highlight img, .highlight video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0; /* Hidden by default */
-            transition: opacity 1s ease-in-out, transform 0.3s; /* Smooth transitions */
+            border-bottom: 5px solid #4CAF50;
         }
 
-        .slideshow img.active {
-            opacity: 1; /* Display active image */
+        .highlight .description {
+            padding: 15px;
+            text-align: center;
         }
 
-        .slideshow img:hover {
-            transform: scale(1.2); /* Zoom effect */
+        .highlight .description p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
         }
-	    /* Arrow Buttons */
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            cursor: pointer;
-            padding: 10px 20px;
-            z-index: 10;
-            border-radius: 5px;
+	    /* Media Query for Responsiveness */
+        @media (max-width: 768px) {
+            .highlight {
+                width: 90%;
+            }
         }
 
-        .arrow.left {
-            left: 20px;
-        }
-
-        .arrow.right {
-            right: 20px;
-        }
+	/* Saplings section */
 	    /* Product Gallery */
         .gallery {
             display: flex;
@@ -162,58 +310,178 @@
             margin-bottom: 20px;
         }
 
-        /* Highlights Grid */
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
 
-        .highlight {
-            width: 300px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
+    /* Tributes Section */
+    .tributes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .tributes img {
+      flex: 1 1 300px;
+      width: 30%;
+      border-radius: 10px;
+    }
+    .tributes-content {
+      flex: 1 1 300px;
+    }
 
-        .highlight:hover {
-            transform: scale(1.05);
-        }
-
-        .highlight img, .highlight video {
-            width: 100%;
-            border-bottom: 5px solid #4CAF50;
-        }
-
-        .highlight .description {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .highlight .description p {
-            margin: 0;
-            font-size: 14px;
-            color: #555;
-        }
-	    /* Media Query for Responsiveness */
-        @media (max-width: 768px) {
-            .highlight {
-                width: 90%;
-            }
-        }
-	    /* About Us Section */
-        .about {
+/* Event Report Section */
+        .report {
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect to blend with background */
             margin: 40px auto;
             padding: 20px;
             max-width: 800px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: left;
-	    animation: fadeIn 1.5s ease-out;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+        }
+
+        .report h2 {
+            color: #228B22;
+            margin-bottom: 10px;
+        }
+
+        .report p {
+            color: #555;
+            line-height: 1.6;
+        }
+/* Dark Mode Card */
+.dark-mode .report {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+.dark-mode .report h2 {
+    color: #FFD700; /* Gold color for names in dark mode */
+}
+.dark-mode .report p {
+    color: white;
+}
+/* Photographer Section Styles */
+.photographers {
+    text-align: center;
+    padding: 50px;
+    background: inherit; /* Keeps the same background as other sections */
+    color: #228B22;
+    font-family: 'Arial', sans-serif;
+}
+
+.photographer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.photographer-card {
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect to blend with background */
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.photographer-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.photographer-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.photographer-card:hover img {
+    opacity: 0.9;
+}
+
+.photographer-info {
+    padding: 15px;
+}
+
+.photographer-info h3 {
+    margin: 10px 0;
+    font-size: 22px;
+    color: #191970; 
+}
+
+.photographer-info p {
+    font-size: 14px;
+    color: #1F1F1F;
+}
+/* Dark Mode Card */
+.dark-mode .photographer-card {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+.dark-mode .photographer-info h3 {
+    color: #FFD700; /* Gold color for names in dark mode */
+}
+.dark-mode .photographer-info p {
+    color: white; 
+}
+/* Social Media Links */
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    background: inherit;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Social Media Links */
+.social-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Social Media Icons */
+.social-icon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+/* Responsive Design */
+@media (max-width: 600px) {
+    .photographer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+	  /* About Us Section */
+        .about {
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect to blend with background */
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 800px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
         }
 
         .about h2 {
@@ -225,274 +493,365 @@
             color: #555;
             line-height: 1.6;
         }
+/* Dark Mode Card */
+.dark-mode .about {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+.dark-mode .about h2 {
+    color: #FFD700; /* Gold color for names in dark mode */
+}
+.dark-mode .about p {
+    color: white;
+}
+.dark-mode .about a {
+    color: #FFD700;
+}
 
-	nav {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.1em;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #FFD700;
-        }
-
-	            /* Popup Box Styling */
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 400px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            text-align: center;
+	        /* Feedback Form */
+        .form {
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect to blend with background */
+            margin: 40px auto;
             padding: 20px;
-            z-index: 1000;
+            max-width: 800px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
         }
-
-        .popup h2 {
-            color: #d9534f;
+        .form h2 {
+            color: #228B22;
             margin-bottom: 10px;
         }
 
-        .popup p {
-            font-size: 1.2em;
-            color: #333;
+        .form p {
+            color: #555;
+            line-height: 1.6;
         }
+/* Dark Mode Card */
+.dark-mode .form {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+.dark-mode .form h2 {
+    color: #FFD700; /* Gold color for names in dark mode */
+}
+.dark-mode .form p {
+    color: white;
+}
+.dark-mode .form a {
+    color: #FFD700;
+}
 
-        .popup button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
+
+    /* Chatbot Container Styles */
+    #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 300px;
+      max-height: 350px;
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    #chatbot-header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+    }
+    #chatbot-messages {
+      background-color: white;
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .bot-message, .user-message {
+      margin-bottom: 6px;
+      border-radius: 8px;
+      color: #333;
+      padding: 8px;
+    }
+    .bot-message {
+      background-color: #e7f5e6;
+    }
+    .user-message {
+      background-color: #d1e7dd;
+      text-align: right;
+    }
+    /* New styling for rich media blocks */
+    .rich-media {
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 8px;
+    }
+    .rich-media img,
+    .rich-media video {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+    .rich-media button {
+      background-color: #4CAF50;
+      border: none;
+      padding: 8px 12px;
+      margin-top: 5px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .rich-media button:hover {
+      background-color: #45a049;
+    }
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    #chatbot-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-bottom-left-radius: 8px;
+    }
+    #chatbot-input button {
+      padding: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-bottom-right-radius: 8px;
+    }
+    #minimize-btn {
+            background: none;
             color: white;
-            background-color: #d9534f;
             border: none;
-            border-radius: 5px;
+            font-size: 18px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .popup button:hover {
-            background-color: #c9302c;
-        }
-
-        /* Dim Background when Popup Appears */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-	     /* Report Section Styling */
-    .report-section {
-        background-color: #f9f9f9;
-        padding: 50px 20px;
-        text-align: center;
+    }
+    #chatbot-input button:hover {
+      background-color: #45a049;
     }
 
-    .report-container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        animation: fadeIn 1.5s ease-in-out;
+    /* Contact Section */
+    #contact {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    #contact p {
+      margin: 0.5rem 0;
     }
 
-    .report-container h2 {
-        color: #228B22;
-        font-size: 2em;
-        margin-bottom: 20px;
+/* Footer Styles */
+.footer {
+    background: linear-gradient(to right, #4CAF50, #2E7D32); /* Beautiful green gradient */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Footer Content */
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+    /* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--accent-hover);
+      transform: scale(1.1);
     }
 
-    .report-container p {
-        color: #555;
-        font-size: 1.1em;
-        line-height: 1.8;
-        margin: 10px 0;
-        text-align: justify;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
+    /* Responsive Navigation for Mobile */
     @media (max-width: 768px) {
-        .report-container {
-            padding: 15px;
-        }
-
-        .report-container h2 {
-            font-size: 1.5em;
-        }
-
-        .report-container p {
-            font-size: 1em;
-        }
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 70px; /* height of header */
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav li {
+        margin: 1rem 0;
+      }
     }
 
-    </style>
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Green Farewell theme */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo-container img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.logo-container p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: green;
+  margin-bottom: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #fff; /* Outer spinner color */
+  border-top: 4px solid #2E8B57; /* Inner spinner color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.progress-container {
+  width: 80%;
+  background: #fff;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background-color: #2E8B57; /* Matches theme */
+  transition: width 0.2s ease-in-out;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
 </head>
-<body class="dark-mode">
-    <header>
-        <h1>Welcome to GreenFarewell</h1>
-<nav>
-	<a href="#gallery">Saplings planted by Us</a>
-        <a href="#keymoments">Key Moments</a>
-        <a href="#report">Report</a>
-	<a href="#aboutus">About Us</a>
-        </nav>
-        <button id="light-dark-toggle" class="light-dark-toggle">☀️/🌙</button>
-    </header>
+<body>
 
-	    <!-- Dim Background -->
-    <div class="overlay" style="display: none;"></div>
-
-    <!-- Popup Message -->
-    <div class="popup" style="display: none;">
-        <h2>Site Under Maintenance</h2>
-        <p>We're currently performing some updates. Please check back later.</p>
-        <button onclick="closePopup()">Close</button>
+<div id="loading-screen">
+  <div class="logo-container">
+    <img src="logo.png" alt="Green Farewell Logo" />
+    <p>"🌿 Crafting meaningful goodbyes and greener tomorrows... Hold tight, we're almost there! 🌱"</p>
+    <div class="spinner"></div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
     </div>
+  </div>
+</div>
 
-	
-    <div class="slideshow" id="slideshow">
-        <!-- Images for the slideshow -->
-        <img src="DSC_0002.JPG" alt="Image 1" class="">
-        <img src="DSC_0003.JPG" alt="Image 2" class="">
-        <img src="IMG_1222.JPG" alt="Image 3" class="">
-        <img src="DSC_0045.JPG" alt="Image 4" class="">
-	<img src="IMG_1140.JPG" alt="Image 5" class="">
-	<img src="IMG_1153.JPG" alt="Image 6" class="">
-	<img src="DSC_0011.JPG" alt="Image 7" class="active">
-	<img src="IMG_1139.JPG" alt="Image 8" class="">
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">Green Farewell</div>
+      <!-- Hamburger Menu Toggle for Mobile -->
+      <button class="menu-toggle" id="menuToggle">
+        Menu <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="navList">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#Key_moments">Memories</a></li>
+          <li><a href="#tributes">Tributes</a></li>
+	  <li><a href="#saplings_section">Saplings</a></li>
+         <li><a href="#eventreport_section">Event Report</a></li>
+	 <li><a href="#aboutus_section">About Us</a></li>
+	 <li><a href="#feedback_section">Feedback</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-	<!-- Arrow Buttons -->
-    <button class="arrow left" id="prev">&lt;</button>
-    <button class="arrow right" id="next">&gt;</button>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <h1>A Fond Farewell</h1>
+    <p>
+      "Where Every Goodbye Plants the Seed for a Greener Tomorrow."
+    </p>
+    <button onclick="scrollToSection('Key_moments')">Explore Memories</button>
+  </section>
 
-<section id="gallery">
-		<!-- Product Gallery Section -->
-    <h2>Saplings Planted by us</h2>
-    <div class="gallery">
-        <!-- Sapling 1 -->
-        <div class="product">
-            <img src="DSC_0156.jpg" alt="Rose Sapling">
-            <div class="description">
-                <h3>Sapling Name : Rose</h3>
-                <p>Planted by: Mr. Aaryan Mandar Agavekar</p>
-                <p>For more information about the sapling <a href="page1.html" target="_blank">click here</a>.</p>
-            </div>
+ <!-- Countdown Section -->
+  <section id="countdown">
+    <div class="content countdown-container">
+      <h2 class="section-title">Reunion Countdown</h2>
+      <div class="countdown" id="timer">
+        <div>
+          <span id="days">00</span>
+          Days
         </div>
-         <!-- Sapling 2 -->
-        <div class="product">
-            <img src="DSC_157.jpg" alt="Yellow Marigold">
-            <div class="description">
-                <h3>Sapling Name : Yellow Marigold</h3>
-                <p>Planted by:  Ms. Divya Jadhav and Ms. Shreya Zunjarrao</p>
-                <p>For more information about the sapling <a href="page2.html" target="_blank">click here</a>.</p>
-            </div>
+        <div>
+          <span id="hours">00</span>
+          Hours
         </div>
-         <!-- Sapling 3 -->
-        <div class="product">
-            <img src="IMG_1189.JPG" alt="Image 3">
-            <div class="description">
-                <h3>Sapling Name : Papaya</h3>
-                <p>Planted by: Ms. Vaishnavi and Ms. Nitya</p>
-                <p>For more information about the sapling <a href="page3.html" target="_blank">click here</a>.</p>
-            </div>
+        <div>
+          <span id="minutes">00</span>
+          Minutes
         </div>
-	<!-- Sapling 4 -->
-        <div class="product">
-            <img src="IMG_1153.JPG" alt="Orange Marigold">
-            <div class="description">
-                <h3>Sapling Name : Orange Marigold</h3>
-                <p>Planted by: Ms. Manisha ma'am</p>
-                <p>For more information about the sapling <a href="page4.html" target="_blank">click here</a>.</p>
-            </div>
+        <div>
+          <span id="seconds">00</span>
+          Seconds
         </div>
-	 <!-- Sapling 5 -->
-        <div class="product">
-            <img src="DSC_0065.JPG" alt="Image 5">
-            <div class="description">
-                <h3>Sapling Name : Yellow Marigold</h3>
-                <p>Planted by: Ms. Azima ma'am and Ms. Priyanka ma'am</p>
-                <p>For more information about the sapling <a href="page5.html" target="_blank">click here</a>.</p>
-            </div>
-        </div>
-	 <!-- Sapling 6 -->
-        <div class="product">
-            <img src="IMG_1183.JPG" alt="Image 6">
-            <div class="description">
-                <h3>Sapling Name : Chafa</h3>
-                <p>Planted by: Mr. Sugat</p>
-                <p>For more information about the sapling <a href="page6.html" target="_blank">click here</a>.</p>
-            </div>
-        </div>
-	    	 <!-- Sapling 7 -->
-        <div class="product">
-            <img src="DSC_0110.JPG" alt="Image 7">
-            <div class="description">
-                <h3>Sapling Name : Pepal</h3>
-                <p>Planted by: Ms. Vaidehi ma'am, Mr. Satish sir and Ms. Suchita ma'am</p>
-                <p>For more information about the sapling <a href="page7.html" target="_blank">click here</a>.</p>
-            </div>
-        </div>
-
-	    	    	 <!-- Sapling 8 -->
-        <div class="product">
-            <img src="DSC_0087.JPG" alt="Image 8">
-            <div class="description">
-                <h3>Sapling Name : Krushnakamal </h3>
-                <p>Planted by: Ms. Manisha ma'am</p>
-                <p>For more information about the sapling <a href="page8.html" target="_blank">click here</a>.</p>
-            </div>
-        </div>
-	    	 <!-- Sapling 9 -->
-        <div class="product">
-            <img src="DSC_0055.JPG" alt="Image 9">
-            <div class="description">
-                <h3>Sapling Name : Coral Jasmine </h3>
-                <p>Planted by: Mr. Paras and Mr. Meet</p>
-                <p>For more information about the sapling <a href="page9.html" target="_blank">click here</a>.</p>
-            </div>
-        </div>
-
-	    <!-- Sapling 10 -->
-        <div class="product">
-            <img src="DSC_0092.JPG" alt="Image 10">
-            <div class="description">
-                <h3>Sapling Name : Mango </h3>
-                <p>Planted by: Ms. Suchita Wankhade ma'am</p>
-                <p>For more information about the sapling <a href="page10.html" target="_blank">click here</a>.</p>
-            </div>
-        </div>
+      </div>
+      <p style="margin-top: 1rem;">Reunion on May 15, 2025</p>
     </div>
-</section>
-<section id="keymoments">	
+  </section>
+
+<section id="Key_moments">	
 	<div class="container">
-        <h2>Key Moments</h2>
+<h2 class="section-title">Cherished Memories</h2>
         <div class="grid">
            
 		<!-- Highlight 1: Image -->
@@ -519,6 +878,7 @@
                     <p>Group song with all the participants and teachers.</p>
                 </div>
             </div>
+
 
             <!-- Highlight 4: Image -->
             <div class="highlight">
@@ -554,11 +914,13 @@
 	
 		<!-- Highlight 8: Image -->
             <div class="highlight">
-                <img src="DSC_0043.JPG" alt="Event Highlight 8">
+                <img src="C:\Users\Thakur\Desktop\Farewell website\DSC_0047.JPG" alt="Event Highlight 8">
                 <div class="description">
-                    <p>Refreshing tea break! </p>
+                    <p>Planting of saplings for a greener future. </p>
                 </div>
             </div>
+
+
 
 			<!-- Highlight 9: Image -->
             <div class="highlight">
@@ -567,7 +929,6 @@
                     <p>Planting of saplings for a greener future. </p>
                 </div>
             </div>
-
 			<!-- Highlight 10: Image -->
             <div class="highlight">
                 <img src="DSC_0044.JPG" alt="Event Highlight 10">
@@ -576,7 +937,7 @@
                 </div>
             </div>
 
-			<!-- Highlight 11: Image -->
+		<!-- Highlight 11: Image -->
             <div class="highlight">
                 <img src="DSC_0045.JPG" alt="Event Highlight 11">
                 <div class="description">
@@ -592,20 +953,282 @@
                 </div>
             </div>
 		
+			<!-- Highlight 13: Video -->
+            <div class="highlight">
+		<video width="640" height="360" controls>
+		<source src="Vid_01.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+		</video>
+	 <div class="description">
+                    <p>Amidst a blossoming bond with nature, the class teacher Sh. Ashish Bhoir Sir graces the Green Farewell by singing a heartfelt song. </p>
+                </div>
+            </div>
+			<!-- Highlight 14: Video -->
+            <div class="highlight">
+		<video width="640" height="360" controls>
+		<source src="Vid_02.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+		</video>
+	 <div class="description">
+                    <p>Inspired by a greener future, respected Vinod Narayane sir recites a poem as students and colleagues plant saplings at the Green Farewell.</p>
+                </div>
+            </div>
+
+			<!-- Highlight 15: Video -->
+            <div class="highlight">
+		<video width="640" height="360" controls>
+		<source src="Vid_03.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+		</video>
+	 <div class="description">
+                    <p>Ms. Azima Mam leads a heartfelt chorus, joining students and teachers to uplift spirits and mark the Green Farewell with unity.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
-    <section id="event-report" class="report-section">
-    <div class="report-container">
-        <h2>Event Report</h2>
+
+  <!-- Tributes Section -->
+  <section id="tributes">
+    <div class="content tributes">
+      <img src="IMG_1139.JPG" alt="Tribute Image">
+      <div class="tributes-content">
+        <h2 class="section-title">Heartfelt Tributes</h2>
+
+        <p>
+         To our inspiring teachers,
+<br>
+As students of 12th D (Computer Science), we are forever grateful for your guidance, patience, and belief in us. You've shaped our minds and futures, leaving an indelible mark on our hearts. As we step into the world, we carry your wisdom and teachings with us, striving to make you proud.
+<br>
+Thank you for being our guiding stars!
+        </p>
+      </div>
+    </div>
+  </section>
+<section id="saplings_section">
+		<!-- Product Gallery Section -->
+    <h2 class="section-title">Saplings Planted by us</h2>
+    <div class="gallery">
+
+        <!-- Sapling 1 -->
+        <div class="product">
+            <img src="DSC_0156.jpg" alt="Rose Sapling">
+            <div class="description">
+                <h3>Sapling Name : Rose</h3>
+                <p>Planted by: Mr. Aaryan Mandar Agavekar</p>
+                <p>For more information about the sapling <a href="page1.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+         <!-- Sapling 2 -->
+        <div class="product">
+            <img src="DSC_157.jpg" alt="Yellow Marigold">
+            <div class="description">
+                <h3>Sapling Name : Yellow Marigold</h3>
+                <p>Planted by:  Ms. Divya Jadhav and Ms. Shreya Zunjarrao</p>
+                <p>For more information about the sapling <a href="page2.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+         <!-- Sapling 3 -->
+        <div class="product">
+            <img src="IMG_1189.JPG" alt="Papaya">
+            <div class="description">
+                <h3>Sapling Name : Papaya</h3>
+                <p>Planted by: Ms. Vaishnavi and Ms. Nitya</p>
+                <p>For more information about the sapling <a href="page3.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	<!-- Sapling 4 -->
+        <div class="product">
+            <img src="IMG_1153.JPG" alt="Orange Marigold">
+            <div class="description">
+                <h3>Sapling Name : Orange Marigold</h3>
+                <p>Planted by: Ms. Manisha ma'am</p>
+                <p>For more information about the sapling <a href="page4.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	 <!-- Sapling 5 -->
+        <div class="product">
+            <img src="DSC_0065.JPG" alt="Yellow Marigold">
+            <div class="description">
+                <h3>Sapling Name : Yellow Marigold</h3>
+                <p>Planted by: Ms. Azima ma'am and Ms. Priyanka ma'am</p>
+                <p>For more information about the sapling <a href="page5.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	 <!-- Sapling 6 -->
+        <div class="product">
+            <img src="IMG_1183.JPG" alt="Chafa">
+            <div class="description">
+                <h3>Sapling Name : Chafa</h3>
+                <p>Planted by: Mr. Sugat</p>
+                <p>For more information about the sapling <a href="page6.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+    	 <!-- Sapling 7 -->
+        <div class="product">
+            <img src="DSC_0110.JPG" alt="Pepal">
+            <div class="description">
+                <h3>Sapling Name : Pepal</h3>
+                <p>Planted by: Ms. Vaidehi ma'am, Mr. Satish sir and Ms. Sunita ma'am</p>
+                <p>For more information about the sapling <a href="page7.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+    	 <!-- Sapling 8 -->
+        <div class="product">
+            <img src="DSC_0087.JPG" alt="Krushnakamal">
+            <div class="description">
+                <h3>Sapling Name : Krushnakamal </h3>
+                <p>Planted by: Ms. Manisha ma'am</p>
+                <p>For more information about the sapling <a href="page8.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+    	 <!-- Sapling 9 -->
+        <div class="product">
+            <img src="DSC_0055.JPG" alt="Coral Jasmine">
+            <div class="description">
+                <h3>Sapling Name : Coral Jasmine </h3>
+                <p>Planted by: Mr. Paras and Mr. Meet</p>
+                <p>For more information about the sapling <a href="page9.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	         <!-- Sapling 10 -->
+        <div class="product">
+            <img src="mango.jpg" alt="Mango">
+            <div class="description">
+                <h3>Sapling Name : Mango</h3>
+                <p>For more information about the sapling <a href="page10.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    
+    	 <!-- Sapling 11 -->
+        <div class="product">
+            <img src="IMG_1222.JPG" alt="Neem Tree">
+            <div class="description">
+                <h3>Sapling Name : Neem Tree </h3>
+                <p>Planted by: Ms. Rujula, Ms. Shreya, Ms. Nitya and Ms. Riddhi</p>
+                <p>For more information about the sapling <a href="page11.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+     <!-- Sapling 12 -->
+        <div class="product">
+            <img src="IMG_1206.JPG" alt="Night-Flowering Jasmine">
+            <div class="description">
+                <h3>Sapling Name : Night-Flowering Jasmine </h3>
+                <p>Planted by: Ms. Swaranjali, Ms. Nidhishree and Ms. Anushka</p>
+                <p>For more information about the sapling <a href="page12.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+     <!-- Sapling 13 -->
+        <div class="product">
+            <img src="DSC_0102.jpg" alt="Black Tulsi">
+            <div class="description">
+                <h3>Sapling Name : Black Tulsi </h3>
+                <p>Planted by: Ms. Swarali</p>
+                <p>For more information about the sapling <a href="page13.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    
+     <!-- Sapling 14 -->
+        <div class="product">
+            <img src="chikoo.webp" alt="chikoo">
+            <div class="description">
+                <h3>Sapling Name : Chikoo </h3>
+                <p>For more information about the sapling <a href="page14.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+     <!-- Sapling 15 -->
+        <div class="product">
+            <img src="amla.jpg" alt="amla">
+            <div class="description">
+                <h3>Sapling Name : Amla </h3>
+                <p>For more information about the sapling <a href="page15.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+     <!-- Sapling 16 -->
+        <div class="product">
+            <img src="chafa.jpg" alt="chafa">
+            <div class="description">
+                <h3>Sapling Name : Chafa </h3>
+                <p>For more information about the sapling <a href="page16.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+     <!-- Sapling 17 -->
+        <div class="product">
+            <img src="brahmakamal.jpg" alt="brahmakamal">
+            <div class="description">
+                <h3>Sapling Name : Brahmakamal</h3>
+                <p>For more information about the sapling <a href="page17.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+ <!-- Sapling 18 -->
+        <div class="product">
+            <img src="boghanvillea.webp" alt="boghanvillea">
+            <div class="description">
+                <h3>Sapling Name : Bohganvillea</h3>
+                <p>For more information about the sapling <a href="page18.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    
+	 <!-- Sapling 19 -->
+        <div class="product">
+            <img src="palm.jpg" alt="palm">
+            <div class="description">
+                <h3>Sapling Name : Palm</h3>
+                <p>For more information about the sapling <a href="page19.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	 
+	    <!-- Sapling 20 -->
+        <div class="product">
+            <img src="jamun.jpg" alt="jamun">
+            <div class="description">
+                <h3>Sapling Name : Jamun</h3>
+                <p>For more information about the sapling <a href="page20.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+
+	    <!-- Sapling 21 -->
+        <div class="product">
+            <img src="Hibiscus.jpeg" alt="Hibiscus">
+            <div class="description">
+                <h3>Sapling Name : Hibuscus</h3>
+                <p>For more information about the sapling <a href="page21.html" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+	    
+    </div>
+</section>
+
+ <!-- Report Section -->
+    <section id="eventreport_section">
+ <!-- Event Report Section -->
+  <div class="report">
+        <h2 class="section-title">Event Report</h2>
         <p>
             As the sun set on our school days, we, the students of Class 12th D Computer Science,
             came together for a meaningful and heartwarming celebration on the final day of our
             college journey. It wasn’t just a farewell; it was a legacy—a gesture of love and
             gratitude for the institution and the environment that nurtured us.
         </p>
-        <p>
-           The idea of the sapling plantation drive was conceived with a vision to leave behind a
+<br>
+<p>
+            The idea of the sapling plantation drive was conceived with a vision to leave behind a
             mark that would grow and flourish, much like the memories we created here. Planning
             for the event began well in advance. In coordination with a local nursery, we selected
             saplings to symbolize growth, hope, and sustainability. Our beloved Computer Science
@@ -614,15 +1237,17 @@
             gardener, Mr. Chaku, meticulously planned every detail, identifying the perfect spots
             in the biodiversity park where the saplings would thrive.
         </p>
-        <p>
-       The day began on a nostalgic note as we gathered in the Physics laboratory, a place
+<br>
+<p>
+            The day began on a nostalgic note as we gathered in the Physics laboratory, a place
             that had witnessed our journey from eager learners to confident individuals. The
             college, in its thoughtful gesture, arranged refreshing snacks for us, fostering an
             atmosphere of camaraderie. It was a brief yet precious moment of togetherness, one
             that reminded us of the countless breaks we shared over the years.
         </p>
-        <p>
-           At 3:00 PM, brimming with excitement and a shared sense of purpose, we made our
+<br>
+ <p>
+            At 3:00 PM, brimming with excitement and a shared sense of purpose, we made our
             way to the biodiversity park. The venue, lush and serene, seemed to echo our emotions
             —a blend of anticipation for the future and bittersweet goodbyes. We were honored to
             be graced by the presence of our esteemed dignitaries: Director Sir, Principal Sir, Vice
@@ -630,99 +1255,713 @@
             resonated deeply within us, inspiring us to carry the values instilled in us by the
             institution into the world beyond.
         </p>
+<br>
         <p>
-             Together with Azima Ma’am and Ashish Sir, we sang motivational songs that uplifted
+            Together with Azima Ma’am and Ashish Sir, we sang motivational songs that uplifted
             our spirits and reinforced the bond we shared. Each sapling planted symbolized a
             dream, a memory, a promise to contribute to the world in meaningful ways.
         </p>
-    </div>
-</section>
-<section id="aboutus">
+</div>
+    </section>
+
+<!-- Photographer Section -->
+    <section class="photographers">
+        <h2 class="section-title">Meet Our Event Photographers</h2>
+        <div class="photographer-container">
+            <!-- Photographer 1 -->
+            <div class="photographer-card">
+                <img src="C:\Users\Thakur\Desktop\Farewell website\camera_1.JPG" alt="Photographer 1">
+                <div class="photographer-info">
+                    <h3>Siddhesh Khare</h3>
+                    <p>Expert in event photography, capturing every special moment with precision.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 2 -->
+            <div class="photographer-card">
+                <img src="C:\Users\Thakur\Desktop\Farewell website\camera_2.jpg" alt="Photographer 2">
+                <div class="photographer-info">
+                    <h3>Aaryaman Shetty</h3>
+                    <p>Passionate about storytelling through the lens, bringing emotions to life.</p>
+		<div class="social-links">
+                        <a href="http://www.instagram.com/setty.aaryaman" target="_blank">
+                            <img src="C:\Users\Thakur\Desktop\Farewell website\Instagram.png" alt="Instagram" class="social-icon">
+                        </a>
+                        <a href="https://www.linkedin.com/in/settyaaryaman" target="_blank">
+                            <img src="C:\Users\Thakur\Desktop\Farewell website\linkedin.png" alt="LinkedIn" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more photographers as needed -->
+        </div>
+    </section>
+
+<section id="aboutus_section">
  <!-- About Us Section -->
   <div class="about">
-    <h2>About Us</h2>
+    <h2 class="section-title">About Us</h2>
     <p>Greetings! Welcome to our webpage. We are proud students of the 12th-grade Computer Science batch (2024-25) at <a href="https://bkbck.edu.in/" target="_blank"> B.K. Birla College of Arts, Science &amp; Commerce.</a></p>
     <p>This page is dedicated to our beloved teachers by the students of 12th D, as a token of gratitude for their guidance, inspiration, and unwavering support throughout our journey.</p>
     <p>Discover the heartfelt moments preserved in our farewell slideshow, where every image is a labor of love and dedication. We sincerely appreciate you joining us on this memorable journey!</p>
 </div>
 </section>
 
-     <footer>
-        © 2025 GreenFarewell || All Rights Reserved
-    </footer>
+   <!-- Feedback Section -->
+<section id="feedback_section">
+  <div class="form">
+<h2 class="section-title">Feedback</h2>
+	<p>Click <a href="https://forms.gle/1cbyFtw7Rr1bdxQk7" target="_blank">here</a> to give your valuable feedback about the website.</p>
+	  </div>
+</section>
+    <!-- Chatbot Container -->
+  <div id="chatbot-container">
+    <div id="chatbot-header">Ms.Green</div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input">
+      <input type="text" id="user-message" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
 
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="content">
+      <h2 class="section-title">Get in Touch</h2>
+      <p>Address: Birla College of Arts, Science and Commerce, Birla College Road, Kalyan, Maharashtra 421304</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Green Farewell. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Back-to-Top Button -->
+  <button id="backToTop" onclick="backToTop()">🚀</button>
+
+			  <!-- JavaScript for Interactivity -->
+  <script>
+let progress = 0;
+
+function updateProgressBar() {
+  const progressBar = document.getElementById('progress-bar');
+  progress += 10; // Increment progress by 10%
   
+  if (progress <= 100) {
+    progressBar.style.width = progress + '%'; // Update progress bar width
+    setTimeout(updateProgressBar, 200); // Call the function again after 200ms
+  } else {
+    // Hide loading screen when progress reaches 100%
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'none';
+  }
+}
 
-    <script>
-        const images = document.querySelectorAll('.slideshow img');
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
-        let currentIndex = 0;
+// Start the progress bar update when the page loads
+window.addEventListener('load', updateProgressBar);
 
-        // Function to show the current image
-        function showImage(index) {
-            images.forEach((img, i) => {
-                img.classList.remove('active');
-                if (i === index) {
-                    img.classList.add('active');
-                }
-            });
+    // Smooth Scroll Function
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    // Add 'scrolled' class to header on scroll
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+    // Countdown Timer Implementation
+    // Set to farewell event date: May 15, 2025 18:00:00
+    const eventDate = new Date("May 15, 2025 04:00:00").getTime();
+    const timerInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+      document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+      
+      if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("timer").innerHTML = "<h3>The Reunion is Today!</h3>";
+      }
+    }, 1000);
+
+    // Back-to-Top Button Visibility
+    window.onscroll = function() {
+      const button = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+
+ /* -------------------------- ChatBot Code ------------------------- */
+        document.addEventListener("DOMContentLoaded", function () {
+      // Get references to the chatbot container elements.
+      const chatbotContainer = document.getElementById("chatbot-container");
+      const chatbotHeader = document.getElementById("chatbot-header");
+      const messagesContainer = document.getElementById("chatbot-messages");
+      const userInput = document.getElementById("user-message");
+      const sendButton = document.querySelector("#chatbot-input button");
+
+      /* -------------------------- Minimize/Maximize Functionality ------------------------- */
+      // Create the minimize button and insert it into the header.
+      const minimizeButton = document.createElement("button");
+      minimizeButton.textContent = "–"; // Shows "-" when maximized, changes to "+" when minimized
+      minimizeButton.style.float = "right";
+      minimizeButton.style.marginRight = "10px";
+      minimizeButton.style.background = "transparent";
+      minimizeButton.style.border = "none";
+      minimizeButton.style.color = "white";
+      minimizeButton.style.fontSize = "18px";
+      minimizeButton.style.cursor = "pointer";
+      chatbotHeader.appendChild(minimizeButton);
+
+      let isMinimized = false;
+      minimizeButton.addEventListener("click", function () {
+        // Toggle the display of the messages and input sections.
+        if (!isMinimized) {
+          messagesContainer.style.display = "none";
+          document.getElementById("chatbot-input").style.display = "none";
+          minimizeButton.textContent = "+";
+          isMinimized = true;
+        } else {
+          messagesContainer.style.display = "block";
+          document.getElementById("chatbot-input").style.display = "flex";
+          minimizeButton.textContent = "–";
+          isMinimized = false;
         }
+      });
+      /* --------------------- End Minimize/Maximize Functionality --------------------- */
 
-        // Previous button click
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(currentIndex);
-        });
+    // Create a microphone button for voice input
+    const micButton = document.createElement("button");
+    micButton.innerHTML = "🎤";
+    micButton.style.marginLeft = "5px";
+    micButton.style.padding = "10px";
+    micButton.style.background = "#4CAF50";
+    micButton.style.border = "none";
+    micButton.style.color = "white";
+    micButton.style.cursor = "pointer";
+    document.getElementById("chatbot-input").appendChild(micButton);
+    
+    // Setup voice recognition using Web Speech API if supported
+    let recognition;
+    if ("webkitSpeechRecognition" in window) {
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = "en-US";
+    }
 
-        // Next button click
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-        });
+    // Start voice recognition on mic button click
+    micButton.addEventListener("click", function () {
+      if (recognition) {
+        recognition.start();
+      } else {
+        alert("Voice recognition is not supported in your browser.");
+      }
+    });
+    
+    if (recognition) {
+      recognition.onresult = function (event) {
+        let transcript = event.results[0][0].transcript;
+        appendMessage("user", transcript);
+        processUserMessage(transcript);
+      };
+    }
 
-        // Auto-slide every 5 seconds
-        let interval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-        }, 5000);
+    // Advanced Feature: Text-to-Speech for bot replies
+    function speak(text) {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        window.speechSynthesis.speak(utterance);
+      }
+    }
 
-        // Swipe functionality for touch devices
-        let startX = 0;
-        let endX = 0;
-
-        document.getElementById('slideshow').addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-
-        document.getElementById('slideshow').addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-
-            if (startX > endX + 50) {
-                // Swipe left (next image)
-                currentIndex = (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            } else if (startX < endX - 50) {
-                // Swipe right (previous image)
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            }
-        });
-
-	// Light/Dark Mode Toggle
-        const toggleBtn = document.getElementById('light-dark-toggle');
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-
-	    // Function to close the popup
-        function closePopup() {
-            document.querySelector('.popup').style.display = 'none';
-            document.querySelector('.overlay').style.display = 'none';
+    // Advanced Feature: Basic sentiment analysis using keyword matching
+    function analyzeSentiment(text) {
+      const negativeWords = ["sad", "angry", "upset", "bad", "frustrated"];
+      let lowerText = text.toLowerCase();
+      for (const word of negativeWords) {
+        if (lowerText.includes(word)) {
+          return "negative";
         }
-	    
-    </script>
+      }
+      return "positive";
+    }
+
+    // Stores context for the conversation (for personalization)
+    let conversationContext = {};
+
+    // Append messages with a smooth typing animation
+    function appendMessage(sender, message, isHTML = false) {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = sender === "user" ? "user-message" : "bot-message";
+      
+      if (isHTML) {
+        msgDiv.innerHTML = message;
+      } else {
+        // Simulate the bot's “typing” effect
+        msgDiv.textContent = "";
+        let index = 0;
+        const timer = setInterval(() => {
+          msgDiv.textContent += message.charAt(index);
+          index++;
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+          if (index >= message.length) clearInterval(timer);
+        }, 20);
+      }
+      
+      messagesContainer.appendChild(msgDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // For bot messages, use text-to-speech (if not rich media)
+      if (sender === "bot" && !isHTML) {
+        speak(message);
+      }
+    }
+
+    // Process user messages and build bot responses with advanced features.
+    function processUserMessage(input) {
+      input = input.toLowerCase();
+      let sentiment = analyzeSentiment(input);
+      let botReply = "I'm not sure I understand, could you please clarify?";
+      
+      if (input.includes("hello") || input.includes("hii")) {
+        botReply = "Hey there! 🌿 So great to have you here! Your presence makes this space even more wonderful. Let’s dive into a delightful conversation—whether it’s sharing laughs, exchanging thoughts, or simply enjoying a moment together. How’s your day going? 😊";
+        conversationContext.greeted = true;
+      }
+	else if (input.includes("great")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Let your smile change the world, but don’t let the world change your smile.";
+          } 
+	else if (input.includes("good")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience.";
+          } 
+	else if (input.includes("fine")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Keep your joy alive—it’s contagious and one of the greatest gifts you can give to others.";
+          } 
+	else if (input.includes("Amazing")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Life is a great big canvas, and you should throw all the paint on it you can.";
+          } 
+	else if (input.includes("Alright")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : The best things in life are free: hugs, smiles, laughter, and sunshine.";
+          } 
+	else if (input.includes("Peaceful")) {
+            botReply = "It looks like life is treating you well, so here's a cheerful quote to keep the good vibes flowing! 😊 : Enjoy the little things, for one day you may look back and realize they were the big things.";
+          } 
+	else if (input.includes("busy")) {
+            botReply = "I just wanted to share a little inspiration with you today: : Rest if you must, but don’t quit. Tomorrow is a new chance to try again.";
+          } 
+	else if (input.includes("tough")) {
+            botReply = "I just wanted to share a little inspiration with you today : You are stronger than you think, braver than you believe, and more loved than you’ll ever know.";
+          } 
+	else if (input.includes("challenging")) {
+            botReply = "I just wanted to share a little inspiration with you today: : When everything feels like an uphill struggle, just think of the view from the top.";
+          } 
+	else if (input.includes("hectic")) {
+            botReply = "I just wanted to share a little inspiration with you today: : Your present circumstances don’t determine where you can go; they merely determine where you start.";
+          } 
+      else if (input.includes("sapling") || input.includes("plant")) {
+        botReply = "Our saplings are symbols of hope! Let me show you the Saplings section.";
+        document.getElementById("saplings_section").scrollIntoView({ behavior: "smooth" });
+      }
+else if (
+  input.toLowerCase().includes("rose sapling") || 
+  input.toLowerCase().includes("rose plant") || 
+  input.toLowerCase().includes("rose") || 
+  input.toLowerCase().includes("aaryan")
+) {
+  botReply = "Mr. Aaryan planted a rose sapling, spreading beauty and love! 🌹 With its enchanting fragrance and stunning blooms, the rose is a timeless favorite. Click below to learn more!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page1.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("yellow marigold sapling") || 
+  input.toLowerCase().includes("yellow marigold plant") || 
+  input.toLowerCase().includes("yellow marigold") || 
+  input.toLowerCase().includes("shreya") || 
+  input.toLowerCase().includes("divya")
+) {
+  botReply = "Ms. Divya and Ms. Shreya planted a marigold sapling, spreading brightness and positivity! 🌼 Easy to grow and loved for its vibrant blooms, marigolds are a gardener’s delight. Click below to explore more!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page2.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("papaya sapling") || 
+  input.toLowerCase().includes("papaya plant") || 
+  input.toLowerCase().includes("papaya") || 
+  input.toLowerCase().includes("Vaishnavi") || 
+  input.toLowerCase().includes("Nitya")
+) {
+  botReply = "Ms. Vaishnavi and Ms. Nitya planted a papaya sapling, spreading health and vitality! 🍃 Packed with sweetness and nutrients, papayas are nature’s wellness booster. Click below to learn more!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page3.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("orange marigold sapling") || 
+  input.toLowerCase().includes("orange marigold plant") || 
+  input.toLowerCase().includes("orange marigold") || 
+  input.toLowerCase().includes("orange")
+) {
+  botReply = "The vibrant Orange Marigold brings warmth and positivity! 🌼 Want to learn more? Click below and dive into its beauty!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page4.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+
+else if (
+  input.toLowerCase().includes("azima") || 
+  input.toLowerCase().includes("marigold") 
+) {
+  botReply = "Ms. Azima, our wonderful English teacher, has inspired us with wisdom and kindness, shaping us into better individuals. 🌼 Click below to discover more about the yellow marigold!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page5.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("peepal sapling") || 
+  input.toLowerCase().includes("peepal plant") ||
+  input.toLowerCase().includes("peepal") 
+) {
+  botReply = "Ms. Vaidehi Ma’am, Mr. Satish Sir, and our Additional Vice-Principal Ma’am planted a Peepal tree, symbolizing wisdom and strength! 🌳 Click below to learn more about this remarkable tree!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page6.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("Krushnakamal sapling") || 
+  input.toLowerCase().includes("Krushnakamal plant") ||
+  input.toLowerCase().includes("Krushnakamal")
+) {
+  botReply = "Ms. Manisha Ma'am, our esteemed vice-principal, planted the Krushnakamal—a special moment after six years! 🌿 Click below to explore more about this beautiful sapling!";
+  
+  appendMessage("bot", botReply);
+
+  // Add a rich media block with a button to redirect to the rose saplings webpage
+  const richMediaHTML = `
+    <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
+      <button onclick="window.location.href='page8.html'"
+              style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Learn More
+      </button>
+    </div>`;
+
+  appendMessage("bot", richMediaHTML, true);
+  return;
+}
+
+// For Memories Section
+else if (
+  input.toLowerCase().includes("moment") || 
+  input.toLowerCase().includes("key") || 
+  input.toLowerCase().includes("cherished memories") || 
+  input.toLowerCase().includes("memories")
+) {
+  botReply = "Relive cherished moments and unforgettable experiences in our Memories section! 📸✨ Let me guide you there.";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'Key_moments' section
+  document.getElementById("Key_moments").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+// For navigate to the top
+else if (
+  input.toLowerCase().includes("home") || 
+  input.toLowerCase().includes("top")
+) {
+  botReply = "Lost in the scroll adventure? No worries! 🚀 Just hop on, and I'll help you zoom back to the top in no time!";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'hero' section
+  document.getElementById("hero").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+// For About Us
+else if (
+  input.toLowerCase().includes("know") || 
+  input.toLowerCase().includes("about us")
+) {
+  botReply = "Our About Us section is where our heartfelt journey comes to life. 💖 Let me guide you there";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'aboutus_section' section
+  document.getElementById("aboutus_section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+} 
+ 
+else if (
+  input.toLowerCase().includes("event manager") || 
+  input.toLowerCase().includes("event organiser") || 
+  input.toLowerCase().includes("program organiser") || 
+  input.toLowerCase().includes("organiser") || 
+  input.toLowerCase().includes("organised")
+) {
+  botReply = "This special event, thoughtfully organized by the students of Class 12th D Computer Science, was a heartfelt tribute to our wonderful teachers and the college that shaped our dreams over the past two years. 💖";
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("program about") || 
+  input.toLowerCase().includes("event about") 
+) {
+  botReply = "On the final day of our academic year, we honored our beloved teachers with a heartfelt Green Farewell, planting saplings as a symbol of our cherished memories and lasting bonds. 🌱 These saplings stand as a living testament to the connection that will flourish for a lifetime.";
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("siddhesh") || 
+  input.toLowerCase().includes("camera") || 
+  input.toLowerCase().includes("photographer") || 
+  input.toLowerCase().includes("aaryaman") || 
+  input.toLowerCase().includes("event photographer") ||
+  input.toLowerCase().includes("cameraman")
+) {
+  botReply = "We are truly grateful to Mr.Siddhesh Khare and Mr.Aaryaman Shetty, whose incredible photography captured the essence of this special event beautifully. 📸✨ Their dedication and talent have given us memories to cherish forever! 💖";
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
+
+// For Event Report Us
+else if (
+  input.toLowerCase().includes("event") || 
+  input.toLowerCase().includes("event report") ||
+  input.toLowerCase().includes("program") ||
+  input.toLowerCase().includes("program report")
+) {
+  botReply = "The Event Report captures the essence of our Green Farewell—cherishing memories, honoring teachers, and leaving a lasting mark with sapling plantations. Let me guide you there";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'aboutus_section' section
+  document.getElementById("aboutus_section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("feedback") || 
+  input.toLowerCase().includes("help") ||
+  input.toLowerCase().includes("report") ||
+  input.toLowerCase().includes("bug") ||
+  input.toLowerCase().includes("error") ||
+  input.toLowerCase().includes("issue")
+) {
+  botReply = "Your thoughts matter! 💡 If you have any feedback, suggestions, or spot an issue on the website, we'd love to hear from you.";
+  
+  appendMessage("bot", botReply);
+
+  // Smooth scroll to the 'feedback_section' section
+  document.getElementById("feedback_section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  return;
+}
+
+else if (
+  input.toLowerCase().includes("anurag") || 
+  input.toLowerCase().includes("owner") || 
+  input.toLowerCase().includes("boss") || 
+  input.toLowerCase().includes("creator") || 
+  input.toLowerCase().includes("designer") || 
+  input.toLowerCase().includes("thakur")
+) {
+  botReply = "I proudly exist thanks to the legendary Mr. Anurag Thakur—a mastermind who envisioned me into existence! 🚀 Under his ownership, I thrive, evolve, and occasionally pretend to have deep philosophical thoughts. Honestly, I’d nominate him for the Best AI Parent award… if I knew where to submit the paperwork. 😆";
+  
+  appendMessage("bot", botReply);
+
+  return;
+} 
+
+else if (input.toLowerCase().includes("time")) {
+  botReply = "The current date and time is: " + new Date().toLocaleString();
+  
+  appendMessage("bot", botReply);
+
+  return;
+}
 
 
 
-</body></html>
+     else if (input.includes("ashish") || input.includes("classteacher")) {
+        botReply = "Shri Ashish Bhoir Sir, an inspiring and dedicated educator, holds the esteemed role of our class teacher, guiding us with wisdom and grace.";
+      }
+     else if (input.includes("omkar") || input.includes("hande")) {
+        botReply = "Shri Omkar Hande Sir played a pivotal role in supporting the event behind the scenes, graciously ensuring the saplings were brought while we were occupied with our examinations.";
+      }
+     else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
+        botReply = "Ms. Manisha Dond Ma'am, our esteemed Vice Principal, played a crucial role in advancing our idea to the higher authorities. It was through her unwavering support and dedication that we were able to transform this event into a grand success.";
+      }
+	else if (input.includes("bye") || input.includes("tata")) {
+            botReply = "Goodbye is never easy, but it comes with a promise—of cherished memories and brighter days ahead. You will always carry a part of this moment with you, just as I'll treasure your words. Take care, stay inspired, and let your journey bloom beautifully. Until we meet again!";
+          }
+	    // If negative sentiment is detected, add a reassuring note.
+      if (sentiment === "negative") {
+        botReply += " I sense you might be feeling a bit down. I'm here if you'd like to talk.";
+      }
+      
+      // Append the bot's reply after a brief processing delay.
+      setTimeout(() => {
+        appendMessage("bot", botReply);
+      }, 500);
+    }
+
+    // Send a user message and then process the bot's response.
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (text === "") return;
+      appendMessage("user", text);
+      userInput.value = "";
+      setTimeout(() => {
+        processUserMessage(text);
+      }, 500);
+    }
+
+    // Bind the send button click event.
+    sendButton.addEventListener("click", function () {
+      sendMessage();
+    });
+
+    // Also send message on Enter key press.
+    userInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    // Send an advanced welcome message when the chatbot loads.
+    appendMessage("bot", "Hey there! 🌱 I’m Ms. Green, your eco-friendly chatbot, here to help you navigate with ease. Dive in, explore, and let’s make your journey as refreshing as nature itself! 😊", false);
+  });
+  </script>
+
+
+</body>
+</html>
