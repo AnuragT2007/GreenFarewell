@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plumeria pudica</title>
+    <style>
+           /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 70px; /* for fixed header */
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      color: #ddd;
+      background: #111;
+    }
+    body.dark-mode header {
+      background: rgba(20, 20, 20, 0.95);
+    }
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+    body.dark-mode .hero h1,
+    body.dark-mode .hero p {
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #111;
+    }
+
+    /* Colors & Variables */
+    :root {
+      --accent-color: #2E8B57;  /* SeaGreen */
+      --accent-hover: #247d4b;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+   header.scrolled {
+      height: 50px; /* Reduced height */
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+	      transition: color 0.3s ease;
+    }
+    /* Hover Effect for Logo */
+    .logo:hover {
+      color: #0077cc;;
+    }
+    .tagline {
+      font-size: 0.8em;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    /* Hamburger Menu Toggle Button (Mobile Only) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--accent-color);
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    #darkModeToggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://th.bing.com/th/id/R.277931f7c5e9602051d62852c42d6d7b?rik=zMF4k8R1AxeRlw&riu=http%3a%2f%2fwww.garden-plants-in-thailand.de%2fsuriadmin%2fserver%2fphp%2flarge%2f037b-plumeria-pudica.jpg&ehk=GC4H9zJVv2rM7msVB%2fSJ6s8lZe%2bMCdkSZcWVwOoivmE%3d&risl=&pid=ImgRaw&r=0') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+
+    }
+    .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin-bottom: 2rem;
+    }
+    .hero a {
+            color: yellow;
+            text-decoration: none;
+            font-weight: normal;
+      }
+
+    .hero button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      background: var(--accent-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 30px;
+    }
+    .hero button:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    /* Section Titles & Container */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent-color);
+    }
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+     
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    caption {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      background: #fff;
+    }
+    th {
+      background-color: #2E8B57;
+      color: #fff;
+    }
+    td {
+      border-bottom: 1px solid #ddd;
+    }
+    tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+/* Dark Mode container */
+.dark-mode .container {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+.dark-mode .table th {
+    color: #FFD700; /* Gold color for names in dark mode */
+}
+.dark-mode .table tr {
+    color: white;
+}
+
+ /* Info Sections */
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .info-section h2 {
+            color: #228B22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p, .info-section ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            list-style-type: disc;
+            margin: 20px 0 0 40px;
+            color: #555;
+        }
+
+        .info-section ul li {
+            margin: 10px 0;
+            color: #555;
+        }
+/* Dark Mode container */
+.dark-mode .info-section {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+.dark-mode ..info-section h2 {
+    color: #FFD700; /* Gold color for names in dark mode */
+}
+.dark-mode .info-section p {
+    color: white;
+}
+.dark-mode .info-section ul li {
+    color: white;
+}
+
+        /* Footer styles */
+        footer {
+              text-align: center;
+            padding: 10px;
+            transition: background-color 0.5s, color 0.5s;
+            background-color: #f0f0f0;
+           padding: 10px 0;
+           margin-top: 20px;
+        }
+       /* Hyperlink styled as normal text */
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+/* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--accent-hover);
+      transform: scale(1.1);
+    }
+
+    /* Responsive Navigation for Mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 70px; /* height of header */
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav li {
+        margin: 1rem 0;
+      }
+    }
+	/* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+  <header>
+    <div class="nav-container">
+	<a href="index.html" class="logo">Green Farewell</a>
+      <!-- Hamburger Menu Toggle for Mobile -->
+      <button class="menu-toggle" id="menuToggle">
+        Menu <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="navList">
+            <li><a href="#Classification">Taxonomy</a></li>
+            <li><a href="#Description">Description</a></li>
+	    <li><a href="#Common">Common Names</a></li>
+	    <li><a href="#Distribution">Distribution</a></li>
+            <li><a href="#Cultivation">Cultivation</a></li>	
+	    <li><a href="#Uses">Uses</a></li>	
+	    <li><a href="#Summary">Summary Table</a></li>
+          <li>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Nature’s Bridal Bouquet</h1>
+            <p>"The perfect harmony of beauty and resilience."</p>
+		<p><strong>Planted By:</strong> Ms. Asmi</p>
+            <p><strong>Event Name:</strong> <a href="index.html">GreenFarewell 2025</a></p>
+        </div>
+</section>
+	     
+            <section id="Classification" class="info-section">
+            <h2>Taxonomy & Classification</h2>
+            <ul>
+                <li><strong>Scientific Name:</strong> Plumeria pudica Jacq.</li>
+            <li><strong>Family:</strong> Apocynaceae</li>
+		<li><strong>Order:</strong> Gentianales</li>
+		<li><strong>Clade:</strong> Tracheophytes, Angiosperms, Eudicots, Asterids</li>
+</ul>
+        </section>
+
+        <!-- Botanical Description -->
+        <section id="Description" class="info-section">
+            <h2>Botanical Description</h2>
+            <ul>
+                <li><strong>Growth Habit:</strong> Plumeria pudica is generally described as a deciduous shrub. It typically reaches heights of about 3 to 4 meters (roughly 10–13 feet), though various cultivars and growing conditions might result in a more compact form or, in some cases, a larger ornamental tree. The trunk tends to be thin, with multiple branches emerging at the base to form a dense and slightly flared crown</li>
+                <li><strong>Leaves:</strong> One of the plant’s most distinctive features is its leaves. They are thick, shiny dark green, and uniquely spoon- or fiddle-shaped. Their unusual form—often compared to a cobra's hood—adds an exotic flair to the plant’s overall appearance. Keep in mind that, like many members of the Apocynaceae family, these leaves are toxic if ingested, making them a topic of interest both botanically and in terms of careful handling</li>
+                <li><strong>Flowers:</strong> The blooms of Plumeria pudica are typically white with a yellow center. They tend to appear profusely and are often described as a “bridal bouquet” or “white frangipani” in common parlance. While the scent of the flowers is generally mild or even almost unscented, some cultivars show slight variation in fragrance. Moreover, selective breeding has yielded varieties with differences—notably a variegated-leaf type called “Golden Arrow” or “Gilded Spoon” and a pink-hued hybrid known as “Sri Supakorn” or “Pink pudica”</li>
+            </ul>
+        </section>
+
+        <!-- Common Names & Cultivars -->
+        <section id="Common" class="info-section">
+            <h2>Common Names & Cultivars</h2>
+		<p>Plumeria pudica is known by several common names, reflecting its popularity and varied appearances:</p>
+            <ul>
+                <li>Wild Plumeria</li>
+                <li>Bridal Bouquet</li>
+                <li>White Frangipani</li>
+                <li>Lei Flower</li>
+                <li>Fiddle Leaf Plumeria</li>
+                <li>In local contexts, names like Thai champa or Naag (cobra) champa appear in South Asian languages.</li>               
+            </ul>
+	<p>Its diverse cultivars arise from both natural variations and deliberate hybridization. These variations offer gardeners choices in terms of flower color, leaf variegation, and overall growth form.</p>
+        </section>
+
+        <!-- Native Range & Distribution -->
+        <section id="Distribution" class="info-section">
+            <h2>Native Range & Distribution</h2>
+		<p>Originally, Plumeria pudica is native to parts of northern South America—with documented origins in Panama, Colombia, and Venezuela. Over time, thanks to its striking looks and adaptability, it has been widely cultivated in tropical and subtropical regions around the globe, including several parts of Asia where it is treasured as an ornamental plant.</p>
+        </section>
+
+        <!-- Cultivation & Care -->
+        <section id="Cultivation" class="info-section">
+            <h2>Cultivation & Care</h2>
+		<p>Successful growth and care for Plumeria pudica depend on understanding its native habitat and adapting those conditions as much as possible:</p>
+            <ul>
+                <li><strong>Light & Climate:</strong> This plant thrives in full sun to partial shade. It is best suited to warm climates—USDA hardiness zones 10–11—where it can bloom almost year-round. In cooler regions, it is often grown in containers that can be moved indoors during winter months.</li>
+                <li><strong>Soil Requirements:</strong> Plumeria pudica does best in well-drained, loamy or sandy soil. A slightly acidic pH (around 5.5–6.0) is ideal, which helps prevent most root diseases and promotes healthy growth</li>
+                <li><strong>Watering & Feeding:</strong> As a tropical species, it appreciates regular watering—usually about 1 inch per week—especially during the active growing season. However, its shallow root system means it is also susceptible to root disturbance, so good drainage is crucial. For plants grown in containers, a monthly feeding regime during the growing months can be beneficial.</li>
+                <li><strong>Propagation:</strong> The most reliable method of propagation is via cuttings taken from healthy branches. While the plant can be grown from seeds, using cuttings better preserves the characteristics of the desired cultivar and typically results in a faster establishment</li>
+            </ul>
+        </section>
+
+        <!-- Additional Information & Uses -->
+        <section id="Uses" class="info-section">
+            <h2>Additional Information & Uses</h2>
+            <ul>
+                <li><strong>Biochemical Studies:</strong> Research has focused on the latex proteins extracted from Plumeria pudica. Studies using mice have shown promise in reducing ligature-induced periodontitis as well as acting as antioxidants. Such studies underscore the potential medicinal applications of its biochemical compounds, which is an emerging area of interest</li>
+                <li><strong>Ornamental & Cultural Significance:</strong> Beyond its use in home gardens and landscaping, Plumeria pudica is deeply embedded in cultural practices. Frangipani flowers are frequently used in ceremonies, decorations, and religious events in tropical countries. Their symbolism—often associated with love, honor, and beauty—adds another layer to their appeal.</li>
+            </ul>
+        </section>
+
+        <!-- Summary Table -->
+        <section id="Summary" class="container">
+    <table>
+      <caption>Summary Table</caption>
+      <thead>
+        <tr>
+          <th>Characteristic</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Scientific Name</td>
+          <td>Plumeria pudica Jacq.</td>
+        </tr>
+        <tr>
+          <td>Family</td>
+          <td>Apocynaceae</td>
+        </tr>
+        <tr>
+          <td>Native Range</td>
+          <td>Panama, Colombia, Venezuela</td>
+        </tr>
+        <tr>
+          <td>Growth Habit</td>
+          <td>Deciduous shrub; typically 3–4 meters tall (varies with cultivar and growing conditions)</td>
+        </tr>
+        <tr>
+          <td>Leaf Appearance</td>
+          <td>Thick, shiny dark green; spoon- or fiddle-shaped; toxic</td>
+        </tr>
+        <tr>
+          <td>Flower Color</td>
+          <td>Primarily white with a yellow center; variations exist (including pink hybrids and variegated types)</td>
+        </tr>
+        <tr>
+          <td>Optimal Light</td>
+          <td>Full sun to partial shade</td>
+        </tr>
+        <tr>
+          <td>Soil Requirements</td>
+          <td>Well-drained, loamy or sandy; slightly acidic (pH 5.5–6.0)</td>
+        </tr>
+        <tr>
+          <td>Watering Needs</td>
+          <td>Regular watering (~1 inch per week); avoid overwatering</td>
+        </tr>
+        <tr>
+          <td>Propagation</td>
+          <td>Propagated primarily through cuttings; can also be grown from seeds</td>
+        </tr>
+      </tbody>
+    </table>
+        </section>
+
+<!-- Back-to-Top Button -->
+  <button id="backToTop" onclick="backToTop()">↑</button>
+
+    <!-- Footer -->
+    <footer>
+       <p>&copy; 2025 <a href="index.html">GreenFarewell</a> | All Rights Reserved</p>
+    </footer>
+
+    <script>
+                // Smooth Scroll Function
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    // Add 'scrolled' class to header on scroll
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+// Back-to-Top Button Visibility
+    window.onscroll = function() {
+      const button = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+    </script>
+</body>
+</html>
