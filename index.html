@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -486,7 +485,7 @@
         }
 
         .about h2 {
-            color: #228B22;
+            color: var(--accent-color);
             margin-bottom: 10px;
         }
 
@@ -522,7 +521,7 @@
     overflow: hidden;
         }
         .form h2 {
-            color: #228B22;
+            color: var(--accent-color);
             margin-bottom: 10px;
         }
 
@@ -1666,9 +1665,7 @@ else if (
   input.toLowerCase().includes("aaryan")
 ) {
   botReply = "Mr. Aaryan planted a rose sapling, spreading beauty and love! 🌹 With its enchanting fragrance and stunning blooms, the rose is a timeless favorite. Click below to learn more!";
-  
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1677,7 +1674,6 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
@@ -1690,9 +1686,7 @@ else if (
   input.toLowerCase().includes("divya")
 ) {
   botReply = "Ms. Divya and Ms. Shreya planted a marigold sapling, spreading brightness and positivity! 🌼 Easy to grow and loved for its vibrant blooms, marigolds are a gardener’s delight. Click below to explore more!";
-  
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1701,7 +1695,6 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
@@ -1714,9 +1707,7 @@ else if (
   input.toLowerCase().includes("Nitya")
 ) {
   botReply = "Ms. Vaishnavi and Ms. Nitya planted a papaya sapling, spreading health and vitality! 🍃 Packed with sweetness and nutrients, papayas are nature’s wellness booster. Click below to learn more!";
-  
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1725,7 +1716,6 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
@@ -1736,10 +1726,8 @@ else if (
   input.toLowerCase().includes("orange marigold") || 
   input.toLowerCase().includes("orange")
 ) {
-  botReply = "The vibrant Orange Marigold brings warmth and positivity! 🌼 Want to learn more? Click below and dive into its beauty!";
-  
+  botReply = "The vibrant Orange Marigold brings warmth and positivity! 🌼 Want to learn more? Click below and dive into its beauty!"; 
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1748,20 +1736,16 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
-
 
 else if (
   input.toLowerCase().includes("azima") || 
   input.toLowerCase().includes("marigold") 
 ) {
   botReply = "Ms. Azima, our wonderful English teacher, has inspired us with wisdom and kindness, shaping us into better individuals. 🌼 Click below to discover more about the yellow marigold!";
-  
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1770,7 +1754,6 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
@@ -1781,9 +1764,7 @@ else if (
   input.toLowerCase().includes("peepal") 
 ) {
   botReply = "Ms. Vaidehi Ma’am, Mr. Satish Sir, and our Additional Vice-Principal Ma’am planted a Peepal tree, symbolizing wisdom and strength! 🌳 Click below to learn more about this remarkable tree!";
-  
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1792,7 +1773,6 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
@@ -1803,9 +1783,7 @@ else if (
   input.toLowerCase().includes("Krushnakamal")
 ) {
   botReply = "Ms. Manisha Ma'am, our esteemed vice-principal, planted the Krushnakamal—a special moment after six years! 🌿 Click below to explore more about this beautiful sapling!";
-  
   appendMessage("bot", botReply);
-
   // Add a rich media block with a button to redirect to the rose saplings webpage
   const richMediaHTML = `
     <div class="rich-media" style="margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; text-align: center;">
@@ -1814,7 +1792,6 @@ else if (
         Learn More
       </button>
     </div>`;
-
   appendMessage("bot", richMediaHTML, true);
   return;
 }
@@ -1827,14 +1804,11 @@ else if (
   input.toLowerCase().includes("memories")
 ) {
   botReply = "Relive cherished moments and unforgettable experiences in our Memories section! 📸✨ Let me guide you there.";
-  
   appendMessage("bot", botReply);
-
   // Smooth scroll to the 'Key_moments' section
   document.getElementById("Key_moments").scrollIntoView({
     behavior: "smooth"
   });
-
   return;
 }
 
@@ -1844,14 +1818,11 @@ else if (
   input.toLowerCase().includes("top")
 ) {
   botReply = "Lost in the scroll adventure? No worries! 🚀 Just hop on, and I'll help you zoom back to the top in no time!";
-  
   appendMessage("bot", botReply);
-
   // Smooth scroll to the 'hero' section
   document.getElementById("hero").scrollIntoView({
     behavior: "smooth"
   });
-
   return;
 }
 
@@ -1860,15 +1831,12 @@ else if (
   input.toLowerCase().includes("know") || 
   input.toLowerCase().includes("about us")
 ) {
-  botReply = "Our About Us section is where our heartfelt journey comes to life. 💖 Let me guide you there";
-  
+  botReply = "Our About Us section is where our heartfelt journey comes to life. 💖 Let me guide you there"; 
   appendMessage("bot", botReply);
-
   // Smooth scroll to the 'aboutus_section' section
   document.getElementById("aboutus_section").scrollIntoView({
     behavior: "smooth"
   });
-
   return;
 } 
  
@@ -1880,9 +1848,7 @@ else if (
   input.toLowerCase().includes("organised")
 ) {
   botReply = "This special event, thoughtfully organized by the students of Class 12th D Computer Science, was a heartfelt tribute to our wonderful teachers and the college that shaped our dreams over the past two years. 💖";
-  
   appendMessage("bot", botReply);
-
   return;
 }
 
@@ -1891,9 +1857,7 @@ else if (
   input.toLowerCase().includes("event about") 
 ) {
   botReply = "On the final day of our academic year, we honored our beloved teachers with a heartfelt Green Farewell, planting saplings as a symbol of our cherished memories and lasting bonds. 🌱 These saplings stand as a living testament to the connection that will flourish for a lifetime.";
-  
   appendMessage("bot", botReply);
-
   return;
 }
 
@@ -1906,13 +1870,11 @@ else if (
   input.toLowerCase().includes("cameraman")
 ) {
   botReply = "We are truly grateful to Mr.Siddhesh Khare and Mr.Aaryaman Shetty, whose incredible photography captured the essence of this special event beautifully. 📸✨ Their dedication and talent have given us memories to cherish forever! 💖";
-  
   appendMessage("bot", botReply);
-
   return;
 }
 
-// For Event Report Us
+// For Event Report
 else if (
   input.toLowerCase().includes("event") || 
   input.toLowerCase().includes("event report") ||
@@ -1930,7 +1892,7 @@ else if (
 
   return;
 }
-
+// For Feedback
 else if (
   input.toLowerCase().includes("feedback") || 
   input.toLowerCase().includes("help") ||
@@ -1940,14 +1902,11 @@ else if (
   input.toLowerCase().includes("issue")
 ) {
   botReply = "Your thoughts matter! 💡 If you have any feedback, suggestions, or spot an issue on the website, we'd love to hear from you.";
-  
   appendMessage("bot", botReply);
-
   // Smooth scroll to the 'feedback_section' section
   document.getElementById("feedback_section").scrollIntoView({
     behavior: "smooth"
-  });
-
+});
   return;
 }
 
@@ -1957,37 +1916,31 @@ else if (
   input.toLowerCase().includes("boss") || 
   input.toLowerCase().includes("creator") || 
   input.toLowerCase().includes("designer") || 
+  input.toLowerCase().includes("developer") || 
   input.toLowerCase().includes("thakur")
 ) {
   botReply = "I proudly exist thanks to the legendary Mr. Anurag Thakur—a mastermind who envisioned me into existence! 🚀 Under his ownership, I thrive, evolve, and occasionally pretend to have deep philosophical thoughts. Honestly, I’d nominate him for the Best AI Parent award… if I knew where to submit the paperwork. 😆";
-  
   appendMessage("bot", botReply);
-
   return;
 } 
 
 else if (input.toLowerCase().includes("time")) {
   botReply = "The current date and time is: " + new Date().toLocaleString();
-  
   appendMessage("bot", botReply);
-
   return;
 }
-
-
-
-     else if (input.includes("ashish") || input.includes("classteacher")) {
+else if (input.includes("ashish") || input.includes("classteacher")) {
         botReply = "Shri Ashish Bhoir Sir, an inspiring and dedicated educator, holds the esteemed role of our class teacher, guiding us with wisdom and grace.";
       }
-     else if (input.includes("omkar") || input.includes("hande")) {
+else if (input.includes("omkar") || input.includes("hande")) {
         botReply = "Shri Omkar Hande Sir played a pivotal role in supporting the event behind the scenes, graciously ensuring the saplings were brought while we were occupied with our examinations.";
       }
-     else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
+else if (input.includes("manisha") || input.includes("vice-principal") || input.includes("dond")) {
         botReply = "Ms. Manisha Dond Ma'am, our esteemed Vice Principal, played a crucial role in advancing our idea to the higher authorities. It was through her unwavering support and dedication that we were able to transform this event into a grand success.";
       }
-	else if (input.includes("bye") || input.includes("tata")) {
+else if (input.includes("bye") || input.includes("tata")) {
             botReply = "Goodbye is never easy, but it comes with a promise—of cherished memories and brighter days ahead. You will always carry a part of this moment with you, just as I'll treasure your words. Take care, stay inspired, and let your journey bloom beautifully. Until we meet again!";
-          }
+      }
 	    // If negative sentiment is detected, add a reassuring note.
       if (sentiment === "negative") {
         botReply += " I sense you might be feeling a bit down. I'm here if you'd like to talk.";
