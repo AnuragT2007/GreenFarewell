@@ -83,7 +83,13 @@
       color: var(--accent-color);
       letter-spacing: 1px;
       display: flex;
+      text-decoration: none;
       flex-direction: column;
+      transition: color 0.3s ease;
+    }
+    /* Hover Effect for Logo */
+    .logo:hover {
+      color: #0077cc;;
     }
     .tagline {
       font-size: 0.8em;
@@ -791,7 +797,7 @@
   <!-- Header -->
   <header>
     <div class="nav-container">
-      <div class="logo">Green Farewell</div>
+    <a href="#hero" class="logo">Green Farewell</a>
       <!-- Hamburger Menu Toggle for Mobile -->
       <button class="menu-toggle" id="menuToggle">
         Menu <i class="fas fa-bars"></i>
